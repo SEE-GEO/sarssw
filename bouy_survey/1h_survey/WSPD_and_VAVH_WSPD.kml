@@ -1,6 +1,41 @@
 <Folder xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gx="http://www.google.com/kml/ext/2.2">
-  <name>WSPD_and_VAVH 1h_survey</name>
-  <description>Total datapoints: 1698</description>
+  <name>WSPD_and_VAVH 1h_new_survey</name>
+  <description>Total datapoints: 2009</description>
+  <Placemark>
+    <name>8</name>
+    <description>GL_TS_MO_6100001.nc</description>
+    <Point>
+      <coordinates>7.820000171661377,43.380001068115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>6</name>
+    <description>GL_TS_MO_6100001.nc</description>
+    <Point>
+      <coordinates>7.829999923706055,43.380001068115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>176</name>
+    <description>GL_TS_MO_6200001.nc</description>
+    <Point>
+      <coordinates>-5.0,45.20000076293945</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>97</name>
+    <description>GL_TS_MO_6200163.nc</description>
+    <Point>
+      <coordinates>-8.399999618530273,47.5</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>24</name>
+    <description>IR_TS_MO_6201070.nc</description>
+    <Point>
+      <coordinates>-8.56149959564209,43.349998474121094</coordinates>
+    </Point>
+  </Placemark>
   <Placemark>
     <name>220</name>
     <description>NO_TS_MO_6200144.nc</description>

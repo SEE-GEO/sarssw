@@ -1,6 +1,20 @@
 <Folder xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gx="http://www.google.com/kml/ext/2.2">
-  <name>WSPD_and_VAVH 15min</name>
-  <description>Total datapoints: 689</description>
+  <name>WSPD_and_VAVH 15min_new_survey</name>
+  <description>Total datapoints: 773</description>
+  <Placemark>
+    <name>60</name>
+    <description>GL_TS_MO_6200001.nc</description>
+    <Point>
+      <coordinates>-5.0,45.20000076293945</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>24</name>
+    <description>GL_TS_MO_6200163.nc</description>
+    <Point>
+      <coordinates>-8.399999618530273,47.5</coordinates>
+    </Point>
+  </Placemark>
   <Placemark>
     <name>111</name>
     <description>NO_TS_MO_6200144.nc</description>

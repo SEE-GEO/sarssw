@@ -1,6 +1,6 @@
 <Folder xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gx="http://www.google.com/kml/ext/2.2">
-  <name>WSPD 1h_survey</name>
-  <description>Total datapoints: 22145</description>
+  <name>WSPD 1h_new_survey</name>
+  <description>Total datapoints: 22137</description>
   <Placemark>
     <name>326</name>
     <description>NO_TS_MO_Oseberg-A.nc</description>
@@ -136,16 +136,16 @@
   </Placemark>
   <Placemark>
     <name>221</name>
-    <description>NO_TS_MO_6200145.nc</description>
+    <description>NO_TS_MO_PileSpiekeroog.nc</description>
     <Point>
-      <coordinates>2.799999952316284,53.10200119018555</coordinates>
+      <coordinates>7.671110153198242,53.75033187866211</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>221</name>
-    <description>NO_TS_MO_PileSpiekeroog.nc</description>
+    <description>NO_TS_MO_6200145.nc</description>
     <Point>
-      <coordinates>7.671110153198242,53.75033187866211</coordinates>
+      <coordinates>2.799999952316284,53.10200119018555</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -191,10 +191,10 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>203</name>
-    <description>NO_TS_MO_LTKiel.nc</description>
+    <name>202</name>
+    <description>NO_TS_MO_6200148.nc</description>
     <Point>
-      <coordinates>10.266667366027832,54.5</coordinates>
+      <coordinates>1.5,53.599998474121094</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -202,13 +202,6 @@
     <description>NO_TS_MO_6200165.nc</description>
     <Point>
       <coordinates>1.100000023841858,54.0</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>202</name>
-    <description>NO_TS_MO_6200148.nc</description>
-    <Point>
-      <coordinates>1.5,53.599998474121094</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -234,16 +227,16 @@
   </Placemark>
   <Placemark>
     <name>177</name>
-    <description>BS_TS_MO_URKA.nc</description>
+    <description>NO_TS_MO_Oderbank.nc</description>
     <Point>
-      <coordinates>37.28329849243164,44.88330078125</coordinates>
+      <coordinates>14.166666984558105,54.08333206176758</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>177</name>
-    <description>NO_TS_MO_Oderbank.nc</description>
+    <description>BS_TS_MO_URKA.nc</description>
     <Point>
-      <coordinates>14.166666984558105,54.08333206176758</coordinates>
+      <coordinates>37.28329849243164,44.88330078125</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -311,14 +304,14 @@
   </Placemark>
   <Placemark>
     <name>169</name>
-    <description>GL_TS_MO_Smile.nc</description>
+    <description>GL_TS_MO_6200310.nc</description>
     <Point>
       <coordinates>-0.3073999881744385,49.34379959106445</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>169</name>
-    <description>GL_TS_MO_6200310.nc</description>
+    <description>GL_TS_MO_Smile.nc</description>
     <Point>
       <coordinates>-0.3073999881744385,49.34379959106445</coordinates>
     </Point>
@@ -381,16 +374,16 @@
   </Placemark>
   <Placemark>
     <name>148</name>
-    <description>NO_TS_MO_6400045.nc</description>
+    <description>NO_TS_MO_6200149.nc</description>
     <Point>
-      <coordinates>-11.401000022888184,59.099998474121094</coordinates>
+      <coordinates>1.100000023841858,53.70000076293945</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>148</name>
-    <description>NO_TS_MO_6200149.nc</description>
+    <description>NO_TS_MO_6400045.nc</description>
     <Point>
-      <coordinates>1.100000023841858,53.70000076293945</coordinates>
+      <coordinates>-11.401000022888184,59.099998474121094</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -507,16 +500,16 @@
   </Placemark>
   <Placemark>
     <name>115</name>
-    <description>BO_TS_MO_HuvudskarOst.nc</description>
+    <description>GL_TS_MO_46027.nc</description>
     <Point>
-      <coordinates>19.159299850463867,58.93579864501953</coordinates>
+      <coordinates>-124.37999725341797,41.85200119018555</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>115</name>
-    <description>GL_TS_MO_46027.nc</description>
+    <description>BO_TS_MO_HuvudskarOst.nc</description>
     <Point>
-      <coordinates>-124.37999725341797,41.85200119018555</coordinates>
+      <coordinates>19.159299850463867,58.93579864501953</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -584,23 +577,16 @@
   </Placemark>
   <Placemark>
     <name>108</name>
-    <description>GL_TS_MO_46012.nc</description>
-    <Point>
-      <coordinates>-122.88099670410156,37.35599899291992</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>108</name>
     <description>GL_TS_MO_46050.nc</description>
     <Point>
       <coordinates>-124.5459976196289,44.66899871826172</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>106</name>
-    <description>GL_TS_MO_46206.nc</description>
+    <name>108</name>
+    <description>GL_TS_MO_46012.nc</description>
     <Point>
-      <coordinates>-125.99800109863281,48.834999084472656</coordinates>
+      <coordinates>-122.88099670410156,37.35599899291992</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -618,17 +604,17 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>105</name>
-    <description>GL_TS_MO_46053.nc</description>
+    <name>106</name>
+    <description>GL_TS_MO_46206.nc</description>
     <Point>
-      <coordinates>-119.83899688720703,34.24100112915039</coordinates>
+      <coordinates>-125.99800109863281,48.834999084472656</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>105</name>
-    <description>BO_TS_MO_Norrbyn.nc</description>
+    <description>GL_TS_MO_46053.nc</description>
     <Point>
-      <coordinates>19.808399200439453,63.49980163574219</coordinates>
+      <coordinates>-119.83899688720703,34.24100112915039</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -639,10 +625,10 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>103</name>
-    <description>GL_TS_MO_46204.nc</description>
+    <name>105</name>
+    <description>BO_TS_MO_Norrbyn.nc</description>
     <Point>
-      <coordinates>-128.76699829101562,51.382999420166016</coordinates>
+      <coordinates>19.808399200439453,63.49980163574219</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -650,6 +636,13 @@
     <description>IR_TS_MO_6100281.nc</description>
     <Point>
       <coordinates>0.20389999449253082,39.51319885253906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>103</name>
+    <description>GL_TS_MO_46204.nc</description>
+    <Point>
+      <coordinates>-128.76699829101562,51.382999420166016</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -661,16 +654,23 @@
   </Placemark>
   <Placemark>
     <name>100</name>
-    <description>GL_TS_MO_44020.nc</description>
+    <description>GL_TS_MO_44027.nc</description>
     <Point>
-      <coordinates>-70.27899932861328,41.49300003051758</coordinates>
+      <coordinates>-67.30000305175781,44.28300094604492</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>100</name>
-    <description>GL_TS_MO_44027.nc</description>
+    <description>NO_TS_MO_6200150.nc</description>
     <Point>
-      <coordinates>-67.30000305175781,44.28300094604492</coordinates>
+      <coordinates>0.699999988079071,53.599998474121094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>100</name>
+    <description>GL_TS_MO_44020.nc</description>
+    <Point>
+      <coordinates>-70.27899932861328,41.49300003051758</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -685,13 +685,6 @@
     <description>GL_TS_MO_44032.nc</description>
     <Point>
       <coordinates>-69.3550033569336,43.71500015258789</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>100</name>
-    <description>NO_TS_MO_6200150.nc</description>
-    <Point>
-      <coordinates>0.699999988079071,53.599998474121094</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -759,9 +752,9 @@
   </Placemark>
   <Placemark>
     <name>84</name>
-    <description>GL_TS_MO_46132.nc</description>
+    <description>NO_TS_MO_NsbII.nc</description>
     <Point>
-      <coordinates>-127.93199920654297,49.737998962402344</coordinates>
+      <coordinates>6.3333330154418945,55.0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -780,9 +773,9 @@
   </Placemark>
   <Placemark>
     <name>84</name>
-    <description>NO_TS_MO_NsbII.nc</description>
+    <description>GL_TS_MO_46132.nc</description>
     <Point>
-      <coordinates>6.3333330154418945,55.0</coordinates>
+      <coordinates>-127.93199920654297,49.737998962402344</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -794,16 +787,16 @@
   </Placemark>
   <Placemark>
     <name>78</name>
-    <description>GL_TS_MO_46097.nc</description>
+    <description>GL_TS_MO_2200104.nc</description>
     <Point>
-      <coordinates>-124.30400085449219,44.638999938964844</coordinates>
+      <coordinates>128.89999389648438,34.77000045776367</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>78</name>
-    <description>GL_TS_MO_2200104.nc</description>
+    <description>GL_TS_MO_46097.nc</description>
     <Point>
-      <coordinates>128.89999389648438,34.77000045776367</coordinates>
+      <coordinates>-124.30400085449219,44.638999938964844</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -822,13 +815,6 @@
   </Placemark>
   <Placemark>
     <name>71</name>
-    <description>GL_TS_MO_42085.nc</description>
-    <Point>
-      <coordinates>-66.53199768066406,17.868999481201172</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>71</name>
     <description>GL_TS_MO_46185.nc</description>
     <Point>
       <coordinates>-129.79200744628906,52.42499923706055</coordinates>
@@ -839,6 +825,13 @@
     <description>GL_TS_MO_44258.nc</description>
     <Point>
       <coordinates>-63.40299987792969,44.50199890136719</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>71</name>
+    <description>GL_TS_MO_42085.nc</description>
+    <Point>
+      <coordinates>-66.53199768066406,17.868999481201172</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -906,16 +899,16 @@
   </Placemark>
   <Placemark>
     <name>58</name>
-    <description>GL_TS_MO_2200102.nc</description>
+    <description>GL_TS_MO_2200183.nc</description>
     <Point>
-      <coordinates>125.77999877929688,34.790000915527344</coordinates>
+      <coordinates>126.23999786376953,34.72999954223633</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>58</name>
-    <description>GL_TS_MO_2200183.nc</description>
+    <description>GL_TS_MO_2200102.nc</description>
     <Point>
-      <coordinates>126.23999786376953,34.72999954223633</coordinates>
+      <coordinates>125.77999877929688,34.790000915527344</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -934,9 +927,9 @@
   </Placemark>
   <Placemark>
     <name>54</name>
-    <description>GL_TS_MO_41056.nc</description>
+    <description>GL_TS_MO_41010.nc</description>
     <Point>
-      <coordinates>-65.46399688720703,18.26099967956543</coordinates>
+      <coordinates>-78.48500061035156,28.878000259399414</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -948,9 +941,9 @@
   </Placemark>
   <Placemark>
     <name>54</name>
-    <description>GL_TS_MO_41010.nc</description>
+    <description>GL_TS_MO_41056.nc</description>
     <Point>
-      <coordinates>-78.48500061035156,28.878000259399414</coordinates>
+      <coordinates>-65.46399688720703,18.26099967956543</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -958,6 +951,13 @@
     <description>GL_TS_MO_46089.nc</description>
     <Point>
       <coordinates>-125.78500366210938,45.93299865722656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>53</name>
+    <description>GL_TS_MO_41008.nc</description>
+    <Point>
+      <coordinates>-80.86599731445312,31.399999618530273</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -982,10 +982,10 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>53</name>
-    <description>GL_TS_MO_41008.nc</description>
+    <name>52</name>
+    <description>GL_TS_MO_44007.nc</description>
     <Point>
-      <coordinates>-80.86599731445312,31.399999618530273</coordinates>
+      <coordinates>-70.13999938964844,43.525001525878906</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -996,10 +996,10 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>52</name>
-    <description>GL_TS_MO_44007.nc</description>
+    <name>51</name>
+    <description>GL_TS_MO_46083.nc</description>
     <Point>
-      <coordinates>-70.13999938964844,43.525001525878906</coordinates>
+      <coordinates>-138.0189971923828,58.27000045776367</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1010,10 +1010,10 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>51</name>
-    <description>GL_TS_MO_46083.nc</description>
+    <name>50</name>
+    <description>GL_TS_MO_44034.nc</description>
     <Point>
-      <coordinates>-138.0189971923828,58.27000045776367</coordinates>
+      <coordinates>-68.11199951171875,44.10300064086914</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1024,10 +1024,10 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>50</name>
-    <description>GL_TS_MO_44034.nc</description>
+    <name>49</name>
+    <description>GL_TS_MO_44150.nc</description>
     <Point>
-      <coordinates>-68.11199951171875,44.10300064086914</coordinates>
+      <coordinates>-64.01799774169922,42.505001068115234</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1035,13 +1035,6 @@
     <description>GL_TS_MO_2200101.nc</description>
     <Point>
       <coordinates>126.0199966430664,37.2400016784668</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>49</name>
-    <description>GL_TS_MO_44150.nc</description>
-    <Point>
-      <coordinates>-64.01799774169922,42.505001068115234</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1067,9 +1060,9 @@
   </Placemark>
   <Placemark>
     <name>47</name>
-    <description>NO_TS_MO_DarsserS.nc</description>
+    <description>GL_TS_MO_46207.nc</description>
     <Point>
-      <coordinates>12.699999809265137,54.70000076293945</coordinates>
+      <coordinates>-129.9149932861328,50.875</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1081,9 +1074,16 @@
   </Placemark>
   <Placemark>
     <name>47</name>
-    <description>GL_TS_MO_46207.nc</description>
+    <description>GL_TS_MO_44062.nc</description>
     <Point>
-      <coordinates>-129.9149932861328,50.875</coordinates>
+      <coordinates>-76.41500091552734,38.555999755859375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>47</name>
+    <description>NO_TS_MO_DarsserS.nc</description>
+    <Point>
+      <coordinates>12.699999809265137,54.70000076293945</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1102,16 +1102,16 @@
   </Placemark>
   <Placemark>
     <name>44</name>
-    <description>GL_TS_MO_2200189.nc</description>
+    <description>GL_TS_MO_2200190.nc</description>
     <Point>
-      <coordinates>129.83999633789062,35.349998474121094</coordinates>
+      <coordinates>129.8699951171875,36.90999984741211</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>44</name>
-    <description>GL_TS_MO_2200190.nc</description>
+    <description>GL_TS_MO_2200189.nc</description>
     <Point>
-      <coordinates>129.8699951171875,36.90999984741211</coordinates>
+      <coordinates>129.83999633789062,35.349998474121094</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1122,17 +1122,24 @@
     </Point>
   </Placemark>
   <Placemark>
+    <name>44</name>
+    <description>GL_TS_MO_44072.nc</description>
+    <Point>
+      <coordinates>-76.26599884033203,37.20100021362305</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>44</name>
+    <description>GL_TS_MO_44030.nc</description>
+    <Point>
+      <coordinates>-70.4260025024414,43.17900085449219</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
     <name>43</name>
     <description>GL_TS_MO_46077.nc</description>
     <Point>
       <coordinates>-154.17599487304688,57.902000427246094</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>40</name>
-    <description>GL_TS_MO_4100300.nc</description>
-    <Point>
-      <coordinates>-57.47999954223633,15.869999885559082</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1172,14 +1179,14 @@
   </Placemark>
   <Placemark>
     <name>36</name>
-    <description>GL_TS_MO_Carnot.nc</description>
+    <description>GL_TS_MO_6200443.nc</description>
     <Point>
       <coordinates>1.5677000284194946,50.740501403808594</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>36</name>
-    <description>GL_TS_MO_6200443.nc</description>
+    <description>GL_TS_MO_Carnot.nc</description>
     <Point>
       <coordinates>1.5677000284194946,50.740501403808594</coordinates>
     </Point>
@@ -1214,13 +1221,6 @@
   </Placemark>
   <Placemark>
     <name>32</name>
-    <description>GL_TS_MO_2200103.nc</description>
-    <Point>
-      <coordinates>127.5,34.0</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>32</name>
     <description>GL_TS_MO_41004.nc</description>
     <Point>
       <coordinates>-79.0989990234375,32.50199890136719</coordinates>
@@ -1234,10 +1234,17 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>31</name>
-    <description>BS_TS_MO_EUXRo01.nc</description>
+    <name>32</name>
+    <description>GL_TS_MO_2200103.nc</description>
     <Point>
-      <coordinates>30.77899932861328,44.70000076293945</coordinates>
+      <coordinates>127.5,34.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>31</name>
+    <description>GL_TS_MO_6100002.nc</description>
+    <Point>
+      <coordinates>4.670000076293945,42.060001373291016</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1245,6 +1252,13 @@
     <description>GL_TS_MO_2200108.nc</description>
     <Point>
       <coordinates>125.75,36.25</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>31</name>
+    <description>BS_TS_MO_EUXRo01.nc</description>
+    <Point>
+      <coordinates>30.77899932861328,44.70000076293945</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1270,6 +1284,20 @@
   </Placemark>
   <Placemark>
     <name>29</name>
+    <description>GL_TS_MO_41044.nc</description>
+    <Point>
+      <coordinates>-58.630001068115234,21.582000732421875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>29</name>
+    <description>GL_TS_MO_2200191.nc</description>
+    <Point>
+      <coordinates>124.05999755859375,36.130001068115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>29</name>
     <description>GL_TS_MO_46060.nc</description>
     <Point>
       <coordinates>-146.81900024414062,60.58700180053711</coordinates>
@@ -1284,23 +1312,9 @@
   </Placemark>
   <Placemark>
     <name>29</name>
-    <description>GL_TS_MO_41044.nc</description>
-    <Point>
-      <coordinates>-58.630001068115234,21.582000732421875</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>29</name>
     <description>GL_TS_MO_44037.nc</description>
     <Point>
       <coordinates>-67.8759994506836,43.49700164794922</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>29</name>
-    <description>GL_TS_MO_2200191.nc</description>
-    <Point>
-      <coordinates>124.05999755859375,36.130001068115234</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1312,23 +1326,23 @@
   </Placemark>
   <Placemark>
     <name>28</name>
-    <description>GL_TS_MO_44058.nc</description>
-    <Point>
-      <coordinates>-76.25700378417969,37.56700134277344</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>28</name>
-    <description>GL_TS_MO_41013.nc</description>
-    <Point>
-      <coordinates>-77.76399993896484,33.441001892089844</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>28</name>
     <description>GL_TS_MO_44025.nc</description>
     <Point>
       <coordinates>-73.16400146484375,40.250999450683594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>28</name>
+    <description>GL_TS_MO_42019.nc</description>
+    <Point>
+      <coordinates>-95.34500122070312,27.90999984741211</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>28</name>
+    <description>GL_TS_MO_44058.nc</description>
+    <Point>
+      <coordinates>-76.25700378417969,37.56700134277344</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1340,30 +1354,9 @@
   </Placemark>
   <Placemark>
     <name>28</name>
-    <description>GL_TS_MO_42019.nc</description>
+    <description>GL_TS_MO_41013.nc</description>
     <Point>
-      <coordinates>-95.34500122070312,27.90999984741211</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>27</name>
-    <description>GL_TS_MO_44065.nc</description>
-    <Point>
-      <coordinates>-73.7030029296875,40.36899948120117</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>27</name>
-    <description>GL_TS_MO_42035.nc</description>
-    <Point>
-      <coordinates>-94.41300201416016,29.23200035095215</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>27</name>
-    <description>GL_TS_MO_2100229.nc</description>
-    <Point>
-      <coordinates>131.11000061035156,37.459999084472656</coordinates>
+      <coordinates>-77.76399993896484,33.441001892089844</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1375,16 +1368,23 @@
   </Placemark>
   <Placemark>
     <name>27</name>
+    <description>GL_TS_MO_2100229.nc</description>
+    <Point>
+      <coordinates>131.11000061035156,37.459999084472656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>27</name>
     <description>GL_TS_MO_44014.nc</description>
     <Point>
       <coordinates>-74.84200286865234,36.60900115966797</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>26</name>
-    <description>GL_TS_MO_42012.nc</description>
+    <name>27</name>
+    <description>GL_TS_MO_44065.nc</description>
     <Point>
-      <coordinates>-87.5479965209961,30.059999465942383</coordinates>
+      <coordinates>-73.7030029296875,40.36899948120117</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1392,6 +1392,13 @@
     <description>GL_TS_MO_51000.nc</description>
     <Point>
       <coordinates>-153.79200744628906,23.527999877929688</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>26</name>
+    <description>GL_TS_MO_42012.nc</description>
+    <Point>
+      <coordinates>-87.5479965209961,30.059999465942383</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1410,9 +1417,16 @@
   </Placemark>
   <Placemark>
     <name>25</name>
-    <description>GL_TS_MO_42002.nc</description>
+    <description>GL_TS_MO_42036.nc</description>
     <Point>
-      <coordinates>-93.64600372314453,26.05500030517578</coordinates>
+      <coordinates>-84.50800323486328,28.500999450683594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>25</name>
+    <description>GL_TS_MO_42035.nc</description>
+    <Point>
+      <coordinates>-94.41300201416016,29.23200035095215</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1424,9 +1438,9 @@
   </Placemark>
   <Placemark>
     <name>25</name>
-    <description>GL_TS_MO_42036.nc</description>
+    <description>GL_TS_MO_42002.nc</description>
     <Point>
-      <coordinates>-84.50800323486328,28.500999450683594</coordinates>
+      <coordinates>-93.64600372314453,26.05500030517578</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1452,16 +1466,16 @@
   </Placemark>
   <Placemark>
     <name>22</name>
-    <description>GL_TS_MO_2300491.nc</description>
+    <description>GL_TS_MO_42020.nc</description>
     <Point>
-      <coordinates>92.59600067138672,11.58899974822998</coordinates>
+      <coordinates>-96.69300079345703,26.968000411987305</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>22</name>
-    <description>GL_TS_MO_42020.nc</description>
+    <description>GL_TS_MO_2300491.nc</description>
     <Point>
-      <coordinates>-96.69300079345703,26.968000411987305</coordinates>
+      <coordinates>92.59600067138672,11.58899974822998</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1473,16 +1487,16 @@
   </Placemark>
   <Placemark>
     <name>18</name>
-    <description>GL_TS_MO_46035.nc</description>
+    <description>GL_TS_MO_2300099.nc</description>
     <Point>
-      <coordinates>-177.7030029296875,57.01599884033203</coordinates>
+      <coordinates>80.31400299072266,13.097000122070312</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>18</name>
-    <description>GL_TS_MO_2300099.nc</description>
+    <description>GL_TS_MO_46035.nc</description>
     <Point>
-      <coordinates>80.31400299072266,13.097000122070312</coordinates>
+      <coordinates>-177.7030029296875,57.01599884033203</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1494,16 +1508,16 @@
   </Placemark>
   <Placemark>
     <name>16</name>
-    <description>GL_TS_MO_41038.nc</description>
+    <description>GL_TS_MO_44077.nc</description>
     <Point>
-      <coordinates>-77.71499633789062,34.14099884033203</coordinates>
+      <coordinates>-70.88300323486328,39.939998626708984</coordinates>
     </Point>
   </Placemark>
   <Placemark>
     <name>16</name>
-    <description>GL_TS_MO_44077.nc</description>
+    <description>GL_TS_MO_41038.nc</description>
     <Point>
-      <coordinates>-70.88300323486328,39.939998626708984</coordinates>
+      <coordinates>-77.71499633789062,34.14099884033203</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1521,6 +1535,13 @@
     </Point>
   </Placemark>
   <Placemark>
+    <name>15</name>
+    <description>GL_TS_MO_42360.nc</description>
+    <Point>
+      <coordinates>-90.45899963378906,26.68899917602539</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
     <name>14</name>
     <description>GL_TS_MO_44024.nc</description>
     <Point>
@@ -1528,10 +1549,24 @@
     </Point>
   </Placemark>
   <Placemark>
+    <name>14</name>
+    <description>GL_TS_MO_6100001.nc</description>
+    <Point>
+      <coordinates>7.829999923706055,43.380001068115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
     <name>13</name>
     <description>GL_TS_MO_44040.nc</description>
     <Point>
       <coordinates>-73.58000183105469,40.95600128173828</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>13</name>
+    <description>GL_TS_MO_44009.nc</description>
+    <Point>
+      <coordinates>-74.68399810791016,38.45100021362305</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1563,6 +1598,13 @@
     </Point>
   </Placemark>
   <Placemark>
+    <name>10</name>
+    <description>GL_TS_MO_4100300.nc</description>
+    <Point>
+      <coordinates>-57.47999954223633,15.869999885559082</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
     <name>9</name>
     <description>GL_TS_MO_41001.nc</description>
     <Point>
@@ -1585,9 +1627,23 @@
   </Placemark>
   <Placemark>
     <name>8</name>
+    <description>GL_TS_MO_Mesurho.nc</description>
+    <Point>
+      <coordinates>4.866199970245361,43.31890106201172</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>8</name>
     <description>GL_TS_MO_42395.nc</description>
     <Point>
       <coordinates>-90.79199981689453,26.40399932861328</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>8</name>
+    <description>GL_TS_MO_6100284.nc</description>
+    <Point>
+      <coordinates>4.866199970245361,43.31890106201172</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1606,9 +1662,9 @@
   </Placemark>
   <Placemark>
     <name>6</name>
-    <description>GL_TS_MO_42023.nc</description>
+    <description>GL_TS_MO_42026.nc</description>
     <Point>
-      <coordinates>-83.08599853515625,26.010000228881836</coordinates>
+      <coordinates>-83.4749984741211,25.17099952697754</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1620,16 +1676,23 @@
   </Placemark>
   <Placemark>
     <name>6</name>
+    <description>GL_TS_MO_42023.nc</description>
+    <Point>
+      <coordinates>-83.08599853515625,26.010000228881836</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>6</name>
     <description>GL_TS_MO_41064.nc</description>
     <Point>
       <coordinates>-76.9489974975586,34.207000732421875</coordinates>
     </Point>
   </Placemark>
   <Placemark>
-    <name>6</name>
-    <description>GL_TS_MO_42026.nc</description>
+    <name>4</name>
+    <description>GL_TS_MO_42013.nc</description>
     <Point>
-      <coordinates>-83.4749984741211,25.17099952697754</coordinates>
+      <coordinates>-82.92400360107422,27.17300033569336</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1647,10 +1710,10 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>4</name>
-    <description>GL_TS_MO_42013.nc</description>
+    <name>3</name>
+    <description>BS_TS_MO_SPOT0776.nc</description>
     <Point>
-      <coordinates>-82.92400360107422,27.17300033569336</coordinates>
+      <coordinates>27.63360023498535,42.50659942626953</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1662,16 +1725,9 @@
   </Placemark>
   <Placemark>
     <name>3</name>
-    <description>BS_TS_MO_SPOT0776.nc</description>
+    <description>GL_TS_MO_44022.nc</description>
     <Point>
-      <coordinates>27.63360023498535,42.50659942626953</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>2</name>
-    <description>GL_TS_MO_46075.nc</description>
-    <Point>
-      <coordinates>-160.79400634765625,53.96900177001953</coordinates>
+      <coordinates>-73.72799682617188,40.882999420166016</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1682,10 +1738,17 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>1</name>
-    <description>GL_TS_MO_53006.nc</description>
+    <name>2</name>
+    <description>GL_TS_MO_46075.nc</description>
     <Point>
-      <coordinates>80.5,-12.0</coordinates>
+      <coordinates>-160.79400634765625,53.96900177001953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>1</name>
+    <description>GL_TS_MO_13008.nc</description>
+    <Point>
+      <coordinates>-38.0,15.0</coordinates>
     </Point>
   </Placemark>
   <Placemark>
@@ -1697,13 +1760,6 @@
   </Placemark>
   <Placemark>
     <name>1</name>
-    <description>GL_TS_MO_2200297.nc</description>
-    <Point>
-      <coordinates>125.20999908447266,34.029998779296875</coordinates>
-    </Point>
-  </Placemark>
-  <Placemark>
-    <name>1</name>
     <description>GL_TS_MO_2200192.nc</description>
     <Point>
       <coordinates>123.26000213623047,34.0</coordinates>
@@ -1711,9 +1767,16 @@
   </Placemark>
   <Placemark>
     <name>1</name>
-    <description>GL_TS_MO_13008.nc</description>
+    <description>GL_TS_MO_53006.nc</description>
     <Point>
-      <coordinates>-38.0,15.0</coordinates>
+      <coordinates>80.5,-12.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>1</name>
+    <description>GL_TS_MO_2200297.nc</description>
+    <Point>
+      <coordinates>125.20999908447266,34.029998779296875</coordinates>
     </Point>
   </Placemark>
 </Folder>
