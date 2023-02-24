@@ -1,0 +1,7 @@
+# Predicting Significant Wave Height and Wind Speed using Sentinel-1 SAR Images
+
+The study of ocean waves is important in various fields such as marine engineering, oceanography, and offshore operations. One of the critical parameters that describe ocean waves is significant wave height, which is defined as the average height of the highest one-third of the waves in a given area. Wind speed is another important parameter that affects ocean waves. Accurate and timely prediction of significant wave height and wind speed is crucial for ensuring the safety of marine operations and the efficiency of offshore structures.
+
+Synthetic Aperture Radar (SAR) images are one of the commonly used remote sensing techniques for ocean wave analysis. SAR images provide information about the ocean surface, such as the roughness and height of the waves. Sentinel-1 satellite, launched in 2014, is equipped with a C-band SAR sensor that provides global coverage with high temporal resolution (i.e., the satellite revisits a location every 6 days).
+
+In recent years, machine learning techniques have been increasingly used for ocean wave analysis, including SAR-based wave height and wind speed prediction. In this project, we explore the use of machine learning techniques for predicting significant wave height and wind speed using SAR images from Sentinel-1. The project was carried out as part of a master's thesis in Computer Science at Chalmers University of Technology.
