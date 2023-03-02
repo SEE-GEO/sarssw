@@ -1,0 +1,6456 @@
+<Folder xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:gx="http://www.google.com/kml/ext/2.2">
+  <name>All bouys kept</name>
+  <description>645 files
+For files with data for 2021
+Filtered by distance to shore</description>
+  <Placemark>
+    <name>GL_TS_MO_56014.nc</name>
+    <description>
+ data before landfilter 594
+ data before after landfilter594
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>115.56999969482422,-32.45000076293945</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_GoodrichBank01.nc</name>
+    <description>
+ data before landfilter 8046
+ data before after landfilter8046
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>130.00106811523438,-10.416464805603027</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46001.nc</name>
+    <description>
+ data before landfilter 34345
+ data before after landfilter34345
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-147.948974609375,56.2320442199707</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_AWG.nc</name>
+    <description>
+ data before landfilter 49754
+ data before after landfilter49754
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>5.949999809265137,53.5</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_Koster.nc</name>
+    <description>
+ data before landfilter 355600
+ data before after landfilter355600
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>11.097996711730957,58.88314437866211</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41114.nc</name>
+    <description>
+ data before landfilter 29884
+ data before after landfilter29884
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-80.21699523925781,27.550996780395508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_MeetboeiRZGN1.nc</name>
+    <description>
+ data before landfilter 4293
+ data before after landfilter4293
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.632199287414551,53.570003509521484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Troll-B.nc</name>
+    <description>
+ data before landfilter 6891
+ data before after landfilter6891
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.500999927520752,60.77349853515625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200108.nc</name>
+    <description>
+ data before landfilter 25842
+ data before after landfilter25842
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>125.75,36.25</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_23015.nc</name>
+    <description>
+ data before landfilter 4176
+ data before after landfilter4176
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>66.18212127685547,0.17462070286273956</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_23014.nc</name>
+    <description>
+ data before landfilter 2160
+ data before after landfilter2160
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>65.60735321044922,1.6660888195037842</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_EUXRo03.nc</name>
+    <description>
+ data before landfilter 17472
+ data before after landfilter17472
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>29.936002731323242,43.97999954223633</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46089.nc</name>
+    <description>
+ data before landfilter 130545
+ data before after landfilter130545
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-125.7952880859375,45.930702209472656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6201062.nc</name>
+    <description>
+ data before landfilter 112177
+ data before after landfilter112177
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-8.946441650390625,42.55087661743164</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46012.nc</name>
+    <description>
+ data before landfilter 188900
+ data before after landfilter188900
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.88101959228516,37.35600662231445</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6202405.nc</name>
+    <description>
+ data before landfilter 27682
+ data before after landfilter27682
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-25.1669979095459,36.920169830322266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_UFSDeutscheBucht.nc</name>
+    <description>
+ data before landfilter 59634
+ data before after landfilter59634
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.449997901916504,54.16667938232422</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Snorre-B.nc</name>
+    <description>
+ data before landfilter 8601
+ data before after landfilter8601
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.209699869155884,61.5250129699707</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46084.nc</name>
+    <description>
+ data before landfilter 214460
+ data before after landfilter214460
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-136.10203552246094,56.62199020385742</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42093.nc</name>
+    <description>
+ data before landfilter 252
+ data before after landfilter252
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-89.8320083618164,29.017000198364258</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44014.nc</name>
+    <description>
+ data before landfilter 236045
+ data before after landfilter236045
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-74.8420181274414,36.60900115966797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_FINO1WR.nc</name>
+    <description>
+ data before landfilter 70058
+ data before after landfilter70058
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.583334922790527,54.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200095.nc</name>
+    <description>
+ data before landfilter 43765
+ data before after landfilter43765
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-15.881343841552734,53.07481002807617</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46259.nc</name>
+    <description>
+ data before landfilter 15214
+ data before after landfilter15214
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-121.49800872802734,34.766998291015625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300453.nc</name>
+    <description>
+ data before landfilter 1653
+ data before after landfilter1653
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>73.2403335571289,8.177448272705078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6100198.nc</name>
+    <description>
+ data before landfilter 26271
+ data before after landfilter26271
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-2.341383934020996,36.569889068603516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41065.nc</name>
+    <description>
+ data before landfilter 6818
+ data before after landfilter6818
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-79.61900329589844,32.801998138427734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200164.nc</name>
+    <description>
+ data before landfilter 7873
+ data before after landfilter7873
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.8000000715255737,57.20000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8S170W.nc</name>
+    <description>
+ data before landfilter 664001
+ data before after landfilter664001
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.0,-8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Grindavikurdufl.nc</name>
+    <description>
+ data before landfilter 15948
+ data before after landfilter15948
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-22.460500717163086,63.81333923339844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46221.nc</name>
+    <description>
+ data before landfilter 29862
+ data before after landfilter29862
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-118.64099884033203,33.85999298095703</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46060.nc</name>
+    <description>
+ data before landfilter 24435
+ data before after landfilter24435
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-146.81883239746094,60.58697509765625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_ADN-MAMBO2.nc</name>
+    <description>
+ data before landfilter 150746
+ data before after landfilter150746
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.150665283203125,45.6026611328125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200199.nc</name>
+    <description>
+ data before landfilter 31032
+ data before after landfilter31032
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.210000991821289,39.560001373291016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41048.nc</name>
+    <description>
+ data before landfilter 236455
+ data before after landfilter236455
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-69.572998046875,31.830995559692383</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46053.nc</name>
+    <description>
+ data before landfilter 235860
+ data before after landfilter235860
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-119.83904266357422,34.24101257324219</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Akkaert.nc</name>
+    <description>
+ data before landfilter 35036
+ data before after landfilter35036
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.819000005722046,51.416011810302734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6400045.nc</name>
+    <description>
+ data before landfilter 16972
+ data before after landfilter16972
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-11.401000022888184,59.09999084472656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44030.nc</name>
+    <description>
+ data before landfilter 34110
+ data before after landfilter34110
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.42601013183594,43.17900848388672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_MYKON.nc</name>
+    <description>
+ data before landfilter 28890
+ data before after landfilter28890
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>25.45969581604004,37.519405364990234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46243.nc</name>
+    <description>
+ data before landfilter 26942
+ data before after landfilter26942
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.12801361083984,46.21599578857422</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46088.nc</name>
+    <description>
+ data before landfilter 196150
+ data before after landfilter196150
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-123.16852569580078,48.33348846435547</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41047.nc</name>
+    <description>
+ data before landfilter 143795
+ data before after landfilter143795
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-71.48526763916016,27.49811553955078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Visundfeltet.nc</name>
+    <description>
+ data before landfilter 8750
+ data before after landfilter8750
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.4326999187469482,61.36479949951172</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_1500009.nc</name>
+    <description>
+ data before landfilter 3666
+ data before after landfilter3666
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-2.6916065216064453,-0.0028404255863279104</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41112.nc</name>
+    <description>
+ data before landfilter 31142
+ data before after landfilter31142
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-81.29199981689453,30.70899200439453</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200183.nc</name>
+    <description>
+ data before landfilter 25035
+ data before after landfilter25035
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>126.24000549316406,34.730003356933594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55038.nc</name>
+    <description>
+ data before landfilter 30160
+ data before after landfilter22598
+ proportion close to shore 0.2507294429708223</description>
+    <Point>
+      <coordinates>151.501220703125,-23.89777374267578</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S110W.nc</name>
+    <description>
+ data before landfilter 664144
+ data before after landfilter664144
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-110.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Helgoland-EastWR.nc</name>
+    <description>
+ data before landfilter 15926
+ data before after landfilter15926
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.100569725036621,54.2005615234375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_AMETSBerthBWaveBuoy.nc</name>
+    <description>
+ data before landfilter 17138
+ data before after landfilter17138
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-10.15098762512207,54.225101470947266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_14041.nc</name>
+    <description>
+ data before landfilter 3008
+ data before after landfilter3008
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>54.77918243408203,-8.030404090881348</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T9N140W.nc</name>
+    <description>
+ data before landfilter 766605
+ data before after landfilter766605
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-140.0,9.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_ATHOS.nc</name>
+    <description>
+ data before landfilter 49385
+ data before after landfilter49385
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>24.729402542114258,39.974998474121094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Schouwenbank2.nc</name>
+    <description>
+ data before landfilter 48553
+ data before after landfilter48553
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.306300163269043,51.74469757080078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_NOR.nc</name>
+    <description>
+ data before landfilter 514776
+ data before after landfilter514776
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.168058395385742,53.83498001098633</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S155W.nc</name>
+    <description>
+ data before landfilter 647556
+ data before after landfilter647556
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_K141.nc</name>
+    <description>
+ data before landfilter 49777
+ data before after landfilter49777
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.6332671642303467,53.26671600341797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44072.nc</name>
+    <description>
+ data before landfilter 261855
+ data before after landfilter261855
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.26600646972656,37.20100021362305</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N180W.nc</name>
+    <description>
+ data before landfilter 265902
+ data before after landfilter265902
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>180.0,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Schouwenbank.nc</name>
+    <description>
+ data before landfilter 43536
+ data before after landfilter43536
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.3116676807403564,51.74834060668945</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6300110.nc</name>
+    <description>
+ data before landfilter 7919
+ data before after landfilter7919
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.5,59.5</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42084.nc</name>
+    <description>
+ data before landfilter 26199
+ data before after landfilter26199
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-89.64900207519531,28.988004684448242</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_Mesurho.nc</name>
+    <description>
+ data before landfilter 34476
+ data before after landfilter34476
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.8662004470825195,43.318904876708984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51206.nc</name>
+    <description>
+ data before landfilter 15798
+ data before after landfilter15798
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-154.97000122070312,19.778995513916016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41025.nc</name>
+    <description>
+ data before landfilter 168465
+ data before after landfilter168465
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.38720703125,35.0210075378418</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_ZeebruggeDam.nc</name>
+    <description>
+ data before landfilter 51830
+ data before after landfilter51830
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.1720004081726074,51.354000091552734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_52202.nc</name>
+    <description>
+ data before landfilter 16224
+ data before after landfilter16224
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>144.8060302734375,13.682003021240234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N95W.nc</name>
+    <description>
+ data before landfilter 766605
+ data before after landfilter766605
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-94.99999237060547,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Gullfaks-C.nc</name>
+    <description>
+ data before landfilter 156954
+ data before after landfilter156954
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.2686996459960938,61.204219818115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6300112.nc</name>
+    <description>
+ data before landfilter 7908
+ data before after landfilter7908
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.0,61.09999084472656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46264.nc</name>
+    <description>
+ data before landfilter 24396
+ data before after landfilter24396
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-151.69503784179688,57.47900390625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N140W.nc</name>
+    <description>
+ data before landfilter 300960
+ data before after landfilter300960
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-140.0,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_BolVanHeist.nc</name>
+    <description>
+ data before landfilter 35036
+ data before after landfilter35036
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.2005999088287354,51.391902923583984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8N155W.nc</name>
+    <description>
+ data before landfilter 663832
+ data before after landfilter663832
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.0,8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_EUXRo02.nc</name>
+    <description>
+ data before landfilter 17472
+ data before after landfilter17472
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>30.416996002197266,44.317996978759766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_15002.nc</name>
+    <description>
+ data before landfilter 5984
+ data before after landfilter5984
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.881406784057617,0.010292613878846169</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200114.nc</name>
+    <description>
+ data before landfilter 7915
+ data before after landfilter7915
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.0,58.299991607666016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44032.nc</name>
+    <description>
+ data before landfilter 29776
+ data before after landfilter29776
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-69.35499572753906,43.715003967285156</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N170W.nc</name>
+    <description>
+ data before landfilter 970938
+ data before after landfilter970938
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.0,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200094.nc</name>
+    <description>
+ data before landfilter 25986
+ data before after landfilter25986
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-6.704337120056152,51.6904296875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100295.nc</name>
+    <description>
+ data before landfilter 33210
+ data before after landfilter33210
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>9.64330005645752,42.26169967651367</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46225.nc</name>
+    <description>
+ data before landfilter 31132
+ data before after landfilter31132
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-117.39100646972656,32.93299102783203</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46267.nc</name>
+    <description>
+ data before landfilter 26024
+ data before after landfilter26024
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-123.60702514648438,48.17299270629883</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6100280.nc</name>
+    <description>
+ data before landfilter 26280
+ data before after landfilter26280
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.4655518531799316,40.68609619140625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_31005.nc</name>
+    <description>
+ data before landfilter 3824
+ data before after landfilter3824
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-34.50745391845703,-18.888296127319336</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N125W.nc</name>
+    <description>
+ data before landfilter 894020
+ data before after landfilter894020
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.99999237060547,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8S125W.nc</name>
+    <description>
+ data before landfilter 765975
+ data before after landfilter765975
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.99999237060547,-8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_31003.nc</name>
+    <description>
+ data before landfilter 5792
+ data before after landfilter5792
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-30.497318267822266,-8.001740455627441</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41044.nc</name>
+    <description>
+ data before landfilter 236425
+ data before after landfilter236425
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-58.630001068115234,21.58200454711914</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200192.nc</name>
+    <description>
+ data before landfilter 12096
+ data before after landfilter12096
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.640000343322754,39.51000213623047</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42092.nc</name>
+    <description>
+ data before landfilter 4744
+ data before after landfilter4744
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-96.97899627685547,27.766006469726562</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46075.nc</name>
+    <description>
+ data before landfilter 1870
+ data before after landfilter1870
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-160.7939910888672,53.96900177001953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_K13a.nc</name>
+    <description>
+ data before landfilter 15087
+ data before after landfilter15087
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.2200002670288086,53.217777252197266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N110W.nc</name>
+    <description>
+ data before landfilter 599196
+ data before after landfilter599196
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-110.0,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42395.nc</name>
+    <description>
+ data before landfilter 12176
+ data before after landfilter12176
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-90.79199981689453,26.403993606567383</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_A121.nc</name>
+    <description>
+ data before landfilter 49717
+ data before after landfilter49717
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.816624164581299,55.41663360595703</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42043.nc</name>
+    <description>
+ data before landfilter 3652
+ data before after landfilter3652
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-94.89900207519531,28.981998443603516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46211.nc</name>
+    <description>
+ data before landfilter 27468
+ data before after landfilter27468
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.24401092529297,46.856998443603516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6202401.nc</name>
+    <description>
+ data before landfilter 117000
+ data before after landfilter117000
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-27.010005950927734,38.75067138671875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_Knollsgrund.nc</name>
+    <description>
+ data before landfilter 105086
+ data before after landfilter105086
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>17.616724014282227,57.51632308959961</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42040.nc</name>
+    <description>
+ data before landfilter 165165
+ data before after landfilter165165
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-88.23703002929688,29.207002639770508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_OBSEA.nc</name>
+    <description>
+ data before landfilter 237512
+ data before after landfilter237512
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.7525699138641357,41.182125091552734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200186.nc</name>
+    <description>
+ data before landfilter 23154
+ data before after landfilter23154
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>125.8100357055664,35.65999984741211</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200184.nc</name>
+    <description>
+ data before landfilter 25299
+ data before after landfilter25299
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>126.14000701904297,33.79000473022461</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44088.nc</name>
+    <description>
+ data before landfilter 46815
+ data before after landfilter46815
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-74.84100341796875,36.61099624633789</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51201.nc</name>
+    <description>
+ data before landfilter 24940
+ data before after landfilter24940
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-158.11697387695312,21.67099952697754</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_BrofjordenWR.nc</name>
+    <description>
+ data before landfilter 35036
+ data before after landfilter35036
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>11.222419738769531,58.2518424987793</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200064.nc</name>
+    <description>
+ data before landfilter 53972
+ data before after landfilter53972
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-1.4477999210357666,44.65029525756836</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8S155W.nc</name>
+    <description>
+ data before landfilter 187733
+ data before after landfilter187733
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.0,-8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_OostendPoortens.nc</name>
+    <description>
+ data before landfilter 35040
+ data before after landfilter35040
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.862999439239502,51.28900146484375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46014.nc</name>
+    <description>
+ data before landfilter 235880
+ data before after landfilter235880
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-123.97404479980469,39.23100280761719</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200069.nc</name>
+    <description>
+ data before landfilter 34056
+ data before after landfilter34056
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-4.968299865722656,48.29029083251953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44150.nc</name>
+    <description>
+ data before landfilter 7345
+ data before after landfilter7345
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-64.01799774169922,42.5050048828125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42013.nc</name>
+    <description>
+ data before landfilter 10820
+ data before after landfilter10820
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-82.92399597167969,27.173002243041992</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_NsbII.nc</name>
+    <description>
+ data before landfilter 44760
+ data before after landfilter44760
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.333333492279053,55.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_FINO3.nc</name>
+    <description>
+ data before landfilter 174770
+ data before after landfilter174770
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.158332347869873,55.19499969482422</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46002.nc</name>
+    <description>
+ data before landfilter 236170
+ data before after landfilter236170
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-130.501953125,42.65800094604492</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_UFSDeutscheBucht.nc</name>
+    <description>
+ data before landfilter 59634
+ data before after landfilter59634
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.449997901916504,54.166683197021484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_Tarifa-coast-buoy.nc</name>
+    <description>
+ data before landfilter 5718
+ data before after landfilter5718
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-5.590210914611816,36.00028991699219</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200127.nc</name>
+    <description>
+ data before landfilter 3055
+ data before after landfilter3055
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.6999998688697815,54.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_23012.nc</name>
+    <description>
+ data before landfilter 5408
+ data before after landfilter5408
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>67.09173583984375,7.953080177307129</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41117.nc</name>
+    <description>
+ data before landfilter 42606
+ data before after landfilter42606
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-81.08000946044922,30.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200053.nc</name>
+    <description>
+ data before landfilter 61162
+ data before after landfilter61162
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-4.0716705322265625,48.728328704833984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46229.nc</name>
+    <description>
+ data before landfilter 29580
+ data before after landfilter29580
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.54898834228516,43.77030563354492</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46036.nc</name>
+    <description>
+ data before landfilter 4845
+ data before after landfilter4845
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-133.93800354003906,48.355003356933594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_SmartBayWaveBuoy.nc</name>
+    <description>
+ data before landfilter 17520
+ data before after landfilter17520
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.262277603149414,53.22833251953125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55024.nc</name>
+    <description>
+ data before landfilter 7025
+ data before after landfilter7025
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>151.41427612304688,-33.779197692871094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N125W.nc</name>
+    <description>
+ data before landfilter 1021240
+ data before after landfilter1021240
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-125.0,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46131.nc</name>
+    <description>
+ data before landfilter 8318
+ data before after landfilter8318
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.98499298095703,49.90699768066406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200078.nc</name>
+    <description>
+ data before landfilter 62884
+ data before after landfilter62884
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-2.7870001792907715,47.23900604248047</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55037.nc</name>
+    <description>
+ data before landfilter 26340
+ data before after landfilter26340
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>153.75802612304688,-28.228113174438477</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Oosterschelde4.nc</name>
+    <description>
+ data before landfilter 149343
+ data before after landfilter149343
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.6943888664245605,51.656436920166016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_A2.nc</name>
+    <description>
+ data before landfilter 32864
+ data before after landfilter32864
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.1189334392547607,51.35972595214844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44073.nc</name>
+    <description>
+ data before landfilter 2976
+ data before after landfilter2976
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.53999328613281,43.01999282836914</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46237.nc</name>
+    <description>
+ data before landfilter 31072
+ data before after landfilter31072
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.6319808959961,37.788002014160156</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46080.nc</name>
+    <description>
+ data before landfilter 16440
+ data before after landfilter16440
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-150.04200744628906,57.94700622558594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Q1.nc</name>
+    <description>
+ data before landfilter 41295
+ data before after landfilter41295
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.150599956512451,52.926395416259766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44024.nc</name>
+    <description>
+ data before landfilter 7260
+ data before after landfilter7260
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-65.90899658203125,42.32500457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N170W.nc</name>
+    <description>
+ data before landfilter 664001
+ data before after landfilter664001
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.0,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46006.nc</name>
+    <description>
+ data before landfilter 188912
+ data before after landfilter188912
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-137.3789825439453,40.765995025634766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Uithuizerwad2.nc</name>
+    <description>
+ data before landfilter 13808
+ data before after landfilter13808
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.7580180168151855,53.46704864501953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N110W.nc</name>
+    <description>
+ data before landfilter 418301
+ data before after landfilter418301
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-110.00000762939453,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41159.nc</name>
+    <description>
+ data before landfilter 27350
+ data before after landfilter27350
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.9489974975586,34.21300506591797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_ArkonaWR.nc</name>
+    <description>
+ data before landfilter 27094
+ data before after landfilter27094
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.866667747497559,54.883323669433594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Grimseyjarsund.nc</name>
+    <description>
+ data before landfilter 23024
+ data before after landfilter23024
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-18.191667556762695,66.29167175292969</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Oseberg-A.nc</name>
+    <description>
+ data before landfilter 157278
+ data before after landfilter157278
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.825700044631958,60.49128341674805</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200170.nc</name>
+    <description>
+ data before landfilter 4055
+ data before after landfilter4055
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.0,51.23999786376953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Brouwershavensegat.nc</name>
+    <description>
+ data before landfilter 114339
+ data before after landfilter114339
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.617302179336548,51.76856231689453</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_Tarragona-coast-buoy.nc</name>
+    <description>
+ data before landfilter 17514
+ data before after landfilter17514
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.1914739608764648,41.070701599121094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55014.nc</name>
+    <description>
+ data before landfilter 7199
+ data before after landfilter7199
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>150.3256072998047,-35.730003356933594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_F3platform.nc</name>
+    <description>
+ data before landfilter 14855
+ data before after landfilter14855
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.7275004386901855,54.85388946533203</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_52201.nc</name>
+    <description>
+ data before landfilter 1030
+ data before after landfilter1030
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>171.3920135498047,7.083000183105469</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_SPOT0773.nc</name>
+    <description>
+ data before landfilter 13419
+ data before after landfilter13419
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>27.909196853637695,42.958431243896484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41029.nc</name>
+    <description>
+ data before landfilter 18184
+ data before after landfilter18184
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-79.62400817871094,32.80300521850586</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_61277.nc</name>
+    <description>
+ data before landfilter 55024
+ data before after landfilter55024
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>25.130704879760742,35.72629165649414</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55017.nc</name>
+    <description>
+ data before landfilter 5961
+ data before after landfilter5961
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>153.6797332763672,-28.87067413330078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N165E.nc</name>
+    <description>
+ data before landfilter 664469
+ data before after landfilter664469
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>165.0,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6100430.nc</name>
+    <description>
+ data before landfilter 21978
+ data before after landfilter21978
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.0953550338745117,39.56144714355469</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_IJmuidenMunitiestort.nc</name>
+    <description>
+ data before landfilter 97214
+ data before after landfilter97214
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.058333873748779,52.549991607666016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_14040.nc</name>
+    <description>
+ data before landfilter 53650
+ data before after landfilter53650
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>67.0,-8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_23009.nc</name>
+    <description>
+ data before landfilter 3672
+ data before after landfilter3672
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>89.30078887939453,15.028082847595215</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46213.nc</name>
+    <description>
+ data before landfilter 29970
+ data before after landfilter29970
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.73202514648438,40.29499053955078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42036.nc</name>
+    <description>
+ data before landfilter 236045
+ data before after landfilter236045
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-84.51448822021484,28.500993728637695</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Westhinder.nc</name>
+    <description>
+ data before landfilter 72064
+ data before after landfilter72064
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.435800313949585,51.381099700927734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44097.nc</name>
+    <description>
+ data before landfilter 31166
+ data before after landfilter31166
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-71.12599182128906,40.96699905395508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44025.nc</name>
+    <description>
+ data before landfilter 188992
+ data before after landfilter188992
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-73.16401672363281,40.25099182128906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_13002.nc</name>
+    <description>
+ data before landfilter 147288
+ data before after landfilter147288
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-23.0,21.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46147.nc</name>
+    <description>
+ data before landfilter 7793
+ data before after landfilter7793
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-131.22499084472656,51.82799530029297</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41040.nc</name>
+    <description>
+ data before landfilter 235835
+ data before after landfilter235835
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-53.101253509521484,14.551713943481445</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44007.nc</name>
+    <description>
+ data before landfilter 236300
+ data before after landfilter236300
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.14000701904297,43.52500915527344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51205.nc</name>
+    <description>
+ data before landfilter 22284
+ data before after landfilter22284
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-156.4219970703125,21.019001007080078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100191.nc</name>
+    <description>
+ data before landfilter 58380
+ data before after landfilter58380
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.124500036239624,42.91619873046875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100190.nc</name>
+    <description>
+ data before landfilter 31544
+ data before after landfilter31544
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.779700517654419,43.37150192260742</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46214.nc</name>
+    <description>
+ data before landfilter 30834
+ data before after landfilter30834
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-123.46300506591797,37.93700408935547</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8N165E.nc</name>
+    <description>
+ data before landfilter 1021660
+ data before after landfilter1021660
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>165.0,8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6201070.nc</name>
+    <description>
+ data before landfilter 18009
+ data before after landfilter18009
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-8.561466217041016,43.349220275878906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55045.nc</name>
+    <description>
+ data before landfilter 27812
+ data before after landfilter6188
+ proportion close to shore 0.7775061124694377</description>
+    <Point>
+      <coordinates>153.25,-27.399995803833008</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46251.nc</name>
+    <description>
+ data before landfilter 30918
+ data before after landfilter30918
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-119.56497955322266,33.769004821777344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_URKA.nc</name>
+    <description>
+ data before landfilter 17503
+ data before after landfilter17503
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>37.283302307128906,44.88330078125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44022.nc</name>
+    <description>
+ data before landfilter 8504
+ data before after landfilter8504
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-73.72801208496094,40.882999420166016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42097.nc</name>
+    <description>
+ data before landfilter 31266
+ data before after landfilter31266
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-83.65000915527344,25.70099639892578</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_52087.nc</name>
+    <description>
+ data before landfilter 30583
+ data before after landfilter30583
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>136.4950714111328,7.87299919128418</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Sleipner-A.nc</name>
+    <description>
+ data before landfilter 44184
+ data before after landfilter44184
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.909099817276001,58.37110137939453</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41052.nc</name>
+    <description>
+ data before landfilter 191564
+ data before after landfilter191564
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-64.76298522949219,18.248992919921875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_Asko.nc</name>
+    <description>
+ data before landfilter 103677
+ data before after landfilter103677
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>17.625106811523438,58.802101135253906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200130.nc</name>
+    <description>
+ data before landfilter 7903
+ data before after landfilter7903
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.2999999523162842,58.70000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_StortemelkBoei.nc</name>
+    <description>
+ data before landfilter 49328
+ data before after landfilter49328
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.988998889923096,53.323001861572266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100294.nc</name>
+    <description>
+ data before landfilter 35702
+ data before after landfilter35702
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.65000057220459,42.56920623779297</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100021.nc</name>
+    <description>
+ data before landfilter 37626
+ data before after landfilter37626
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.207000255584717,42.929996490478516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_SPOT0776.nc</name>
+    <description>
+ data before landfilter 204
+ data before after landfilter204
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>27.63416290283203,42.50617599487305</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_AMETSBerthAWaveBuoy.nc</name>
+    <description>
+ data before landfilter 17118
+ data before after landfilter17118
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-10.297369003295898,54.275291442871094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200021.nc</name>
+    <description>
+ data before landfilter 292040
+ data before after landfilter292040
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-2.6566998958587646,47.459991455078125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46132.nc</name>
+    <description>
+ data before landfilter 8405
+ data before after landfilter8405
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-127.9320068359375,49.73799514770508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46076.nc</name>
+    <description>
+ data before landfilter 38075
+ data before after landfilter38075
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-148.00901794433594,59.471004486083984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41008.nc</name>
+    <description>
+ data before landfilter 39345
+ data before after landfilter39345
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-80.86598205566406,31.39999771118164</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100289.nc</name>
+    <description>
+ data before landfilter 32186
+ data before after landfilter32186
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>5.2300004959106445,43.208335876464844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46042.nc</name>
+    <description>
+ data before landfilter 235560
+ data before after landfilter235560
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.39796447753906,36.78498458862305</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_NorthernBaltic.nc</name>
+    <description>
+ data before landfilter 35040
+ data before after landfilter35040
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>21.0,59.25</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_14047.nc</name>
+    <description>
+ data before landfilter 2736
+ data before after landfilter2736
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>57.122047424316406,-4.0774970054626465</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46078.nc</name>
+    <description>
+ data before landfilter 34785
+ data before after landfilter34785
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-152.58201599121094,55.556007385253906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_SchiermonnikoogNoord.nc</name>
+    <description>
+ data before landfilter 30362
+ data before after landfilter30362
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.1666998863220215,53.59550476074219</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41004.nc</name>
+    <description>
+ data before landfilter 142970
+ data before after landfilter142970
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-79.0989990234375,32.50132369995117</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N165E.nc</name>
+    <description>
+ data before landfilter 986723
+ data before after landfilter986723
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>165.0,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_15006.nc</name>
+    <description>
+ data before landfilter 138560
+ data before after landfilter138560
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-10.0,-6.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42058.nc</name>
+    <description>
+ data before landfilter 100950
+ data before after landfilter100950
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-74.80313873291016,14.38971996307373</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44095.nc</name>
+    <description>
+ data before landfilter 31266
+ data before after landfilter31266
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.33000946044922,35.75</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300099.nc</name>
+    <description>
+ data before landfilter 4203
+ data before after landfilter4203
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>80.31594848632812,13.100898742675781</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_4100097.nc</name>
+    <description>
+ data before landfilter 65606
+ data before after landfilter65606
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-61.09691619873047,14.548097610473633</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_SchiermonnikoogWestgat.nc</name>
+    <description>
+ data before landfilter 45359
+ data before after landfilter45359
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.165131092071533,53.528560638427734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44091.nc</name>
+    <description>
+ data before landfilter 31268
+ data before after landfilter31268
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-73.77000427246094,39.76799774169922</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46035.nc</name>
+    <description>
+ data before landfilter 14544
+ data before after landfilter14544
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-177.70301818847656,57.015995025634766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2S170W.nc</name>
+    <description>
+ data before landfilter 664781
+ data before after landfilter664781
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.0,-2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_23016.nc</name>
+    <description>
+ data before landfilter 4512
+ data before after landfilter4512
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>66.85149383544922,-1.5827020406723022</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55018.nc</name>
+    <description>
+ data before landfilter 5720
+ data before after landfilter5720
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>153.27825927734375,-30.367570877075195</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41046.nc</name>
+    <description>
+ data before landfilter 236215
+ data before after landfilter236215
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-68.38402557373047,23.821998596191406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44017.nc</name>
+    <description>
+ data before landfilter 236050
+ data before after landfilter236050
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-72.04898071289062,40.692996978759766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_Norrbyn.nc</name>
+    <description>
+ data before landfilter 54890
+ data before after landfilter54890
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>19.80856704711914,63.49999237060547</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200074.nc</name>
+    <description>
+ data before landfilter 31406
+ data before after landfilter31406
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-3.2850003242492676,47.28499221801758</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46015.nc</name>
+    <description>
+ data before landfilter 236135
+ data before after landfilter236135
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.84400177001953,42.75200271606445</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_EurogeulDWE.nc</name>
+    <description>
+ data before landfilter 48660
+ data before after landfilter48660
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.0,51.948341369628906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41033.nc</name>
+    <description>
+ data before landfilter 6963
+ data before after landfilter6963
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-80.406005859375,32.278995513916016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_56010.nc</name>
+    <description>
+ data before landfilter 876
+ data before after landfilter876
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>121.90001678466797,-34.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Heimdal.nc</name>
+    <description>
+ data before landfilter 155673
+ data before after landfilter155673
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.2273001670837402,59.57421112060547</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44065.nc</name>
+    <description>
+ data before landfilter 236240
+ data before after landfilter236240
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-73.7030029296875,40.3690071105957</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_WielingenNoord.nc</name>
+    <description>
+ data before landfilter 50097
+ data before after landfilter50097
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.4155001640319824,51.43340301513672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200148.nc</name>
+    <description>
+ data before landfilter 7648
+ data before after landfilter7648
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.5,53.59999465942383</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55022.nc</name>
+    <description>
+ data before landfilter 3051
+ data before after landfilter3051
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>151.020263671875,-34.471168518066406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8N125W.nc</name>
+    <description>
+ data before landfilter 613785
+ data before after landfilter613785
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-125.00000762939453,8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55019.nc</name>
+    <description>
+ data before landfilter 6426
+ data before after landfilter6426
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>152.84999084472656,-31.820005416870117</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46082.nc</name>
+    <description>
+ data before landfilter 30516
+ data before after landfilter30516
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-143.37197875976562,59.68101119995117</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55052.nc</name>
+    <description>
+ data before landfilter 8072
+ data before after landfilter8072
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>145.03001403808594,-42.12000274658203</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_ASTAN.nc</name>
+    <description>
+ data before landfilter 22406
+ data before after landfilter22406
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-3.9375,48.777706146240234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_HuvudskarOst.nc</name>
+    <description>
+ data before landfilter 178002
+ data before after landfilter178002
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>19.15964698791504,58.93585968017578</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_Smile.nc</name>
+    <description>
+ data before landfilter 127794
+ data before after landfilter127794
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-0.3073999881744385,49.343807220458984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46218.nc</name>
+    <description>
+ data before landfilter 31186
+ data before after landfilter31186
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-120.78002166748047,34.452003479003906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200001.nc</name>
+    <description>
+ data before landfilter 26049
+ data before after landfilter26049
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-5.0,45.200008392333984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300497.nc</name>
+    <description>
+ data before landfilter 8037
+ data before after landfilter8037
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>72.2896728515625,10.604216575622559</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_4100098.nc</name>
+    <description>
+ data before landfilter 62394
+ data before after landfilter62394
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-61.1143913269043,14.890301704406738</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_WaddenEierlandseGat.nc</name>
+    <description>
+ data before landfilter 81252
+ data before after landfilter81252
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.6616668701171875,53.27692413330078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46022.nc</name>
+    <description>
+ data before landfilter 236130
+ data before after landfilter236130
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.52703094482422,40.74799346923828</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_J61.nc</name>
+    <description>
+ data before landfilter 50125
+ data before after landfilter50125
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.950000286102295,53.8166389465332</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46059.nc</name>
+    <description>
+ data before landfilter 74228
+ data before after landfilter74228
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-129.9601287841797,38.08621597290039</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2100229.nc</name>
+    <description>
+ data before landfilter 25596
+ data before after landfilter25596
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>131.11000061035156,37.459999084472656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8N180W.nc</name>
+    <description>
+ data before landfilter 165789
+ data before after landfilter165789
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>180.0,8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100001.nc</name>
+    <description>
+ data before landfilter 26601
+ data before after landfilter26601
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.827702045440674,43.38009262084961</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46184.nc</name>
+    <description>
+ data before landfilter 6491
+ data before after landfilter6491
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-138.84999084472656,53.91499710083008</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42360.nc</name>
+    <description>
+ data before landfilter 5922
+ data before after landfilter5922
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-90.458984375,26.68899917602539</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46240.nc</name>
+    <description>
+ data before landfilter 28434
+ data before after landfilter28434
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-121.90699768066406,36.625999450683594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N155W.nc</name>
+    <description>
+ data before landfilter 663845
+ data before after landfilter663845
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.0,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46077.nc</name>
+    <description>
+ data before landfilter 37190
+ data before after landfilter37190
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-154.17601013183594,57.90199661254883</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2S155W.nc</name>
+    <description>
+ data before landfilter 183651
+ data before after landfilter183651
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.0,-2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Oderbank.nc</name>
+    <description>
+ data before landfilter 26124
+ data before after landfilter26124
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>14.166667938232422,54.08332824707031</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N95W.nc</name>
+    <description>
+ data before landfilter 722250
+ data before after landfilter722250
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-95.0,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_15001.nc</name>
+    <description>
+ data before landfilter 110371
+ data before after landfilter110371
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-10.0,-10.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46099.nc</name>
+    <description>
+ data before landfilter 198770
+ data before after landfilter198770
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.56600189208984,46.98600769042969</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_SPOT0772.nc</name>
+    <description>
+ data before landfilter 16355
+ data before after landfilter16355
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>27.995820999145508,43.182647705078125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_A122.nc</name>
+    <description>
+ data before landfilter 43781
+ data before after landfilter43781
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.817000389099121,55.41799545288086</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200105.nc</name>
+    <description>
+ data before landfilter 25815
+ data before after landfilter25815
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>130.0,37.540000915527344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55046.nc</name>
+    <description>
+ data before landfilter 19682
+ data before after landfilter19682
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>152.6404571533203,-24.858722686767578</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_MeetboeiWEO1.nc</name>
+    <description>
+ data before landfilter 14945
+ data before after landfilter14945
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.518017292022705,53.61744689941406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200091.nc</name>
+    <description>
+ data before landfilter 25212
+ data before after landfilter25212
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-5.43019962310791,53.48360061645508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_4800400.nc</name>
+    <description>
+ data before landfilter 6897
+ data before after landfilter6897
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-144.83566284179688,50.11585998535156</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Europlatform3.nc</name>
+    <description>
+ data before landfilter 100206
+ data before after landfilter100206
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.2763895988464355,51.99860382080078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41038.nc</name>
+    <description>
+ data before landfilter 7236
+ data before after landfilter7236
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-77.71498107910156,34.1409912109375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200165.nc</name>
+    <description>
+ data before landfilter 7606
+ data before after landfilter7606
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.100000262260437,54.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46207.nc</name>
+    <description>
+ data before landfilter 6784
+ data before after landfilter6784
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-129.91500854492188,50.875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_Tantabiddi01.nc</name>
+    <description>
+ data before landfilter 10234
+ data before after landfilter10234
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>113.92654418945312,-21.89543914794922</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51208.nc</name>
+    <description>
+ data before landfilter 19932
+ data before after landfilter19932
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-159.57398986816406,22.285001754760742</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41013.nc</name>
+    <description>
+ data before landfilter 236205
+ data before after landfilter236205
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-77.76400756835938,33.44099426269531</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46181.nc</name>
+    <description>
+ data before landfilter 8436
+ data before after landfilter8436
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-128.83201599121094,53.833003997802734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6400046.nc</name>
+    <description>
+ data before landfilter 8356
+ data before after landfilter8356
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-4.5,60.700992584228516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46081.nc</name>
+    <description>
+ data before landfilter 31436
+ data before after landfilter31436
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-148.28298950195312,60.80199432373047</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6300117.nc</name>
+    <description>
+ data before landfilter 7902
+ data before after landfilter7902
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.1000001430511475,61.40000915527344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_53040.nc</name>
+    <description>
+ data before landfilter 46050
+ data before after landfilter46050
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>95.00341796875,-8.007355690002441</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8N170W.nc</name>
+    <description>
+ data before landfilter 266136
+ data before after landfilter266136
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.0,8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6100196.nc</name>
+    <description>
+ data before landfilter 23667
+ data before after landfilter23667
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.642799139022827,41.903533935546875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_ADN-MAMBO3.nc</name>
+    <description>
+ data before landfilter 36976
+ data before after landfilter36976
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.511336326599121,45.643165588378906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_EXIN0005.nc</name>
+    <description>
+ data before landfilter 22406
+ data before after landfilter22406
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-3.9375,48.777706146240234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_1300130.nc</name>
+    <description>
+ data before landfilter 24780
+ data before after landfilter24771
+ proportion close to shore 0.0003631961259079903</description>
+    <Point>
+      <coordinates>-15.804512977600098,28.192306518554688</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8S165E.nc</name>
+    <description>
+ data before landfilter 669929
+ data before after landfilter669929
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>165.0,-8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51207.nc</name>
+    <description>
+ data before landfilter 25614
+ data before after landfilter25614
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-157.75198364257812,21.476999282836914</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6201040.nc</name>
+    <description>
+ data before landfilter 113554
+ data before after landfilter113554
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-8.8916015625,42.179439544677734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_13010.nc</name>
+    <description>
+ data before landfilter 1134
+ data before after landfilter1134
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.007074073422700167,0.008209875784814358</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_CadzandBoei.nc</name>
+    <description>
+ data before landfilter 40436
+ data before after landfilter40436
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.369800329208374,51.39259719848633</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200192.nc</name>
+    <description>
+ data before landfilter 25851
+ data before after landfilter25851
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>123.26000213623047,34.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46011.nc</name>
+    <description>
+ data before landfilter 236145
+ data before after landfilter236145
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-121.01903533935547,34.95599365234375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46256.nc</name>
+    <description>
+ data before landfilter 31160
+ data before after landfilter31160
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-118.20101928710938,33.70000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44078.nc</name>
+    <description>
+ data before landfilter 110725
+ data before after landfilter110725
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-39.519996643066406,59.939998626708984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_Melilla-coast-buoy.nc</name>
+    <description>
+ data before landfilter 16848
+ data before after landfilter15156
+ proportion close to shore 0.10042735042735043</description>
+    <Point>
+      <coordinates>-2.94018816947937,35.320335388183594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46248.nc</name>
+    <description>
+ data before landfilter 31114
+ data before after landfilter31114
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.64401245117188,46.13300323486328</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2S95W.nc</name>
+    <description>
+ data before landfilter 766785
+ data before after landfilter766785
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-95.0,-2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_31004.nc</name>
+    <description>
+ data before landfilter 5792
+ data before after landfilter5792
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-32.52070236206055,-13.600852012634277</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2S165E.nc</name>
+    <description>
+ data before landfilter 917226
+ data before after landfilter917226
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>165.0,-2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41110.nc</name>
+    <description>
+ data before landfilter 30906
+ data before after landfilter30906
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-77.71498107910156,34.141998291015625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200107.nc</name>
+    <description>
+ data before landfilter 25848
+ data before after landfilter25848
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>126.03002166748047,33.08000946044922</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200050.nc</name>
+    <description>
+ data before landfilter 274
+ data before after landfilter274
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-4.223999500274658,50.0260009765625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_Carnot.nc</name>
+    <description>
+ data before landfilter 297448
+ data before after landfilter297448
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.5676995515823364,50.74048614501953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41120.nc</name>
+    <description>
+ data before landfilter 5796
+ data before after landfilter5796
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.28600311279297,35.25899887084961</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44077.nc</name>
+    <description>
+ data before landfilter 9676
+ data before after landfilter9676
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.88300323486328,39.939998626708984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_52200.nc</name>
+    <description>
+ data before landfilter 20346
+ data before after landfilter20346
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>144.78797912597656,13.35400390625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42095.nc</name>
+    <description>
+ data before landfilter 42414
+ data before after landfilter42414
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-81.96700286865234,24.40700340270996</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200187.nc</name>
+    <description>
+ data before landfilter 22788
+ data before after landfilter22788
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>127.02001190185547,33.130001068115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300452.nc</name>
+    <description>
+ data before landfilter 3591
+ data before after landfilter3591
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>68.61551666259766,12.067327499389648</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N155W.nc</name>
+    <description>
+ data before landfilter 662636
+ data before after landfilter662636
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.0,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_DarsserS.nc</name>
+    <description>
+ data before landfilter 15784
+ data before after landfilter15784
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>12.699997901916504,54.700008392333984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_MBARI-M1.nc</name>
+    <description>
+ data before landfilter 7768
+ data before after landfilter7768
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.0290298461914,36.750999450683594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46066.nc</name>
+    <description>
+ data before landfilter 16985
+ data before after landfilter16985
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.00901794433594,52.765010833740234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41139.nc</name>
+    <description>
+ data before landfilter 164293
+ data before after landfilter164293
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-38.0,20.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46026.nc</name>
+    <description>
+ data before landfilter 236125
+ data before after landfilter236125
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.83903503417969,37.7540168762207</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200149.nc</name>
+    <description>
+ data before landfilter 7861
+ data before after landfilter7861
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.1000001430511475,53.70000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Butendiek.nc</name>
+    <description>
+ data before landfilter 525302
+ data before after landfilter525302
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.783296585083008,55.01667022705078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_53056.nc</name>
+    <description>
+ data before landfilter 52969
+ data before after landfilter52969
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>95.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51004.nc</name>
+    <description>
+ data before landfilter 235655
+ data before after landfilter235655
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-152.25494384765625,17.532997131347656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200067.nc</name>
+    <description>
+ data before landfilter 48012
+ data before after landfilter48012
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-2.2950000762939453,46.83319091796875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46183.nc</name>
+    <description>
+ data before landfilter 4597
+ data before after landfilter4597
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-131.10498046875,53.617000579833984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51212.nc</name>
+    <description>
+ data before landfilter 46410
+ data before after landfilter46410
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-158.1490020751953,21.322998046875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Troll-A.nc</name>
+    <description>
+ data before landfilter 153828
+ data before after landfilter153828
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.719299793243408,60.643497467041016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42055.nc</name>
+    <description>
+ data before landfilter 236375
+ data before after landfilter236375
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-93.94100952148438,22.124000549316406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51002.nc</name>
+    <description>
+ data before landfilter 188444
+ data before after landfilter188444
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-157.741943359375,17.042999267578125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46206.nc</name>
+    <description>
+ data before landfilter 8394
+ data before after landfilter8394
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-125.99801635742188,48.83500289916992</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46083.nc</name>
+    <description>
+ data before landfilter 30720
+ data before after landfilter30720
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-138.01901245117188,58.2700080871582</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42026.nc</name>
+    <description>
+ data before landfilter 10578
+ data before after landfilter10578
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-83.47499084472656,25.170997619628906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_1300131.nc</name>
+    <description>
+ data before landfilter 20949
+ data before after landfilter20874
+ proportion close to shore 0.0035801231562365746</description>
+    <Point>
+      <coordinates>-16.600238800048828,27.992958068847656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Draugen.nc</name>
+    <description>
+ data before landfilter 8354
+ data before after landfilter8354
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.779151439666748,64.35199737548828</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44033.nc</name>
+    <description>
+ data before landfilter 29776
+ data before after landfilter29776
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-68.99598693847656,44.054996490478516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6202404.nc</name>
+    <description>
+ data before landfilter 93978
+ data before after landfilter93978
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-28.53817367553711,38.587120056152344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51003.nc</name>
+    <description>
+ data before landfilter 235645
+ data before after landfilter235645
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-160.6389923095703,19.19599151611328</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41108.nc</name>
+    <description>
+ data before landfilter 30990
+ data before after landfilter30990
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-78.01599884033203,33.72199249267578</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41049.nc</name>
+    <description>
+ data before landfilter 236180
+ data before after landfilter236180
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-62.937992095947266,27.489992141723633</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55029.nc</name>
+    <description>
+ data before landfilter 28152
+ data before after landfilter28152
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>147.0869598388672,-19.206832885742188</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41024.nc</name>
+    <description>
+ data before landfilter 7044
+ data before after landfilter7044
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-78.47700500488281,33.83700180053711</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200103.nc</name>
+    <description>
+ data before landfilter 16710
+ data before after landfilter16710
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-2.9000003337860107,49.90000534057617</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200085.nc</name>
+    <description>
+ data before landfilter 515837
+ data before after landfilter515837
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-6.962707042694092,36.490325927734375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8N110W.nc</name>
+    <description>
+ data before landfilter 714686
+ data before after landfilter714686
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-109.99999237060547,8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N95W.nc</name>
+    <description>
+ data before landfilter 766695
+ data before after landfilter766695
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-95.0,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44040.nc</name>
+    <description>
+ data before landfilter 30592
+ data before after landfilter30592
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-73.58000183105469,40.955997467041016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Norne.nc</name>
+    <description>
+ data before landfilter 6880
+ data before after landfilter6880
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.084999084472656,66.02558898925781</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200144.nc</name>
+    <description>
+ data before landfilter 7918
+ data before after landfilter7918
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.700000286102295,53.40000915527344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200135.nc</name>
+    <description>
+ data before landfilter 7907
+ data before after landfilter7907
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.6000001430511475,54.20000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_4100300.nc</name>
+    <description>
+ data before landfilter 8605
+ data before after landfilter8605
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-57.473358154296875,15.84815502166748</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44066.nc</name>
+    <description>
+ data before landfilter 110875
+ data before after landfilter110875
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-72.64398956298828,39.618003845214844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55027.nc</name>
+    <description>
+ data before landfilter 28932
+ data before after landfilter21612
+ proportion close to shore 0.2530070510161759</description>
+    <Point>
+      <coordinates>153.27938842773438,-26.899202346801758</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_WAVEB06.nc</name>
+    <description>
+ data before landfilter 4936
+ data before after landfilter4936
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>28.343801498413086,43.371700286865234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46185.nc</name>
+    <description>
+ data before landfilter 7455
+ data before after landfilter7455
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-129.79200744628906,52.424991607666016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Flateyjardufl.nc</name>
+    <description>
+ data before landfilter 33938
+ data before after landfilter33938
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-23.11033058166504,65.25316619873047</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44037.nc</name>
+    <description>
+ data before landfilter 17624
+ data before after landfilter17624
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-67.87599182128906,43.497005462646484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46029.nc</name>
+    <description>
+ data before landfilter 206515
+ data before after landfilter206515
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.48522186279297,46.144744873046875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N155W.nc</name>
+    <description>
+ data before landfilter 790380
+ data before after landfilter790380
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-155.0,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46097.nc</name>
+    <description>
+ data before landfilter 219125
+ data before after landfilter219125
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.30396270751953,44.63899612426758</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Oseberg-SOR.nc</name>
+    <description>
+ data before landfilter 8613
+ data before after landfilter8613
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.7970004081726074,60.390201568603516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200190.nc</name>
+    <description>
+ data before landfilter 25884
+ data before after landfilter25884
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>129.8699951171875,36.909996032714844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44008.nc</name>
+    <description>
+ data before landfilter 188744
+ data before after landfilter188744
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-69.2485580444336,40.50286865234375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_53048.nc</name>
+    <description>
+ data before landfilter 1109
+ data before after landfilter1109
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>130.0,-10.69999885559082</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200107.nc</name>
+    <description>
+ data before landfilter 15686
+ data before after landfilter15686
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-6.099998474121094,50.103004455566406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200083.nc</name>
+    <description>
+ data before landfilter 26166
+ data before after landfilter26166
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.210472106933594,43.49531173706055</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_CG.nc</name>
+    <description>
+ data before landfilter 55288
+ data before after landfilter55288
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>28.605499267578125,43.802188873291016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_56011.nc</name>
+    <description>
+ data before landfilter 824
+ data before after landfilter824
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>117.72999572753906,-35.20000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200297.nc</name>
+    <description>
+ data before landfilter 19563
+ data before after landfilter19563
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>125.20999145507812,34.029998779296875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6100197.nc</name>
+    <description>
+ data before landfilter 26244
+ data before after landfilter26244
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.422430992126465,39.70930480957031</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46073.nc</name>
+    <description>
+ data before landfilter 31408
+ data before after landfilter31408
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-172.00196838378906,55.00898742675781</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_31006.nc</name>
+    <description>
+ data before landfilter 155736
+ data before after landfilter155736
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-23.0,4.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_PileSpiekeroog.nc</name>
+    <description>
+ data before landfilter 1947956
+ data before after landfilter1947956
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.671116828918457,53.75025177001953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44087.nc</name>
+    <description>
+ data before landfilter 30414
+ data before after landfilter30414
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.1510009765625,37.025081634521484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44076.nc</name>
+    <description>
+ data before landfilter 162885
+ data before after landfilter162885
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.77501678466797,40.13700485229492</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200081.nc</name>
+    <description>
+ data before landfilter 11598
+ data before after landfilter11598
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-13.30099868774414,51.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41064.nc</name>
+    <description>
+ data before landfilter 3879
+ data before after landfilter3879
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.94898986816406,34.207000732421875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200066.nc</name>
+    <description>
+ data before landfilter 25176
+ data before after landfilter25176
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-1.6140000820159912,43.53001022338867</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_K13a2.nc</name>
+    <description>
+ data before landfilter 15087
+ data before after landfilter15087
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.2200002670288086,53.217777252197266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200304.nc</name>
+    <description>
+ data before landfilter 16962
+ data before after landfilter16962
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.799999713897705,51.10300827026367</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51213.nc</name>
+    <description>
+ data before landfilter 8661
+ data before after landfilter8661
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-157.0030059814453,20.75</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6101404.nc</name>
+    <description>
+ data before landfilter 41046
+ data before after landfilter41046
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-5.417513370513916,36.06752014160156</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42098.nc</name>
+    <description>
+ data before landfilter 31226
+ data before after landfilter31226
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-82.9310073852539,27.589998245239258</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200025.nc</name>
+    <description>
+ data before landfilter 25545
+ data before after landfilter25545
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-6.171658992767334,43.751365661621094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200101.nc</name>
+    <description>
+ data before landfilter 23637
+ data before after landfilter23637
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>126.02001190185547,37.2400016784668</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100002.nc</name>
+    <description>
+ data before landfilter 21483
+ data before after landfilter21483
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.6619672775268555,42.06501770019531</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200305.nc</name>
+    <description>
+ data before landfilter 11662
+ data before after landfilter11662
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.0,50.40000534057617</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46239.nc</name>
+    <description>
+ data before landfilter 31118
+ data before after landfilter31118
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.10398864746094,36.33499526977539</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N180W.nc</name>
+    <description>
+ data before landfilter 662909
+ data before after landfilter662909
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>180.0,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200146.nc</name>
+    <description>
+ data before landfilter 7886
+ data before after landfilter7886
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.1000001430511475,57.20000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55032.nc</name>
+    <description>
+ data before landfilter 31108
+ data before after landfilter31108
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>149.3688507080078,-21.317733764648438</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44089.nc</name>
+    <description>
+ data before landfilter 31166
+ data before after landfilter31166
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.32500457763672,37.75400161743164</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_KeetenBoei.nc</name>
+    <description>
+ data before landfilter 42662
+ data before after landfilter42662
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.9659998416900635,51.60800552368164</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_WAVEB02.nc</name>
+    <description>
+ data before landfilter 8262
+ data before after landfilter8262
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>27.55620574951172,42.51169967651367</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_48400.nc</name>
+    <description>
+ data before landfilter 221370
+ data before after landfilter221370
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-144.89996337890625,50.0999870300293</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44090.nc</name>
+    <description>
+ data before landfilter 28898
+ data before after landfilter28898
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.32899475097656,41.84000778198242</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46028.nc</name>
+    <description>
+ data before landfilter 233615
+ data before after landfilter233615
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-121.90299987792969,35.77000427246094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Q11.nc</name>
+    <description>
+ data before landfilter 50151
+ data before after landfilter50151
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.15000057220459,52.92535400390625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200084.nc</name>
+    <description>
+ data before landfilter 26280
+ data before after landfilter26280
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.43023681640625,42.1192512512207</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_ThorntonbankSouth.nc</name>
+    <description>
+ data before landfilter 35032
+ data before after landfilter35032
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.986999750137329,51.564998626708984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_56004.nc</name>
+    <description>
+ data before landfilter 929
+ data before after landfilter929
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>114.92000579833984,-30.29999542236328</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Fjaltring.nc</name>
+    <description>
+ data before landfilter 13933
+ data before after landfilter13933
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.048002243041992,56.47499465942383</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Gardskagadufl.nc</name>
+    <description>
+ data before landfilter 18142
+ data before after landfilter18142
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-22.877004623413086,64.05249786376953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200163.nc</name>
+    <description>
+ data before landfilter 25746
+ data before after landfilter25746
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-8.40000057220459,47.5</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44075.nc</name>
+    <description>
+ data before landfilter 9280
+ data before after landfilter9280
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.88300323486328,40.362998962402344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Statfjord-B.nc</name>
+    <description>
+ data before landfilter 8760
+ data before after landfilter8760
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.828800082206726,61.206298828125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_K13a3.nc</name>
+    <description>
+ data before landfilter 30212
+ data before after landfilter30212
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.2200000286102295,53.217777252197266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S125W.nc</name>
+    <description>
+ data before landfilter 763245
+ data before after landfilter763245
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-125.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_SCENES.nc</name>
+    <description>
+ data before landfilter 88986
+ data before after landfilter88986
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.03200000151991844,49.48100662231445</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44005.nc</name>
+    <description>
+ data before landfilter 35785
+ data before after landfilter35785
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-69.12700653076172,43.200992584228516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Ekofisk.nc</name>
+    <description>
+ data before landfilter 4220
+ data before after landfilter4220
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.224400043487549,56.543399810791016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200029.nc</name>
+    <description>
+ data before landfilter 11650
+ data before after landfilter11650
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-12.4010009765625,48.700992584228516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6201031.nc</name>
+    <description>
+ data before landfilter 44057
+ data before after landfilter44057
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-8.89601993560791,41.90582275390625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46145.nc</name>
+    <description>
+ data before landfilter 5677
+ data before after landfilter5677
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-132.4429931640625,54.367000579833984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_EMSO-Azores-Borel.nc</name>
+    <description>
+ data before landfilter 15660
+ data before after landfilter15660
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-32.276580810546875,37.30134963989258</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51101.nc</name>
+    <description>
+ data before landfilter 235540
+ data before after landfilter235540
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-162.0749969482422,24.361000061035156</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44137.nc</name>
+    <description>
+ data before landfilter 7272
+ data before after landfilter7272
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-61.997989654541016,42.261993408203125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_StortemelkOost.nc</name>
+    <description>
+ data before landfilter 46289
+ data before after landfilter46289
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>5.1025004386901855,53.322391510009766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Nymindegab.nc</name>
+    <description>
+ data before landfilter 13117
+ data before after landfilter13117
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.941000938415527,55.80999755859375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55030.nc</name>
+    <description>
+ data before landfilter 27732
+ data before after landfilter27732
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>153.2113494873047,-26.66104507446289</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42002.nc</name>
+    <description>
+ data before landfilter 236030
+ data before after landfilter236030
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-93.64600372314453,26.054994583129883</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46085.nc</name>
+    <description>
+ data before landfilter 234945
+ data before after landfilter234945
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-142.71072387695312,55.87642288208008</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46235.nc</name>
+    <description>
+ data before landfilter 30870
+ data before after landfilter30870
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-117.16898345947266,32.570003509521484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51210.nc</name>
+    <description>
+ data before landfilter 10240
+ data before after landfilter10240
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-157.75601196289062,21.476999282836914</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Wandelaar.nc</name>
+    <description>
+ data before landfilter 35040
+ data before after landfilter35040
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.0505995750427246,51.392208099365234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51000.nc</name>
+    <description>
+ data before landfilter 188604
+ data before after landfilter188604
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-153.7919921875,23.52800750732422</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_IJmuidenMunitiestort2.nc</name>
+    <description>
+ data before landfilter 43299
+ data before after landfilter43299
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.058333396911621,52.54999542236328</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_ElbeWR.nc</name>
+    <description>
+ data before landfilter 34242
+ data before after landfilter34242
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.113670349121094,53.99650573730469</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46027.nc</name>
+    <description>
+ data before landfilter 236115
+ data before after landfilter236115
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.37995147705078,41.85200119018555</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_ssbn7.nc</name>
+    <description>
+ data before landfilter 14141
+ data before after landfilter14141
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-78.48400115966797,33.83800506591797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44011.nc</name>
+    <description>
+ data before landfilter 92308
+ data before after landfilter92308
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-66.56200408935547,41.092994689941406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55020.nc</name>
+    <description>
+ data before landfilter 6599
+ data before after landfilter6599
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>150.19923400878906,-37.25762939453125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_Malaga-coast-buoy.nc</name>
+    <description>
+ data before landfilter 17542
+ data before after landfilter17534
+ proportion close to shore 0.00045604834112415916</description>
+    <Point>
+      <coordinates>-4.44038200378418,36.65953063964844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200443.nc</name>
+    <description>
+ data before landfilter 297448
+ data before after landfilter297448
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.5676995515823364,50.74048614501953</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46047.nc</name>
+    <description>
+ data before landfilter 188608
+ data before after landfilter188608
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-119.50955200195312,32.400978088378906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44139.nc</name>
+    <description>
+ data before landfilter 7887
+ data before after landfilter7887
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-57.10300827026367,44.239994049072266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44100.nc</name>
+    <description>
+ data before landfilter 23612
+ data before after landfilter23612
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.59300994873047,36.257999420166016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200121.nc</name>
+    <description>
+ data before landfilter 7737
+ data before after landfilter7737
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.700000762939453,53.5</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200188.nc</name>
+    <description>
+ data before landfilter 25821
+ data before after landfilter25821
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>128.22999572753906,34.39000701904297</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_DomburgerRassen.nc</name>
+    <description>
+ data before landfilter 49251
+ data before after landfilter49251
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.398998975753784,51.62000274658203</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S165E.nc</name>
+    <description>
+ data before landfilter 663533
+ data before after landfilter663533
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>165.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46004.nc</name>
+    <description>
+ data before landfilter 6265
+ data before after landfilter6265
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-136.09498596191406,50.929996490478516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44058.nc</name>
+    <description>
+ data before landfilter 157720
+ data before after landfilter157720
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.25699615478516,37.567012786865234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_LTKiel.nc</name>
+    <description>
+ data before landfilter 135168
+ data before after landfilter135168
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>10.266667366027832,54.5</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51202.nc</name>
+    <description>
+ data before landfilter 12814
+ data before after landfilter12814
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-157.67996215820312,21.4169979095459</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_OostendNorth.nc</name>
+    <description>
+ data before landfilter 35036
+ data before after landfilter35036
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.8829996585845947,51.351993560791016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_LasPalmas-coast-buoy.nc</name>
+    <description>
+ data before landfilter 16512
+ data before after landfilter13992
+ proportion close to shore 0.15261627906976744</description>
+    <Point>
+      <coordinates>-15.390000343322754,28.049997329711914</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44063.nc</name>
+    <description>
+ data before landfilter 226424
+ data before after landfilter226424
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.447998046875,38.963008880615234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Deurlo.nc</name>
+    <description>
+ data before landfilter 39394
+ data before after landfilter39394
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.2420873641967773,51.504215240478516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_BothnianBay.nc</name>
+    <description>
+ data before landfilter 21132
+ data before after landfilter21132
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>23.239198684692383,64.68419647216797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_Barcelona-coast-buoy.nc</name>
+    <description>
+ data before landfilter 17496
+ data before after landfilter17496
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.2005839347839355,41.32028579711914</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200145.nc</name>
+    <description>
+ data before landfilter 7903
+ data before after landfilter7903
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.799999713897705,53.10199737548828</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300454.nc</name>
+    <description>
+ data before landfilter 7020
+ data before after landfilter7020
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>72.59349060058594,10.315542221069336</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46025.nc</name>
+    <description>
+ data before landfilter 236020
+ data before after landfilter236020
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-119.04395294189453,33.75799560546875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S180W.nc</name>
+    <description>
+ data before landfilter 664157
+ data before after landfilter664157
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>180.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41037.nc</name>
+    <description>
+ data before landfilter 6099
+ data before after landfilter6099
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-77.36199951171875,33.988006591796875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_TWEms.nc</name>
+    <description>
+ data before landfilter 37404
+ data before after landfilter37404
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.349998950958252,54.16667175292969</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6201030.nc</name>
+    <description>
+ data before landfilter 15576
+ data before after landfilter15576
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-3.7774791717529297,43.801063537597656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200185.nc</name>
+    <description>
+ data before landfilter 24552
+ data before after landfilter24552
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>125.43002319335938,37.090003967285156</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N140W.nc</name>
+    <description>
+ data before landfilter 259578
+ data before after landfilter259578
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-140.0,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46114.nc</name>
+    <description>
+ data before landfilter 30928
+ data before after landfilter30928
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.34300994873047,36.70000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44062.nc</name>
+    <description>
+ data before landfilter 282060
+ data before after landfilter282060
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.4150161743164,38.55601501464844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_BothnianSea.nc</name>
+    <description>
+ data before landfilter 35040
+ data before after landfilter35040
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>20.23330307006836,61.799991607666016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44020.nc</name>
+    <description>
+ data before landfilter 235930
+ data before after landfilter235930
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.27902221679688,41.49299621582031</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46005.nc</name>
+    <description>
+ data before landfilter 188932
+ data before after landfilter188932
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-131.0790252685547,46.13398361206055</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Blakksnes.nc</name>
+    <description>
+ data before landfilter 8210
+ data before after landfilter8210
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-24.778167724609375,65.69782257080078</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44009.nc</name>
+    <description>
+ data before landfilter 127555
+ data before after landfilter127555
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-74.69570922851562,38.454898834228516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200298.nc</name>
+    <description>
+ data before landfilter 25818
+ data before after landfilter25818
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>125.25,34.75</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46258.nc</name>
+    <description>
+ data before landfilter 31202
+ data before after landfilter31202
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-117.50098419189453,32.75200653076172</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_ADN-DWRG1.nc</name>
+    <description>
+ data before landfilter 6342
+ data before after landfilter6342
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.24799919128418,45.565494537353516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_LichteilandGoeree2.nc</name>
+    <description>
+ data before landfilter 30542
+ data before after landfilter30542
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.669722557067871,51.92583465576172</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N125W.nc</name>
+    <description>
+ data before landfilter 765795
+ data before after landfilter765795
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-125.0,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300091.nc</name>
+    <description>
+ data before landfilter 7251
+ data before after landfilter7251
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>89.21395111083984,17.81804084777832</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_EUXRo01.nc</name>
+    <description>
+ data before landfilter 13221
+ data before after landfilter13221
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>30.778993606567383,44.700008392333984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200082.nc</name>
+    <description>
+ data before landfilter 24237
+ data before after landfilter24237
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-7.686269760131836,44.1284294128418</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_52211.nc</name>
+    <description>
+ data before landfilter 16128
+ data before after landfilter16128
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>145.66200256347656,15.268001556396484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44018.nc</name>
+    <description>
+ data before landfilter 38336
+ data before after landfilter38336
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.14299774169922,42.205997467041016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41009.nc</name>
+    <description>
+ data before landfilter 236300
+ data before after landfilter236300
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-80.1850357055664,28.507997512817383</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100022.nc</name>
+    <description>
+ data before landfilter 43530
+ data before after landfilter43530
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.426169395446777,43.71358108520508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_NOO.nc</name>
+    <description>
+ data before landfilter 4706
+ data before after landfilter4706
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.635001182556152,54.468326568603516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55036.nc</name>
+    <description>
+ data before landfilter 27312
+ data before after landfilter6868
+ proportion close to shore 0.7485354422964264</description>
+    <Point>
+      <coordinates>153.72999572753906,-28.60000228881836</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_HelsinkiBuoy.nc</name>
+    <description>
+ data before landfilter 31410
+ data before after landfilter31410
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>25.234996795654297,59.96501159667969</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55053.nc</name>
+    <description>
+ data before landfilter 8272
+ data before after landfilter8272
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>136.6199951171875,-36.070003509521484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_56006.nc</name>
+    <description>
+ data before landfilter 943
+ data before after landfilter943
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>114.77000427246094,-33.519996643066406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44027.nc</name>
+    <description>
+ data before landfilter 35830
+ data before after landfilter35830
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-67.30134582519531,44.28203582763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N110W.nc</name>
+    <description>
+ data before landfilter 663754
+ data before after landfilter663754
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-110.00000762939453,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_13008.nc</name>
+    <description>
+ data before landfilter 136710
+ data before after landfilter136710
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-38.0,15.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200106.nc</name>
+    <description>
+ data before landfilter 25236
+ data before after landfilter25236
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>129.78001403808594,36.35000228881836</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N165E.nc</name>
+    <description>
+ data before landfilter 664703
+ data before after landfilter664703
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>165.0,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41001.nc</name>
+    <description>
+ data before landfilter 51628
+ data before after landfilter51628
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-72.31844329833984,34.722450256347656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_56005.nc</name>
+    <description>
+ data before landfilter 873
+ data before after landfilter873
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>115.40653991699219,-32.10000228881836</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_4400050.nc</name>
+    <description>
+ data before landfilter 31594
+ data before after landfilter31594
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-56.18333435058594,46.70000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46244.nc</name>
+    <description>
+ data before landfilter 31130
+ data before after landfilter31130
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.35702514648438,40.895999908447266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42085.nc</name>
+    <description>
+ data before landfilter 178652
+ data before after landfilter178652
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-66.53199005126953,17.86899757385254</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6202400.nc</name>
+    <description>
+ data before landfilter 120260
+ data before after landfilter120260
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-27.962495803833008,39.086578369140625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_LTKielWR.nc</name>
+    <description>
+ data before landfilter 6442
+ data before after landfilter6442
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>10.266669273376465,54.5</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46219.nc</name>
+    <description>
+ data before landfilter 29882
+ data before after landfilter29882
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-119.87197875976562,33.218997955322266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_Donostia-buoy.nc</name>
+    <description>
+ data before landfilter 508167
+ data before after landfilter508167
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-2.014845132827759,43.56612777709961</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300491.nc</name>
+    <description>
+ data before landfilter 22497
+ data before after landfilter22497
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>92.59563446044922,11.588998794555664</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_Gijon-coast-buoy.nc</name>
+    <description>
+ data before landfilter 17490
+ data before after landfilter17490
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-5.660030841827393,43.619956970214844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2S125W.nc</name>
+    <description>
+ data before landfilter 602955
+ data before after landfilter602955
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-125.0,-2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46128.nc</name>
+    <description>
+ data before landfilter 6050
+ data before after landfilter6050
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.53799438476562,43.291996002197266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42020.nc</name>
+    <description>
+ data before landfilter 93020
+ data before after landfilter93020
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-96.69300079345703,26.96799087524414</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200092.nc</name>
+    <description>
+ data before landfilter 26256
+ data before after landfilter26256
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-10.548261642456055,51.215946197509766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_13001.nc</name>
+    <description>
+ data before landfilter 155970
+ data before after landfilter155970
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-23.0,12.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42091.nc</name>
+    <description>
+ data before landfilter 14370
+ data before after landfilter14370
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-92.5059814453125,29.087003707885742</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55033.nc</name>
+    <description>
+ data before landfilter 25522
+ data before after landfilter22114
+ proportion close to shore 0.13353185487030797</description>
+    <Point>
+      <coordinates>151.07070922851562,-23.302762985229492</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46208.nc</name>
+    <description>
+ data before landfilter 7525
+ data before after landfilter7525
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-132.6920166015625,52.51500701904297</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300451.nc</name>
+    <description>
+ data before landfilter 4767
+ data before after landfilter4767
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>68.9891586303711,14.92653751373291</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_5300041.nc</name>
+    <description>
+ data before landfilter 54
+ data before after landfilter54
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>99.93999481201172,-8.063329696655273</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S170W.nc</name>
+    <description>
+ data before landfilter 266136
+ data before after landfilter266136
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44086.nc</name>
+    <description>
+ data before landfilter 31264
+ data before after landfilter31264
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.42100524902344,36.00100326538086</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_1500008.nc</name>
+    <description>
+ data before landfilter 3792
+ data before after landfilter3792
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-10.590659141540527,-19.86509895324707</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41115.nc</name>
+    <description>
+ data before landfilter 30468
+ data before after landfilter30468
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-67.28001403808594,18.37600326538086</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200093.nc</name>
+    <description>
+ data before landfilter 26256
+ data before after landfilter26256
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.999135971069336,54.99995422363281</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2S180W.nc</name>
+    <description>
+ data before landfilter 664157
+ data before after landfilter664157
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>180.0,-2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200059.nc</name>
+    <description>
+ data before landfilter 65980
+ data before after landfilter65980
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-1.6200006008148193,49.695003509521484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44056.nc</name>
+    <description>
+ data before landfilter 28942
+ data before after landfilter28942
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.71399688720703,36.20000457763672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_HelsinkiSuomenlinna.nc</name>
+    <description>
+ data before landfilter 29888
+ data before after landfilter29888
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>24.972501754760742,60.123294830322266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100284.nc</name>
+    <description>
+ data before landfilter 34476
+ data before after landfilter34476
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.8662004470825195,43.318904876708984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_URSS.nc</name>
+    <description>
+ data before landfilter 17512
+ data before after landfilter17512
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>39.900001525878906,43.433292388916016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42022.nc</name>
+    <description>
+ data before landfilter 14608
+ data before after landfilter14608
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-83.74098205566406,27.505001068115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44029.nc</name>
+    <description>
+ data before landfilter 27148
+ data before after landfilter27148
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.56599426269531,42.52300262451172</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_6101628.nc</name>
+    <description>
+ data before landfilter 58388
+ data before after landfilter58388
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.671698570251465,45.60329055786133</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42023.nc</name>
+    <description>
+ data before landfilter 15272
+ data before after landfilter15272
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-83.08599090576172,26.01000213623047</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Granefeltet.nc</name>
+    <description>
+ data before landfilter 8760
+ data before after landfilter8760
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.487300395965576,59.16520309448242</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6101061.nc</name>
+    <description>
+ data before landfilter 9688
+ data before after landfilter9688
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-9.02432918548584,42.756343841552734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_23013.nc</name>
+    <description>
+ data before landfilter 4752
+ data before after landfilter4752
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>66.75064086914062,4.185178756713867</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41056.nc</name>
+    <description>
+ data before landfilter 189228
+ data before after landfilter189228
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-65.46399688720703,18.260995864868164</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_HERAKLION.nc</name>
+    <description>
+ data before landfilter 10468
+ data before after landfilter10468
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>25.07919692993164,35.43419647216797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S140W.nc</name>
+    <description>
+ data before landfilter 498060
+ data before after landfilter498060
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-140.0,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Straumnesdufl.nc</name>
+    <description>
+ data before landfilter 16098
+ data before after landfilter16098
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-23.366668701171875,66.43833923339844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_EurogeulE13.nc</name>
+    <description>
+ data before landfilter 46850
+ data before after landfilter46850
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.736943006515503,52.010005950927734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46100.nc</name>
+    <description>
+ data before landfilter 195920
+ data before after landfilter195920
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.97200775146484,46.85100555419922</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_4100099.nc</name>
+    <description>
+ data before landfilter 4790
+ data before after landfilter4790
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-60.93439483642578,14.176100730895996</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_14043.nc</name>
+    <description>
+ data before landfilter 5832
+ data before after landfilter5832
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>67.0,-12.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Surtseyjardufl.nc</name>
+    <description>
+ data before landfilter 7940
+ data before after landfilter7940
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-20.34499740600586,63.28565979003906</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6202402.nc</name>
+    <description>
+ data before landfilter 110278
+ data before after landfilter110278
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-25.721342086791992,37.72552490234375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_BARBARIA.nc</name>
+    <description>
+ data before landfilter 77674
+ data before after landfilter77674
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.3922196626663208,38.67689895629883</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200024.nc</name>
+    <description>
+ data before landfilter 25515
+ data before after landfilter25515
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-3.0440731048583984,43.6356201171875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Europlatform2.nc</name>
+    <description>
+ data before landfilter 99706
+ data before after landfilter99706
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.2763898372650146,51.998600006103516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51209.nc</name>
+    <description>
+ data before landfilter 30998
+ data before after landfilter30998
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.5,-14.272997856140137</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_N7S.nc</name>
+    <description>
+ data before landfilter 2656
+ data before after landfilter2656
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.356230735778809,54.262046813964844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_23017.nc</name>
+    <description>
+ data before landfilter 138176
+ data before after landfilter138176
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>67.0,-4.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200191.nc</name>
+    <description>
+ data before landfilter 25845
+ data before after landfilter25845
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>124.06002807617188,36.130001068115234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42001.nc</name>
+    <description>
+ data before landfilter 68400
+ data before after landfilter68400
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-89.65702819824219,25.941843032836914</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_FINO1.nc</name>
+    <description>
+ data before landfilter 413042
+ data before after landfilter413042
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.583333969116211,54.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_LichteilandGoeree1.nc</name>
+    <description>
+ data before landfilter 30542
+ data before after landfilter30542
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.669722557067871,51.92583465576172</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42045.nc</name>
+    <description>
+ data before landfilter 7290
+ data before after landfilter7290
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-96.5,26.217002868652344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46013.nc</name>
+    <description>
+ data before landfilter 17200
+ data before after landfilter17200
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-123.30292510986328,38.252620697021484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_ADN-DWRG2.nc</name>
+    <description>
+ data before landfilter 14635
+ data before after landfilter14635
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.208999633789062,45.69950485229492</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46232.nc</name>
+    <description>
+ data before landfilter 30070
+ data before after landfilter30070
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-117.42501831054688,32.516998291015625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Kwintebank.nc</name>
+    <description>
+ data before landfilter 35040
+ data before after landfilter35040
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.7060000896453857,51.3489990234375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200310.nc</name>
+    <description>
+ data before landfilter 127794
+ data before after landfilter127794
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-0.3073999881744385,49.343807220458984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_HelgolandWR.nc</name>
+    <description>
+ data before landfilter 22754
+ data before after landfilter22754
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.891111850738525,54.17973327636719</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44042.nc</name>
+    <description>
+ data before landfilter 213008
+ data before after landfilter213008
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-76.33511352539062,38.03300857543945</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42099.nc</name>
+    <description>
+ data before landfilter 30064
+ data before after landfilter30064
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-84.2750015258789,27.34564208984375</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46205.nc</name>
+    <description>
+ data before landfilter 7683
+ data before after landfilter7683
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-134.322998046875,54.185001373291016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_NsbIII.nc</name>
+    <description>
+ data before landfilter 128741
+ data before after landfilter128741
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.783332824707031,54.683345794677734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Oosterschelde11.nc</name>
+    <description>
+ data before landfilter 14234
+ data before after landfilter14234
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.481215476989746,51.64379119873047</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5S95W.nc</name>
+    <description>
+ data before landfilter 766245
+ data before after landfilter766245
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-94.99999237060547,-5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6100431.nc</name>
+    <description>
+ data before landfilter 52980
+ data before after landfilter52980
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.133300304412842,43.424991607666016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46273.nc</name>
+    <description>
+ data before landfilter 4686
+ data before after landfilter4686
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-117.27699279785156,32.925994873046875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8S110W.nc</name>
+    <description>
+ data before landfilter 661583
+ data before after landfilter661583
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-110.0,-8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44039.nc</name>
+    <description>
+ data before landfilter 16904
+ data before after landfilter16904
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-72.65501403808594,41.13800048828125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_68422.nc</name>
+    <description>
+ data before landfilter 31860
+ data before after landfilter31860
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>21.606801986694336,36.828800201416016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200102.nc</name>
+    <description>
+ data before landfilter 24456
+ data before after landfilter24456
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>125.78002166748047,34.79000473022461</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41113.nc</name>
+    <description>
+ data before landfilter 31250
+ data before after landfilter31250
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-80.53299713134766,28.399995803833008</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_WAVEB04.nc</name>
+    <description>
+ data before landfilter 8476
+ data before after landfilter8476
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>28.611600875854492,43.53919219970703</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41002.nc</name>
+    <description>
+ data before landfilter 127525
+ data before after landfilter127525
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-74.95279693603516,31.76129722595215</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200103.nc</name>
+    <description>
+ data before landfilter 24999
+ data before after landfilter24999
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>127.5,34.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_53006.nc</name>
+    <description>
+ data before landfilter 156438
+ data before after landfilter156438
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>80.5,-12.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Fanoebugt.nc</name>
+    <description>
+ data before landfilter 16727
+ data before after landfilter16727
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.229997634887695,55.346004486083984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41041.nc</name>
+    <description>
+ data before landfilter 43360
+ data before after landfilter43360
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-46.32358169555664,14.450922966003418</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Drangsnes.nc</name>
+    <description>
+ data before landfilter 8273
+ data before after landfilter8273
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-21.137666702270508,65.76983642578125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41010.nc</name>
+    <description>
+ data before landfilter 189000
+ data before after landfilter189000
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-78.48499298095703,28.877994537353516</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46069.nc</name>
+    <description>
+ data before landfilter 207585
+ data before after landfilter207585
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-120.21297454833984,33.676998138427734</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44098.nc</name>
+    <description>
+ data before landfilter 30428
+ data before after landfilter30428
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.17100524902344,42.79999542236328</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51001.nc</name>
+    <description>
+ data before landfilter 160692
+ data before after landfilter160692
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-162.0096435546875,24.448217391967773</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_41043.nc</name>
+    <description>
+ data before landfilter 236150
+ data before after landfilter236150
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-64.79000854492188,21.03000259399414</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200104.nc</name>
+    <description>
+ data before landfilter 24954
+ data before after landfilter24954
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>128.90000915527344,34.769996643066406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Sylt.nc</name>
+    <description>
+ data before landfilter 35032
+ data before after landfilter35032
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.089301109313965,54.918888092041016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6100281.nc</name>
+    <description>
+ data before landfilter 24207
+ data before after landfilter24207
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.2036273330450058,39.512386322021484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55058.nc</name>
+    <description>
+ data before landfilter 5809
+ data before after landfilter5809
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>148.5800018310547,-42.8699951171875</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44099.nc</name>
+    <description>
+ data before landfilter 31170
+ data before after landfilter31170
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-75.72200012207031,36.915000915527344</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42059.nc</name>
+    <description>
+ data before landfilter 138075
+ data before after landfilter138075
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-67.48916625976562,15.295113563537598</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46054.nc</name>
+    <description>
+ data before landfilter 235670
+ data before after landfilter235670
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-120.46997833251953,34.27301025390625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_ZeebruggePortBuoy.nc</name>
+    <description>
+ data before landfilter 3600
+ data before after landfilter3600
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.1930007934570312,51.35599899291992</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_NO1.nc</name>
+    <description>
+ data before landfilter 524087
+ data before after landfilter524087
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.838500499725342,53.98517990112305</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_6200150.nc</name>
+    <description>
+ data before landfilter 3746
+ data before after landfilter3746
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>0.6999998092651367,53.59999465942383</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2S110W.nc</name>
+    <description>
+ data before landfilter 663637
+ data before after landfilter663637
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-110.0,-2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_WAVEB05.nc</name>
+    <description>
+ data before landfilter 5001
+ data before after landfilter5001
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>27.906705856323242,42.69640350341797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_VaderoarnaWR.nc</name>
+    <description>
+ data before landfilter 105110
+ data before after landfilter105110
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>10.93131160736084,58.48869323730469</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_HanstholmWR.nc</name>
+    <description>
+ data before landfilter 1
+ data before after landfilter1
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>8.583000183105469,57.13399887084961</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46246.nc</name>
+    <description>
+ data before landfilter 20996
+ data before after landfilter20996
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-145.17001342773438,50.016990661621094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46041.nc</name>
+    <description>
+ data before landfilter 235625
+ data before after landfilter235625
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.74195098876953,47.35301971435547</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2200189.nc</name>
+    <description>
+ data before landfilter 23244
+ data before after landfilter23244
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>129.83998107910156,35.35000228881836</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_52121.nc</name>
+    <description>
+ data before landfilter 25534
+ data before after landfilter13480
+ proportion close to shore 0.4720764470901543</description>
+    <Point>
+      <coordinates>141.6799774169922,-12.679999351501465</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42056.nc</name>
+    <description>
+ data before landfilter 236345
+ data before after landfilter236345
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-84.94499206542969,19.820005416870117</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Uithuizerwad3.nc</name>
+    <description>
+ data before landfilter 20320
+ data before after landfilter20320
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.7600016593933105,53.469993591308594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46050.nc</name>
+    <description>
+ data before landfilter 236090
+ data before after landfilter236090
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.54596710205078,44.66899490356445</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42035.nc</name>
+    <description>
+ data before landfilter 235825
+ data before after landfilter235825
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-94.42305755615234,29.22130584716797</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T8S180W.nc</name>
+    <description>
+ data before landfilter 1022380
+ data before after landfilter1022380
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>180.0,-8.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42003.nc</name>
+    <description>
+ data before landfilter 213775
+ data before after landfilter213775
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-85.61499786376953,25.924991607666016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_SOLLER.nc</name>
+    <description>
+ data before landfilter 38658
+ data before after landfilter38658
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.72217059135437,39.88930130004883</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6100417.nc</name>
+    <description>
+ data before landfilter 26277
+ data before after landfilter26277
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-0.31103816628456116,37.652889251708984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T5N170W.nc</name>
+    <description>
+ data before landfilter 664300
+ data before after landfilter664300
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-170.0,5.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_MeetboeiWEW1.nc</name>
+    <description>
+ data before landfilter 9690
+ data before after landfilter9690
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>6.36793327331543,53.61952209472656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>IR_TS_MO_6200200.nc</name>
+    <description>
+ data before landfilter 23886
+ data before after landfilter23886
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-8.068299293518066,36.39830780029297</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46108.nc</name>
+    <description>
+ data before landfilter 32988
+ data before after landfilter32988
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-151.82901000976562,59.596004486083984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44258.nc</name>
+    <description>
+ data before landfilter 4916
+ data before after landfilter4916
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-63.40300750732422,44.50200271606445</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Raversijde2.nc</name>
+    <description>
+ data before landfilter 7123
+ data before after landfilter7123
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.8127779960632324,51.23667526245117</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_52085.nc</name>
+    <description>
+ data before landfilter 30583
+ data before after landfilter30583
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>155.9608917236328,0.017019454389810562</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44013.nc</name>
+    <description>
+ data before landfilter 236300
+ data before after landfilter236300
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-70.6510009765625,42.34600067138672</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_6200080.nc</name>
+    <description>
+ data before landfilter 25100
+ data before after landfilter25100
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-1.83359956741333,45.916297912597656</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55028.nc</name>
+    <description>
+ data before landfilter 30416
+ data before after landfilter30416
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>145.83261108398438,-16.854780197143555</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_ADN-DWRG3.nc</name>
+    <description>
+ data before landfilter 13993
+ data before after landfilter13993
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.521315574645996,45.68827438354492</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46070.nc</name>
+    <description>
+ data before landfilter 18020
+ data before after landfilter18020
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>175.1830291748047,55.007999420166016</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46222.nc</name>
+    <description>
+ data before landfilter 30394
+ data before after landfilter30394
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-118.31700134277344,33.618003845214844</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46204.nc</name>
+    <description>
+ data before landfilter 7211
+ data before after landfilter7211
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-128.76698303222656,51.38300323486328</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BS_TS_MO_UGSB.nc</name>
+    <description>
+ data before landfilter 17437
+ data before after landfilter17437
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>41.599998474121094,41.63330078125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46224.nc</name>
+    <description>
+ data before landfilter 30740
+ data before after landfilter30740
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-117.47201538085938,33.17800521850586</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T0N180W.nc</name>
+    <description>
+ data before landfilter 408720
+ data before after landfilter408720
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>180.0,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_HirtshalsWR.nc</name>
+    <description>
+ data before landfilter 1
+ data before after landfilter1
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>9.966699600219727,57.599998474121094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46269.nc</name>
+    <description>
+ data before landfilter 14948
+ data before after landfilter14948
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-122.03396606445312,36.93399429321289</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Helgoland-NorthWR.nc</name>
+    <description>
+ data before landfilter 27830
+ data before after landfilter27830
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>7.818299293518066,54.21929931640625</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MO_TS_MO_ADN-E2M3A.nc</name>
+    <description>
+ data before landfilter 97356
+ data before after landfilter97356
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>18.082414627075195,41.527706146240234</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46098.nc</name>
+    <description>
+ data before landfilter 197695
+ data before after landfilter197695
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-124.95604705810547,44.38099670410156</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46146.nc</name>
+    <description>
+ data before landfilter 8470
+ data before after landfilter8470
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-123.72702026367188,49.34000778198242</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42019.nc</name>
+    <description>
+ data before landfilter 236390
+ data before after landfilter236390
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-95.34497833251953,27.909992218017578</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46071.nc</name>
+    <description>
+ data before landfilter 13488
+ data before after landfilter13488
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>179.01197814941406,51.125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Hornafjardardufl.nc</name>
+    <description>
+ data before landfilter 37383
+ data before after landfilter37383
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-15.18850326538086,64.19683074951172</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46072.nc</name>
+    <description>
+ data before landfilter 188844
+ data before after landfilter188844
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-172.08795166015625,51.67200469970703</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Trapegeer.nc</name>
+    <description>
+ data before landfilter 17520
+ data before after landfilter17520
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>2.5829999446868896,51.13800048828125</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42060.nc</name>
+    <description>
+ data before landfilter 236320
+ data before after landfilter236320
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-63.331016540527344,16.433006286621094</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Arkona.nc</name>
+    <description>
+ data before landfilter 93401
+ data before after landfilter93401
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.866667747497559,54.88332748413086</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>BO_TS_MO_FinngrundetWR.nc</name>
+    <description>
+ data before landfilter 74384
+ data before after landfilter74384
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>18.608909606933594,60.89970397949219</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_L91.nc</name>
+    <description>
+ data before landfilter 49633
+ data before after landfilter49633
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>4.960700511932373,53.61379623413086</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Statfjord-A.nc</name>
+    <description>
+ data before landfilter 8752
+ data before after landfilter8752
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>1.852199673652649,61.255306243896484</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46061.nc</name>
+    <description>
+ data before landfilter 38045
+ data before after landfilter38045
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-146.83299255371094,60.23799514770508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_31007.nc</name>
+    <description>
+ data before landfilter 147060
+ data before after landfilter147060
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-23.0,0.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_T2N140W.nc</name>
+    <description>
+ data before landfilter 80025
+ data before after landfilter80025
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-140.0,2.0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_FINO2.nc</name>
+    <description>
+ data before landfilter 598728
+ data before after landfilter598728
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>13.154175758361816,55.008304595947266</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_Roompotsluis.nc</name>
+    <description>
+ data before landfilter 49738
+ data before after landfilter49738
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.6824002265930176,51.620487213134766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_56008.nc</name>
+    <description>
+ data before landfilter 838
+ data before after landfilter838
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>115.68001556396484,-31.980003356933594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42039.nc</name>
+    <description>
+ data before landfilter 208815
+ data before after landfilter208815
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-86.00780487060547,28.78778648376465</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>NO_TS_MO_ScheurWielingen.nc</name>
+    <description>
+ data before landfilter 3600
+ data before after landfilter3600
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>3.3022000789642334,51.40140914916992</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_42012.nc</name>
+    <description>
+ data before landfilter 235995
+ data before after landfilter235995
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-87.55045318603516,30.06324577331543</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46253.nc</name>
+    <description>
+ data before landfilter 31190
+ data before after landfilter31190
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-118.18102264404297,33.57599639892578</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_44034.nc</name>
+    <description>
+ data before landfilter 29876
+ data before after landfilter29876
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-68.11199951171875,44.103004455566406</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>AR_TS_MO_Kogurdufl.nc</name>
+    <description>
+ data before landfilter 8743
+ data before after landfilter8743
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-13.62649917602539,65.64817810058594</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_51211.nc</name>
+    <description>
+ data before landfilter 30974
+ data before after landfilter30974
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-157.95899963378906,21.296998977661133</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_2300492.nc</name>
+    <description>
+ data before landfilter 17208
+ data before after landfilter17208
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>72.2098159790039,10.873934745788574</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_55481.nc</name>
+    <description>
+ data before landfilter 1245
+ data before after landfilter1245
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>154.4499969482422,-27.64999771118164</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>GL_TS_MO_46086.nc</name>
+    <description>
+ data before landfilter 234985
+ data before after landfilter234985
+ proportion close to shore 0.0</description>
+    <Point>
+      <coordinates>-118.052001953125,32.49900817871094</coordinates>
+    </Point>
+  </Placemark>
+</Folder>
