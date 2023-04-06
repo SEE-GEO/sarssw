@@ -117,9 +117,11 @@ def load_labels_df(bouy_survey_fn, swh_model_fn, wspd_model_fn, sar_bouy_df):
     bouy_survey_df = bouy_survey_df.set_index(['sar_name', 'bouy_name']).sort_index()
 
     #wave height model
+    print("Loading wave height model")
     SWH_model = xr.open_dataset(swh_model_fn)
 
     #Wind speed model
+    print("Loading wave speed model")
     WSPD_model = xr.open_dataset(wspd_model_fn)
 
     #Configure and program how the models work
