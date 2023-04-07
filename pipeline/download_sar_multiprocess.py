@@ -21,8 +21,7 @@ import xsar
 
 out_dir = '/data/exjobb/sarssw/sar_multiprocess2/'
 tmp_dir = '/data/exjobb/sarssw/tmp'
-bouy_survey_dir = '/home/sarssw/axel/sarssw/bouy_survey/1h_survey'
-result_df_fn = 'result_df'
+bouy_survey_path = '/home/sarssw/axel/sarssw/bouy_survey/1h_survey/result_df'
 
 num_processes = 10
 handle_url_max_retries = 3
@@ -52,9 +51,7 @@ def sar_download(url):
             zf.extractall(tmp_dir_local)
 
         yield os.path.join(tmp_dir_local, zip_name.split('.')[0] + '.SAFE')
-
-
-
+        
 def create_subimages(sar_name, bouy, bouy_df, sar_ds, dist):
     "Extracts the subimages from one downloaded SAR image"
     #print('Handling bouy:', bouy)
@@ -85,15 +82,15 @@ def create_subimages(sar_name, bouy, bouy_df, sar_ds, dist):
             atrack=slice(offset_atrack - dist['atrack'], offset_atrack + dist['atrack'] - 1),
             xtrack=slice(offset_xtrack - dist['xtrack'], offset_xtrack + dist['xtrack'] - 1)
         )
-
+        sigma0 = small_sar.sigma0.values
         #Skip if there is land within the image or if there are nans due to subimages over edges of the original image
-        if np.any(small_sar.land_mask) or np.any(np.isnan(small_sar.sigma0.values)): continue
+        if np.any(small_sar.land_mask) or np.any(np.isnan(sigma0)): continue
             
         img_center_lon, img_center_lat = sar_ds.coords2ll(offset_atrack, offset_xtrack)
 
         out_path = os.path.join(out_dir, f'{sar_name}-{bouy_name}-{crop_index}.tif')
         tif.imwrite(out_path,
-                    small_sar.sigma0.values,
+                    sigma0,
                     metadata={
                         'sar_name':sar_name,
                         'bouy_name':bouy_name,
@@ -144,25 +141,28 @@ def handle_url_with_retry(args):
     
 def multiprocess_urls(urls, bouy_survey_df):
     "Multi processed handling of the urls"
-    with multiprocessing.Pool(num_processes) as pool:
-        for _ in tqdm(pool.imap_unordered(handle_url_with_retry, zip(urls, repeat(bouy_survey_df, len(urls)))), total=len(urls)):
-            pass
+    if num_processes == 1:
+        for url in tqdm(urls):
+            handle_url_with_retry((url, bouy_survey_df))
+
+    else:
+        with multiprocessing.Pool(num_processes) as pool:
+            for _ in tqdm(pool.imap_unordered(handle_url_with_retry, zip(urls, repeat(bouy_survey_df, len(urls)))), total=len(urls)):
+                pass
 
 def main():
     #Read survey data
-    with open(os.path.join(bouy_survey_dir, result_df_fn),'rb') as f_r:
+    with open(bouy_survey_path,'rb') as f_r:
         bouy_survey_df = pickle.load(f_r)
 
     #Extract urls for SAR images, sorting after most number of bouys contained
     all_urls = bouy_survey_df.groupby('sar_url').count().\
         sort_values(by='bouy_file_name', ascending=False).index.to_numpy()
 
-
     #Create out_dir adn tmp_dir in case they do not already exists
     os.makedirs(out_dir, exist_ok=True)
     os.makedirs(tmp_dir, exist_ok=True)
     
-
     filenames = filter(lambda fn: fn.endswith('.tif'), os.listdir(out_dir))
     processed_urls = {fn.split('-')[0] for fn in filenames}
     print(len(all_urls), len(processed_urls))
