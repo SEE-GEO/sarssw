@@ -58,35 +58,35 @@ def create_subimages(sar_name, bouy, bouy_df, sar_ds, dist):
     bouy_name = bouy.split('.')[0]
     bouy_lon, bouy_lat = bouy_df.bouy_longitude.mean(), bouy_df.bouy_latitude.mean()
     
-    bouy_atrack, bouy_xtrack = sar_ds.ll2coords(bouy_lon, bouy_lat)
+    bouy_line, bouy_sample = sar_ds.ll2coords(bouy_lon, bouy_lat)
 
     #Return when the bouy is not found within the image,
     #Can happen for images at the antimeridian
-    if any(np.isnan([bouy_atrack, bouy_xtrack])):
+    if any(np.isnan([bouy_line, bouy_sample])):
         print(f"Skipping {bouy} since it is not found inside the image {sar_name}")
         return
     
-    for crop_index, (atrack_offset, xtrack_offset) in crop_offsets.items():
-        offset_atrack = int(bouy_atrack + (atrack_offset * dist['atrack']))
-        offset_xtrack = int(bouy_xtrack + (xtrack_offset * dist['xtrack']))
+    for crop_index, (line_offset, sample_offset) in crop_offsets.items():
+        offset_line = int(bouy_line + (line_offset * dist['line']))
+        offset_sample = int(bouy_sample + (sample_offset * dist['sample']))
 
-        atrack_in_range = (0 <= offset_atrack - dist['atrack']) and \
-                        (offset_atrack + dist['atrack'] <= sar_ds.dataset.atrack[-1].values)
+        line_in_range = (0 <= offset_line - dist['line']) and \
+                        (offset_line + dist['line'] <= sar_ds.dataset.line[-1].values)
 
-        xtrack_in_range = (0 <= offset_xtrack - dist['xtrack']) and \
-                        (offset_xtrack + dist['xtrack'] <= sar_ds.dataset.xtrack[-1].values)
+        sample_in_range = (0 <= offset_sample - dist['sample']) and \
+                        (offset_sample + dist['sample'] <= sar_ds.dataset.sample[-1].values)
 
-        if not (atrack_in_range and xtrack_in_range): continue
+        if not (line_in_range and sample_in_range): continue
 
         small_sar = sar_ds.dataset.sel(
-            atrack=slice(offset_atrack - dist['atrack'], offset_atrack + dist['atrack'] - 1),
-            xtrack=slice(offset_xtrack - dist['xtrack'], offset_xtrack + dist['xtrack'] - 1)
+            line=slice(offset_line - dist['line'], offset_line + dist['line'] - 1),
+            sample=slice(offset_sample - dist['sample'], offset_sample + dist['sample'] - 1)
         )
         sigma0 = small_sar.sigma0.values
         #Skip if there is land within the image or if there are nans due to subimages over edges of the original image
         if np.any(small_sar.land_mask) or np.any(np.isnan(sigma0)): continue
             
-        img_center_lon, img_center_lat = sar_ds.coords2ll(offset_atrack, offset_xtrack)
+        img_center_lon, img_center_lat = sar_ds.coords2ll(offset_line, offset_sample)
 
         out_path = os.path.join(out_dir, f'{sar_name}-{bouy_name}-{crop_index}.tif')
         tif.imwrite(out_path,
@@ -96,7 +96,7 @@ def create_subimages(sar_name, bouy, bouy_df, sar_ds, dist):
                         'bouy_name':bouy_name,
                         'subimage_index':crop_index,
                         'pol':list(small_sar['pol'].values),
-                        'time':str(np.array([small_sar.sel(atrack=offset_atrack, method='nearest')['time'].values], dtype="datetime64[ns]")[0]),
+                        'time':str(np.array([small_sar.sel(line=offset_line, method='nearest')['time'].values], dtype="datetime64[ns]")[0]),
                         'lon':img_center_lon,
                         'lat':img_center_lat,
                     })
@@ -107,14 +107,14 @@ def handle_url(args):
     #print('Handling url:', url)
 
     with sar_download(url) as safe_path:
-        # atrack = line, xtrack = sample
+        # line = line, sample = sample
         sar_meta = xsar.Sentinel1Meta(safe_path)
         sar_ds = xsar.Sentinel1Dataset(sar_meta)
 
         sar_name = url.split('/')[-1].split('.')[0]
         dist = {
-            'atrack': int(np.round(box_size / 2 / sar_meta.pixel_atrack_m)),
-            'xtrack': int(np.round(box_size / 2 / sar_meta.pixel_xtrack_m))
+            'line': int(np.round(box_size / 2 / sar_meta.pixel_line_m)),
+            'sample': int(np.round(box_size / 2 / sar_meta.pixel_sample_m))
         }
     
         bouy_df_part = bouy_survey_df[bouy_survey_df.sar_url == url]
