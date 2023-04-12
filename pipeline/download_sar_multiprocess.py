@@ -18,18 +18,16 @@ from zipfile import ZipFile
 import os
 import sys
 import tifffile as tif
-from multiprocessing import Manager
 import multiprocessing
-from concurrent.futures import ProcessPoolExecutor
 import xarray as xr
 import xsar
 
-out_dir = '/data/exjobb/sarssw/sar_multiprocess2/'
+out_dir = '/data/exjobb/sarssw/sar_multiprocess3/'
 tmp_dir = '/data/exjobb/sarssw/tmp/'
-bouy_survey_path = '/data/exjobb/sarssw/sar_test_multiprocess/bouy_survey_head' #'/home/sarssw/filip/sarssw/bouy_survey/1h_survey/result_df'
+bouy_survey_path = '/home/sarssw/filip/sarssw/bouy_survey/1h_survey/result_df'
 existing_img_dir = '/data/exjobb/sarssw/sar'
 
-num_processes = 3 #10
+num_processes = 10
 handle_url_max_retries = 3
 box_size = 2000 # 2km
 
@@ -68,11 +66,11 @@ def sar_download_check_local(url):
     #if files is found locally
     safe_name = url.split('/')[-1].split('.')[0] + '.SAFE'
     if os.path.isdir(existing_img_dir) and safe_name in os.listdir(existing_img_dir):
-        print(f'Found {url} locally')
+        #print(f'Found {url} locally')
         yield os.path.join(existing_img_dir, safe_name)
 
     else:
-        print(f'Downloading {url}')
+        #print(f'Downloading {url}')
         with tempfile.TemporaryDirectory(dir = tmp_dir) as tmp_dir_local:
             zip_name = url.split('/')[-1]
 
@@ -149,10 +147,8 @@ def create_subimages(sar_name, bouy, bouy_df, sar_ds, dist):
     for attr_name, attr_value in [('sar_name', sar_name), ('bouy_name', bouy_name), ('polarisations', ' '.join(large_subimage['pol'].values))]:
         large_subimage.attrs[attr_name] = attr_value
     
-    print('1')#TODO
     #Load large_subimg to memory
     large_subimage.load(scheduler='threads')
-    print('2')#TODO
 
     #Iterate over all subimages, extract and save
     for subimage_index, (line_min_offset, line_offset_center, line_max_offset, sample_min_offset, sample_offset_center, sample_max_offset) in subimage_abs_offsets.items():
@@ -181,10 +177,8 @@ def create_subimages(sar_name, bouy, bouy_df, sar_ds, dist):
 
         #Drop landmask & time data variables
         subimage = subimage.drop_vars(['land_mask', 'time'])
-        #print(subimage) #TODO remove
 
         out_path = os.path.join(out_dir, f'{sar_name}-{bouy_name}-{subimage_index}.nc')
-        #print(out_path) #TODO remove
 
         subimage.to_netcdf(path=out_path)
 
@@ -217,16 +211,13 @@ def handle_url(args):
 
 def handle_url_with_retry(args):
     "Wraps exception handling around the handle_url"
-    url, bouy_survey_df, shutdown = args
-    if shutdown.is_set():
-        print('Do not start')
-        sys.exit(1)
+    url, bouy_survey_df = args
 
     for tries in range(1, handle_url_max_retries + 1):
         if tries > 1:
             print(f'Retrying (try {tries}) URL {url}')
         try:
-            handle_url([url, bouy_survey_df])
+            handle_url(args)
             break
 
         except Exception as e:
@@ -242,22 +233,18 @@ def multiprocess_urls(urls, bouy_survey_df):
     if num_processes == 1:
         for url in tqdm(urls):
             handle_url_with_retry((url, bouy_survey_df))
-            #handle_url((url, bouy_survey_df)) #TODO
 
     else:
-        #with multiprocessing.Pool(num_processes) as pool, Manager() as manager:
-        with ProcessPoolExecutor(num_processes) as pool, Manager() as manager:
+        with multiprocessing.Pool(num_processes) as pool, multiprocessing.Manager() as manager:
             try:
                 shutdown = manager.Event()
-                #for _ in tqdm(pool.imap_unordered(handle_url_with_retry, zip(urls, repeat(bouy_survey_df, len(urls)), repeat(shutdown, len(urls)))), total=len(urls)):
-                for _ in tqdm(pool.map(handle_url_with_retry, zip(urls, repeat(bouy_survey_df, len(urls)), repeat(shutdown, len(urls)))), total=len(urls)):
+                for _ in tqdm(pool.imap_unordered(handle_url_with_retry, zip(urls, repeat(bouy_survey_df, len(urls)))), total=len(urls)):
                     pass
 
             except KeyboardInterrupt:
                 shutdown.set()
                 print('Parent keyboard interrupt caught, shutdown (waiting)')
-                pool.shutdown(wait=True, cancel_futures=True)
-                #pool.terminate()
+                pool.terminate()
                 print('Shutdown done')
                 sys.exit('Keyboard interrupt')
 
