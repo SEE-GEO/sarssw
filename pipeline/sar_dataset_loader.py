@@ -271,13 +271,13 @@ if __name__ == "__main__":
     #Sar image dir
     sar_dir = '/data/exjobb/sarssw/sar_dataset/'   
     all_sar_images = os.listdir(sar_dir)
-    all_sar_paths = [os.path.join(sar_dir, f) for f in all_sar_images[1000:5000]]
+    all_sar_paths = [os.path.join(sar_dir, f) for f in all_sar_images]
 
     #Svc file for homogenity test
     svc_file = './homogenity_svc.pkl'
 
     #Where to save the resulting dataframe
-    result_dir = '/data/exjobb/sarssw/sar_dataset_features_labels/'
+    result_dir = '/data/exjobb/sarssw/sar_dataset_features_labels_test/'
     result_fn = "sar_dataset.pickle"
 
 
