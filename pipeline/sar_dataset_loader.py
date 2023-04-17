@@ -252,10 +252,10 @@ def load_labels_df(bouy_survey_path, swh_model_path, wspd_model_path, sar_bouy_d
 
     return labels_df
 
-def load_features_labels_df(sar_dir, svc_file, bouy_survey_fn, swh_model_fn, wspd_model_fn):
+def load_features_labels_df(sar_paths, svc_file, bouy_survey_fn, swh_model_fn, wspd_model_fn):
     "This function is load s a dataframe containing both features and labels"
 
-    features_df = load_features_df(sar_dir, svc_file)
+    features_df = load_features_df(sar_paths, svc_file)
     sar_bouy_df = features_df[['sar_name', 'bouy_name']].drop_duplicates()
     labels_df = load_labels_df(bouy_survey_fn, swh_model_fn, wspd_model_fn, sar_bouy_df)
 
@@ -263,7 +263,28 @@ def load_features_labels_df(sar_dir, svc_file, bouy_survey_fn, swh_model_fn, wsp
 
 
 if __name__ == "__main__":
-    sar_dir = '/data/exjobb/sarssw/sar_multiprocess/'   
-    svc_file = './out/homogenity_svc.pkl'
-    feature_df = load_features_df(sar_dir, svc_file)
-    print(feature_df)
+    #Bouy survey and model paths
+    bouy_survey_fn = '../bouy_survey/1h_survey/result_df'
+    swh_model_fn = '/data/exjobb/sarssw/model/2021_swh_era5_world_wide.nc'
+    wspd_model_fn = '/data/exjobb/sarssw/model/WIND_GLO_PHY_global/all.nc'
+
+    #Sar image dir
+    sar_dir = '/data/exjobb/sarssw/sar_dataset/'   
+    all_sar_images = os.listdir(sar_dir)
+    all_sar_paths = [os.path.join(sar_dir, f) for f in all_sar_images[1000:5000]]
+
+    #Svc file for homogenity test
+    svc_file = './homogenity_svc.pkl'
+
+    #Where to save the resulting dataframe
+    result_dir = '/data/exjobb/sarssw/sar_dataset_features_labels/'
+    result_fn = "sar_dataset.pickle"
+
+
+    dataset_df = load_features_labels_df(all_sar_paths, svc_file, bouy_survey_fn, swh_model_fn, wspd_model_fn)
+    
+    #Create dictionary
+    os.makedirs(result_dir, exist_ok=True)
+    
+    #Save dataframe with pickle
+    dataset_df.to_pickle(os.path.join(result_dir, result_fn))
