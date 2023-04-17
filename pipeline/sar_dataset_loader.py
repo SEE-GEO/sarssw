@@ -57,7 +57,7 @@ class Var_results:
 def wspd_power_law(wspd, depth):
     #If the height is 0 assume 10 meters
     if depth == 0:
-        return wspd_power_law(wspd, 10)
+        return wspd_power_law(wspd, -10)
     
     return wspd * (10/(-1*depth))**0.11
         
@@ -154,10 +154,13 @@ def load_labels_df(bouy_survey_path, swh_model_path, wspd_model_path, sar_bouy_d
         'WSPD': lambda row: wspd_power_law(row['bouy_variable_value'], row['bouy_depth']),
     }
     
-    var_list = ['SWH', 'WSPD']
-    var_names = {
-        'SWH': ['VHM0', 'VAVH'],
-        'WSPD': ['WSPD'],
+    var_type_list = ['SWH', 'WSPD']
+    
+    var_order = ['VAVH', 'VHM0', 'WSPD']
+    var_types_dict = {
+        'VHM0':'SWH',
+        'VAVH':'SWH',
+        'WSPD': 'WSPD',
     }
 
     models = {
@@ -203,41 +206,46 @@ def load_labels_df(bouy_survey_path, swh_model_path, wspd_model_path, sar_bouy_d
 
         #Extract value(s) form survey
         #The result can contain multiple rows, one for each measurement (wind speed, wave height as VHM0 and/or VAVH)
-        survey_results = bouy_survey_df.loc[(sar_name, bouy_name)]
+        #It is sorted by the priority of the variables according to the order in var_order
+        survey_results = bouy_survey_df.loc[(sar_name, bouy_name)]\
+            .sort_values(by=['bouy_variable_name'], key=(lambda series: series.apply(lambda var: var_order.index(var))))
+        
         #save longitude, latitude and time for eventual model search
         lon, lat, start_time, end_time = survey_results.iloc[0][['bouy_longitude', 'bouy_latitude', 'sar_start_time', 'sar_stop_time']]
         time = start_time+(end_time-start_time)/2
 
         #Save value(s) from survey
         for label, result in survey_results.iterrows():
-            for var in var_list:
-                if (result['bouy_variable_name'] in var_names[var]) and (not result_vars[var].found):
-                    result_vars[var].found = True
-                    result_vars[var].source = 'bouy'
-                    result_vars[var].value = suvey_value_functions[var](result)
-                    result_vars[var].lon = result['bouy_longitude']
-                    result_vars[var].lat = result['bouy_latitude']
-                    result_vars[var].time = result['bouy_time']
+            var = result['bouy_variable_name']
+            var_type = var_types_dict[var] 
+          
+            if (not result_vars[var_type].found):
+                result_vars[var_type].found = True
+                result_vars[var_type].source = 'bouy'
+                result_vars[var_type].value = suvey_value_functions[var_type](result)
+                result_vars[var_type].lon = result['bouy_longitude']
+                result_vars[var_type].lat = result['bouy_latitude']
+                result_vars[var_type].time = result['bouy_time']
 
         #Complete missing value form model
-        for var in var_list:
-            if not result_vars[var].found:
-                model_lon = model_coords_columns[var]['longitude']
-                model_lat = model_coords_columns[var]['latitude']
-                model_time = model_coords_columns[var]['time']
+        for var_type in var_type_list:
+            if not result_vars[var_type].found:
+                model_lon = model_coords_columns[var_type]['longitude']
+                model_lat = model_coords_columns[var_type]['latitude']
+                model_time = model_coords_columns[var_type]['time']
 
-                model_result = models[var].interp({
+                model_result = models[var_type].interp({
                     model_lon:xr.DataArray([lon], dims='unused_dim'),
                     model_lat:xr.DataArray([lat], dims='unused_dim'),
                     model_time:xr.DataArray([time], dims='unused_dim')},
                     method='linear').to_dataframe().iloc[0]
 
-                result_vars[var].found = True
-                result_vars[var].source = 'model'
-                result_vars[var].value = model_value_functions[var](model_result)
-                result_vars[var].lon = model_result[model_lon]
-                result_vars[var].lat = model_result[model_lat]
-                result_vars[var].time = model_result[model_time]
+                result_vars[var_type].found = True
+                result_vars[var_type].source = 'model'
+                result_vars[var_type].value = model_value_functions[var_type](model_result)
+                result_vars[var_type].lon = model_result[model_lon]
+                result_vars[var_type].lat = model_result[model_lat]
+                result_vars[var_type].time = model_result[model_time]
 
         #Append result to the dataframe
         labels_df.loc[len(labels_df.index)] = [sar_name, bouy_name] + result_vars['SWH'].to_list() + result_vars['WSPD'].to_list()
