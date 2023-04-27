@@ -4,18 +4,19 @@
 This module is used to extract the complete dataset with features and labels from the folder with sar subimages
 """
 
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import pickle
 import os
 import math
-import xarray as xr
-
-import tifffile as tif
-from collections import defaultdict
+import hashlib
+import random
 from itertools import islice
 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import xarray as xr
+import tifffile as tif
+from collections import defaultdict
 from skimage.feature import graycomatrix, graycoprops
 from skimage import io, color, img_as_ubyte
 from tqdm import tqdm
@@ -49,6 +50,43 @@ class Var_results:
             self.lat,
             self.time,
         ]
+
+def hash_split(input, prob_list=[0.6, 0.2, 0.2], values=['train', 'test', 'val'], seed_string=""):
+    """
+    This function gives the input into train, test and validation sets,
+    It is hash based and will always categorize the same input into the same set if the other parameters are the same 
+    
+    Parameters
+    input: the string, tuple of strings, or series of strings to be categorized
+    prob_list: the probability of each value
+    values: the values to be returned
+    
+    Returns
+    a one of the values 'train', 'test' or 'val' based on the hash of input in proportion to the prob_list
+    """
+    
+    if len(prob_list) != len(values):
+        raise ValueError(f"prob_list={prob_list} and values={values} must be the same length")
+
+    #join tuple to string
+    if type(input) == tuple:
+        " ".join(input)
+    #join series to string
+    elif type(input) == pd.Series:
+        input = input.str.cat(sep=' ')
+        
+    max_hash_int = 2**32
+    # hash the input string and convert to a positive integer
+    hash_int = int(hashlib.sha256((input+seed_string).encode()).hexdigest(), 16) % max_hash_int
+
+    # use the hash integer to return a weighted value
+    total_weight = sum(prob_list)
+    r = hash_int / (max_hash_int-1) * total_weight #in the range between 0 and total_weight
+    for i, w in enumerate(prob_list):
+        r -= w
+        if r < 0:
+            return values[i]
+    raise Exception(f"Error in hash_split(input={input}, prob_list={prob_list}, values={values})")
 
 #to adjust the wind speed acording to the wind profile power law
 #found at https://en.wikipedia.org/wiki/Wind_profile_power_law
@@ -148,7 +186,7 @@ def load_labels_df(bouy_survey_path, swh_model_path, wspd_model_path, sar_bouy_d
     #Configure and program how the models work
     
     #Program how the labels are loaded from the survey dataframe
-    #His saves wave high as is and hight adjusts wind speed to 10m using the power law
+    #This saves wave high as is and hight adjusts wind speed to 10m using the power law
     suvey_value_functions = {
         'SWH': lambda row: row['bouy_variable_value'],
         'WSPD': lambda row: wspd_power_law(row['bouy_variable_value'], row['bouy_depth']),
@@ -253,14 +291,20 @@ def load_labels_df(bouy_survey_path, swh_model_path, wspd_model_path, sar_bouy_d
     return labels_df
 
 def load_features_labels_df(sar_paths, svc_file, bouy_survey_fn, swh_model_fn, wspd_model_fn):
-    "This function is load s a dataframe containing both features and labels"
+    "This function is load s a dataframe containing metadata, features and labels"
 
     features_df = load_features_df(sar_paths, svc_file)
     sar_bouy_df = features_df[['sar_name', 'bouy_name']].drop_duplicates()
     labels_df = load_labels_df(bouy_survey_fn, swh_model_fn, wspd_model_fn, sar_bouy_df)
 
-    return features_df.set_index(['sar_name', 'bouy_name']).sort_index().join(labels_df.set_index(['sar_name', 'bouy_name']).sort_index())
+    #join (database join) the two dataframes on index ['sar_name', 'bouy_name'] wich are the shared columns among the two dataframes 
+    features_labels_df = features_df.set_index(['sar_name', 'bouy_name']).join( \
+        labels_df.set_index(['sar_name', 'bouy_name'])).reset_index()
 
+    #Add split column, hash based on the sar_name and bouy_name columns
+    features_labels_df['split'] = features_labels_df[['sar_name', 'bouy_name']].apply(hash_split, axis=1)
+
+    return features_labels_df
 
 if __name__ == "__main__":
     #Bouy survey and model paths
