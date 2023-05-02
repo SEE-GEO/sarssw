@@ -1,9 +1,16 @@
+#!/usr/bin/env python3
+
+"""
+This program extracts the bouy data that overlaps with a SAR image and saves it in a dataframe, it also plots this data in KML maps.
+
+Configure this program by setting the variables in main function and the options variable in the search_file function.
+"""
+
 import numpy as np
 import pandas as pd
 import xarray as xr
 import os
 import asf_search as asf
-from collections import defaultdict
 import datetime
 import pickle
 from tqdm import tqdm
@@ -15,12 +22,14 @@ import lxml
 from pykml.factory import KML_ElementMaker as KML
 import cartopy
 
-#Extracts data from the dataset ds within the time_filter (tuple or timespan) interval for the 
-#variable var_name found in the deph range deph_range in meters, positive is under water, negative above water
-#It can be either a tuble (min,max) or a value it needs to equal
-#Quality controll is made for position, deph, time, and the variable
-#Note depth is the coordinate index while deph (without t) is the actual depth in meters 
 def valid_data_extraction(ds, time_filter, var_name, deph_range):
+    """
+    Extracts data from the dataset ds within the time_filter (tuple or timespan) interval for the 
+    variable var_name found in the deph range deph_range in meters, positive is under water, negative above water
+    It can be either a tuble (min,max) or a value it needs to equal
+    Quality control is made for position, deph, time, and the variable
+    Note depth is the coordinate index while deph (without t) is the actual depth in meters 
+    """
     if var_name not in ds.data_vars:
         raise ValueError(var_name, ' Not found')
 
@@ -93,27 +102,28 @@ def valid_data_extraction(ds, time_filter, var_name, deph_range):
 
     return df
 
+    """
 
-# Searches for SAR images that overlaps with the data in file according to the filters specified by the arguments:
+    """
+def search_file(file, data_dir, start_date, end_date, variables_dephs, max_time_diff_s, land_multipolygon, result_df):    
+    """
+    Searches for SAR images that overlaps with the data in file according to the filters specified by the arguments:
+    The data is also quiality controlled and only rows containing valid in regards to the variable, time, position and depth are accepted
 
-# file: specifies the file name of the bouy data
+    Args:
+        file: specifies the file name of the bouy data
+        data_dir: is the directory of file
+        start_date & end_date: are the time filters for the data
+        variables_dephs: The keys are the variable to extract data for while the values are the accepted depth ranges (in meters) for the corresponding variable negative values are depth under surface while positive is above 
+        max_time_diff_s: Is the absolute time difference between image and bouy observation in seconds
+        land_multipolygon: is the shapely multipolygon object that describes the land and close to shore map of earth
+    observations from these areas are filtered
+        result_df: is the dataframe where the result is saved, if it is passed as None it is automatically created with the correct columns
 
-# data_dir: is the directory
-
-# start_date & end_date: are the time filters for the data
-
-# variables_dephs: The keys are the variable to extract data for while the values are the accepted depth ranges 
-# (in meters) for the corresponding variable negative values are depth under surface while positive is above 
-
-# max_time_diff_s: Is the absolute time difference between image and bouy observation in seconds
-
-# land_multipolygon: is the shapely multipolygon object that describes the land and close to shore map of earth
-# observations from these areas are filtered
-
-# result_df: is the dataframe where the result is saved, if it is passed as None it is automatically created with the correct columns
-
-# The data is also quiality controlled and only rows containing valid in regards to the variable, time, position and depth are accepted
-def search_file(file, data_dir, start_date, end_date, variables_dephs, max_time_diff_s, land_multipolygon, result_df):
+    Returns:
+        result_df
+    """
+    
     #Conditionally create the result dataframe
     if result_df is None:
         result_df = pd.DataFrame({c: pd.Series(dtype=t) for c, t in {
