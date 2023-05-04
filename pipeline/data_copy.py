@@ -3,8 +3,8 @@
 This script is used to move the files for training, testing and/or validation to the tempdir on Alvis
 
 For example running:
-python data_copy.py --src /mimer/NOBACKUP/priv/chair/sarssw/sar_dataset/ --dest ${TMPDIR}/data --data_df /mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_27_april/sar_dataset_split.pickle --train --train_limit 1000 --val --val_limit 33 --non_nan --homogeneous --swath 'IW' --polarisation 'VV VH'
-In slurm would save 1000 train and 33 validation images in ${TMPDIR}/data filtered for non_nan values, homogeneouity, swath=IW and polarisation=VV VH
+python data_copy.py --src /mimer/NOBACKUP/priv/chair/sarssw/sar_dataset/ --dest ${TMPDIR}/data --data_df /mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_27_april/sar_dataset_split.pickle --train --train_limit 1000 --val --val_limit 33 --non_nan --homogeneous --swaths 'IW' --polarisations 'VV VH'
+In slurm would save 1000 train and 33 validation images in ${TMPDIR}/data filtered for non_nan values, homogeneouity, swaths=IW and polarisations=VV VH
 """
 
 import pickle
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     parser.add_argument('--val_limit', type=int, default=None, help='Set a limit on the number of files saved for the val dataset. Not specifying gives all data')
     parser.add_argument('--non_nan', action='store_true', help='Enables filtering for only data without nans')
     parser.add_argument('--homogeneous', action='store_true', help='Enables filtering for only data that passed the homogeneous filter')
-    parser.add_argument('--swath', help="Enables filtering to only include the specified swaths, seperate the swatchs with comma. i.e 'IW,EW' to include both IW and EW")
+    parser.add_argument('--swaths', help="Enables filtering to only include the specified swaths, seperate the swatchs with comma. i.e 'IW,EW' to include both IW and EW")
     parser.add_argument('--polarisations', help="Enables filtering to only include images with the specified polarisations, seperate the polarisations with comma. i.e 'VV VH,HH HV' would include files with both VV VH and HH HV polarisations")
     parser.add_argument('--debug', action='store_true', help='Used for debugging. Print the number of files that would be copied if this flag was not present')
 
@@ -44,30 +44,29 @@ if __name__ == "__main__":
     with open(args.data_df, 'rb') as f:
         fl_df = pickle.load(f)
 
-    #filter data
+    #Filter for files without images with nan values
     if args.non_nan:
-        fl_df = fl_df[~fl_df.isna().apply(any, axis=1)]
+        fl_df_any_nan = fl_df
+        fl_df_any_nan['any_nan_row_wise'] = fl_df_any_nan.isna().apply(any, axis=1)
+        grouped_any_nan = fl_df_any_nan.groupby(['file_name', 'polarisations'])['any_nan_row_wise']
+        fl_df = fl_df[~grouped_any_nan.transform("any")]
 
+    #Filter for files with only homogeneous images
     if args.homogeneous:
-        fl_df = fl_df[fl_df['hom_test']]
+        grouped_hom_test = fl_df.groupby(['file_name', 'polarisations'])['hom_test']
+        fl_df = fl_df[grouped_hom_test.transform("all")]
 
-    if args.swath is not None:
-        print(f"args.swath: {args.swath}")
-        print(f"type(args.swath): {type(args.swath)}")
-        swath_filter = [s.strip() for s in args.swath.split(',')]
-        print(f"swath_filter: {swath_filter}")
-        fl_df = fl_df[fl_df['swath'].isin(swath_filter)]
+    #Filter based on swaths
+    if args.swaths is not None:
+        swaths_filter = [s.strip() for s in args.swaths.split(',')]
+        print(f"swaths_filter: {swaths_filter}")
+        fl_df = fl_df[fl_df['swath'].isin(swaths_filter)]
 
-
+    #Filter based on polarisations
     if args.polarisations is not None:
-        print(f"args.polarisations: {args.polarisations}")
-        print(f"type(args.polarisations): {type(args.polarisations)}")
         pol_filter = [p.strip() for p in args.polarisations.split(',')]
         print(f"pol_filter: {pol_filter}")
         fl_df = fl_df[fl_df['polarisations'].isin(pol_filter)]
-
-    #fl_df = fl_df[fl_df['swath'] == 'IW']
-    #fl_df = fl_df[fl_df['pol'].isin(['HH', 'HV'])]
 
     dataset_filter = [(name, limit) for (flag, name, limit) in datasets if flag]
 
