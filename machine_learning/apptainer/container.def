@@ -1,0 +1,12 @@
+Bootstrap: docker
+From: pytorch/pytorch:2.0.0-cuda11.7-cudnn8-devel
+
+# %post
+#     /opt/conda/bin/conda install -y -c conda-forge numpy pandas matplotlib xarray dask scipy packaging tifffile netcdf4
+#     /opt/conda/bin/conda install -y -c pytorch torchvision pytorch-lightning
+
+%files
+    my_environment.yml
+
+%post
+    conda env update --file my_environment.yml

@@ -1,0 +1,37 @@
+name: base
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - dask=2023.3.2=py310h06a4308_0
+  - dask-core=2023.3.2=pyhd8ed1ab_0
+  - matplotlib=3.7.1=py310hff52083_0
+  - matplotlib-base=3.7.1=py310h1128e8f_1
+  - matplotlib-inline=0.1.6=py310h06a4308_0
+  - netcdf4=1.6.2=py310h6d89c78_0
+  - numpy=1.23.5=py310hd5efca6_0
+  - numpy-base=1.23.5=py310h8e6c178_0
+  - packaging=23.1=pyhd8ed1ab_0
+  - pandas=1.5.3=py310h1128e8f_0
+  - pytorch-lightning=1.9.3=py310h06a4308_0
+  - scipy=1.8.1=py310h7612f91_0
+  - tifffile=2021.4.8=pyhd8ed1ab_0
+  - torchvision=0.15.0=py310_cu117
+  - xarray=2023.4.2=pyhd8ed1ab_0
+  - pip:
+      - astunparse==1.6.3
+      - attrs==22.2.0
+      - dnspython==2.3.0
+      - exceptiongroup==1.1.1
+      - expecttest==0.1.4
+      - hypothesis==6.70.0
+      - mpmath==1.3.0
+      - networkx==3.0
+      - pyqt5-sip==12.11.0
+      - python-etcd==0.4.5
+      - torchelastic==0.2.2
+      - types-dataclasses==0.6.6
+      - typing-extensions==4.5.0
+prefix: /opt/conda
