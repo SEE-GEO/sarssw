@@ -15,19 +15,19 @@ from torch.utils.data import Dataset, DataLoader
 from pytorch_lightning.callbacks import LearningRateFinder
 import torch.nn.functional as F
 import pytorch_lightning as pl
-print("CUDA reachable?", torch.cuda.is_available())
-print("PyTorch version?", torch.__version__)
-print('lightning version', pl.__version__)
+import optuna
+from optuna.integration import PyTorchLightningPruningCallback
+print('optuna')
 
 torch.set_float32_matmul_precision('high')
 
 sar_dir = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset'
 fl_df_path = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_27_april/sar_dataset_split.pickle'
 
-#n_files = 10000
-#file_filter = lambda fn: fn.is_file() and fn.name.endswith('.nc') and 'IW' in fn.name
-#sar_dataset_files = list(islice((fn.name for fn in os.scandir(sar_dir) if file_filter(fn)), n_files))
-sar_dataset_files = [f for f in os.listdir(sar_dir) if f.endswith('.nc') and 'IW' in f]
+n_files = 10000
+file_filter = lambda fn: fn.is_file() and fn.name.endswith('.nc') and 'IW' in fn.name
+sar_dataset_files = list(islice((fn.name for fn in os.scandir(sar_dir) if file_filter(fn)), n_files))
+#sar_dataset_files = [f for f in os.listdir(sar_dir) if f.endswith('.nc') and 'IW' in f]
 
 with open(fl_df_path, 'rb') as f:
     fl_df = pickle.load(f)
@@ -100,16 +100,12 @@ class CustomDataset(Dataset):
         return features, labels
 
 class FeatureRegressor(pl.LightningModule):
-    def __init__(self, feature_dim, learning_rate=1e-3):
+    def __init__(self, feature_dim, layer1_size, layer2_size, learning_rate):
         super(FeatureRegressor, self).__init__()
         self.learning_rate = learning_rate
-        self.fc1 = nn.Linear(feature_dim, 256)
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 2)
-        
-        self.final_val_mse = None
-        self.final_val_rmse = None
-        self.final_val_mae = None
+        self.fc1 = nn.Linear(feature_dim, layer1_size)
+        self.fc2 = nn.Linear(layer1_size, layer2_size)
+        self.fc3 = nn.Linear(layer2_size, 2)
      
     def forward(self, features):
         x = F.relu(self.fc1(features))
@@ -161,23 +157,37 @@ val_dataset = CustomDataset(fl_df, split='val', scale_features=True, mean=train_
 train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16)
 val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16)
 
-# Create the LightningModule and Trainer instances
-feature_dim = train_dataset.feature_dim
-model = FeatureRegressor(feature_dim)
+def create_model(trial: optuna.trial.Trial) -> FeatureRegressor:
+    feature_dim = train_dataset.feature_dim
+    learning_rate = trial.suggest_loguniform("learning_rate", 1e-5, 1e-1)
+    layer1_size = trial.suggest_int("layer1_size", 16, 512)
+    layer2_size = trial.suggest_int("layer2_size", 16, 512)
 
-class FineTuneLearningRateFinder(LearningRateFinder):
-    def __init__(self, milestones, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.milestones = milestones
+    model = FeatureRegressor(feature_dim, layer1_size, layer2_size, learning_rate)
 
-    def on_fit_start(self, *args, **kwargs):
-        return
+    return model
 
-    def on_train_epoch_start(self, trainer, pl_module):
-        if trainer.current_epoch in self.milestones or trainer.current_epoch == 0:
-            self.lr_find(trainer, pl_module)
+def objective(trial: optuna.trial.Trial) -> float:
+    model = create_model(trial)
 
-trainer = pl.Trainer(accelerator='gpu', max_epochs=100, callbacks=[FineTuneLearningRateFinder(milestones=(5, 10))], log_every_n_steps=30)
+    # Set up the PyTorch Lightning Trainer with the pruning callback
+    trainer = pl.Trainer(
+        accelerator='gpu',
+        max_epochs=100,
+        callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_mse_loss")],
+    )
 
-# Train the model
-trainer.fit(model, train_loader, val_loader)
+    # Train the model
+    trainer.fit(model, train_loader, val_loader)
+
+    # Get the best validation loss
+    val_loss = trainer.callback_metrics["val_mse_loss"]
+
+    return val_loss
+
+# Create the Optuna study and optimize the objective function
+study = optuna.create_study(direction="minimize", pruner=optuna.pruners.MedianPruner())
+study.optimize(objective, n_trials=100, timeout=3600)
+
+# Print the best hyperparameters
+print("Best hyperparameters:", study.best_params)
