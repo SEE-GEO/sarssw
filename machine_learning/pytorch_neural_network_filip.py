@@ -9,6 +9,7 @@ import os
 import shutil
 from itertools import islice
 import argparse
+import random
 
 import numpy as np
 import pandas as pd
@@ -21,13 +22,48 @@ import torch.optim as optim
 from torch.utils.data import Dataset
 import torch.nn.functional as F
 from torchvision.transforms import Compose, ToTensor
+from torchvision.models import resnet18
+import torchvision.transforms.functional as TF
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
-from torchvision.models import resnet18
+
+class RandomRotationTransform:
+    """Rotate by one of the given angles."""
+
+    def __init__(self, angles):
+        self.angles = angles
+
+    def __call__(self, img):
+        angle = random.choice(self.angles)
+        return TF.rotate(img, angle)
+    
+class RandomHFlipTransform:
+    """Randomly horizontally flip the image with specified probability."""
+
+    def __init__(self, probability):
+        self.probability = probability
+
+    def __call__(self, img):
+        if random.random() < self.probability:
+            return TF.hflip(img)
+        else:
+            return img
+
+class RandomVFlipTransform:
+    """Randomly vertically flip the image with specified probability."""
+
+    def __init__(self, probability):
+        self.probability = probability
+
+    def __call__(self, img):
+        if random.random() < self.probability:
+            return TF.vflip(img)
+        else:
+            return img
 
 class CustomDataset(Dataset):
-  def __init__(self, data_dir, dataframe_path):
+  def __init__(self, data_dir, dataframe_path, transforms=None):
     if not os.path.isdir(data_dir):
        raise ValueError(f"The data directory {data_dir} not found")
     
@@ -50,6 +86,8 @@ class CustomDataset(Dataset):
 
     self.df = fl_df_merged
     self.sar_dir = data_dir
+    if transforms is None:
+        self.transforms = Compose([transforms])
 
   def __len__(self):
     return len(self.df)
@@ -59,14 +97,18 @@ class CustomDataset(Dataset):
     # Get image file name from the DataFrame
     file_name = df_row.file_name
     image_path = os.path.join(self.sar_dir, file_name)
-    image = xr.open_dataset(image_path).sigma0.values.astype(np.float32) #TODO should we use 64 bit?
+    image = torch.tensor(xr.open_dataset(image_path).sigma0.values.astype(np.float32)) #TODO should we use 64 bit?
+
+    # Apply transform if it exists
+    if self.transform is not None:
+        image = self.transform(image)
 
     # Get features and labels from the DataFrame
     features = df_row[[f + p for f in self.features for p in ['_VV', '_VH']]].values.astype(np.float32)
     #The labels are the same for the two polarisations to we pick the labels from VV
     labels = df_row[['SWH_value_VV', 'WSPD_value_VV']].values.astype(np.float32)
 
-    return torch.tensor(image), torch.tensor(features), torch.tensor(labels)
+    return image, torch.tensor(features), torch.tensor(labels)
 
 class ImageFeatureRegressor(pl.LightningModule):
     def __init__(self, feature_dim):
@@ -145,7 +187,14 @@ if __name__ == "__main__":
     print('lightning version', pl.__version__)
 
     # Create the datasets
-    train_dataset = CustomDataset(os.path.join(args.data_dir, 'train'), args.dataframe_path)
+    train_dataset = CustomDataset(
+        os.path.join(args.data_dir, 'train'),
+        args.dataframe_path,
+        transforms=[
+            RandomRotationTransform(angles=[0, 90, 180, 270]),
+            RandomHFlipTransform(probability=0.5),
+            RandomVFlipTransform(probability=0.5)]
+            )
     val_dataset = CustomDataset(os.path.join(args.data_dir, 'val'), args.dataframe_path)
 
     # Create data loaders for training and validation sets
