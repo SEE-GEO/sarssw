@@ -15,13 +15,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import xarray as xr
+from tqdm import tqdm
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, DataLoader
 import torch.nn.functional as F
-from torchvision.transforms import Compose, ToTensor
+from torchvision.transforms import Compose, Normalize, RandomHorizontalFlip, RandomVerticalFlip, ToTensor
 from torchvision.models import resnet18
 import torchvision.transforms.functional as TF
 import pytorch_lightning as pl
@@ -38,32 +39,8 @@ class RandomRotationTransform:
         angle = random.choice(self.angles)
         return TF.rotate(img, angle)
     
-class RandomHFlipTransform:
-    """Randomly horizontally flip the image with specified probability."""
-
-    def __init__(self, probability):
-        self.probability = probability
-
-    def __call__(self, img):
-        if random.random() < self.probability:
-            return TF.hflip(img)
-        else:
-            return img
-
-class RandomVFlipTransform:
-    """Randomly vertically flip the image with specified probability."""
-
-    def __init__(self, probability):
-        self.probability = probability
-
-    def __call__(self, img):
-        if random.random() < self.probability:
-            return TF.vflip(img)
-        else:
-            return img
-
 class CustomDataset(Dataset):
-  def __init__(self, data_dir, dataframe_path, transforms=None):
+  def __init__(self, data_dir, dataframe_path, transform=None):
     if not os.path.isdir(data_dir):
        raise ValueError(f"The data directory {data_dir} not found")
     
@@ -86,8 +63,7 @@ class CustomDataset(Dataset):
 
     self.df = fl_df_merged
     self.sar_dir = data_dir
-    if transforms is None:
-        self.transforms = Compose([transforms])
+    self.transform = transform
 
   def __len__(self):
     return len(self.df)
@@ -175,10 +151,36 @@ class ImageFeatureRegressor(pl.LightningModule):
         # Return the metric(s) as a dictionary
         return log_dict
 
+# In large parts taken from https://kozodoi.me/blog/20210308/compute-image-stats
+def dataset_mean_std(dataset):
+    "Returns the pixel mean and standared deviation of a dataset"
+    dataset_loader = DataLoader(dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
+    
+    n_channels, x_pixels, y_pixels = dataset[0][0].shape
+    pixel_value_sum = torch.tensor([0.0]*n_channels)
+    pixel_value_squared_sum = torch.tensor([0.0]*n_channels)
+
+    # loop through images
+    print("Computing mean and std")
+    for images, features, labels in tqdm(dataset_loader):
+        pixel_value_sum += images.sum(axis = [0, 2, 3])
+        pixel_value_squared_sum += (images ** 2).sum(axis = [0, 2, 3])
+
+    # pixel count
+    pixel_count = len(dataset) * x_pixels * y_pixels
+
+    # mean and std
+    pixel_mean = pixel_value_sum / pixel_count
+    pixel_var  = (pixel_value_squared_sum / pixel_count) - (pixel_mean ** 2)
+    pixel_std  = torch.sqrt(pixel_var)
+
+    return pixel_mean, pixel_std
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data_dir', required=True, help='The path to the data on alvis, most likely something similar to $TMPDIR/data in the slurm script')
     parser.add_argument('--dataframe_path', required=True, help='The path to the dataframe containing the metadata, features and labels for the data.')
+    parser.add_argument('--gpus', type=int, required=True, help='Specify the number of GPUs to use for training. They should be requested in the slurm scrips')
     parser.add_argument('--checkpoint', help='Optional. The path to a checkpoint to restart from.')
     args = parser.parse_args()
 
@@ -186,20 +188,43 @@ if __name__ == "__main__":
     print("PyTorch version?", torch.__version__)
     print('lightning version', pl.__version__)
 
+    # For reproducibility
+    pl.seed_everything(0, workers=True)
+
+    # Calculate mean and standard deviation of the training set
+    train_dataset_norm = CustomDataset(
+        os.path.join(args.data_dir, 'train'),
+        args.dataframe_path
+        )
+
+    pixel_mean, pixel_std = dataset_mean_std(train_dataset_norm)
+    
+    # output
+    print('pixel mean: '  + str(pixel_mean))
+    print('pixel std:  '  + str(pixel_std))
+
     # Create the datasets
     train_dataset = CustomDataset(
         os.path.join(args.data_dir, 'train'),
         args.dataframe_path,
-        transforms=[
-            RandomRotationTransform(angles=[0, 90, 180, 270]),
-            RandomHFlipTransform(probability=0.5),
-            RandomVFlipTransform(probability=0.5)]
+        transform=
+            Compose([
+                Normalize(mean=pixel_mean, std=pixel_std),
+                RandomRotationTransform(angles=[0, 90, 180, 270]),
+                RandomHorizontalFlip(0.5),
+                RandomVerticalFlip(0.5),
+                ])
             )
-    val_dataset = CustomDataset(os.path.join(args.data_dir, 'val'), args.dataframe_path)
+
+    val_dataset = CustomDataset(
+        os.path.join(args.data_dir, 'val'),
+        args.dataframe_path,
+        transform=Normalize(mean=pixel_mean, std=pixel_std)
+        )
 
     # Create data loaders for training and validation sets
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
-    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
+    train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
+    val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
 
     # Program callbacks
     # saves top-2 checkpoints based on "val_mse" metric
@@ -231,7 +256,12 @@ if __name__ == "__main__":
     # Create the LightningModule and Trainer instances
     feature_dim = len(train_dataset[0][1])
     model = ImageFeatureRegressor(feature_dim)
-    trainer = pl.Trainer(accelerator='gpu', max_epochs=1000, devices=2, callbacks=[checkpoint_callback_best, checkpoint_callback_latest, early_stop_callback])
+    trainer = pl.Trainer(
+        accelerator='gpu',
+        max_epochs=1000,
+        devices=args.gpus,
+        callbacks=[checkpoint_callback_best, checkpoint_callback_latest, early_stop_callback],
+        deterministic=True)
 
     # Train the model
     # No checkpoint provided, so we train from scratch
