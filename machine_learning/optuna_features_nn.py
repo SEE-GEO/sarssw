@@ -146,6 +146,8 @@ if __name__ == '__main__':
     if version.parse(pl.__version__) < version.parse("1.6.0"):
         raise RuntimeError("PyTorch Lightning>=1.6.0 is required for this example.")
 
+    pl.seed_everything(0, workers=True)
+    
     sar_dir = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset'
     fl_df_path = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_27_april/sar_dataset_split.pickle'
 
@@ -181,6 +183,7 @@ if __name__ == '__main__':
             accelerator="auto",
             devices=1,
             callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_mse_loss")],
+            deterministic=True,
         )
 
         hyperparameters = dict(learning_rate=learning_rate, layer1_size=layer1_size, layer2_size=layer2_size)

@@ -76,12 +76,19 @@ class CustomDataset(Dataset):
 
         self.features_tensor = features_tensor      
         
-        self.labels_cols = ['SWH_value_VV'] # TODO add back wspd
-        labels_array = merge_df[self.labels_cols].values.astype(np.float32)
-        self.labels_tensor = torch.from_numpy(labels_array)
+        self.wave_col = 'SWH_value_VV'
+        self.mean_wave = merge_df[self.wave_col].mean()
+        print(self.mean_wave)
+        self.wave_tensor = torch.from_numpy(merge_df[self.wave_col].values.astype(np.float32))
+        
+        self.wind_col = 'WSPD_value_VV'
+        self.mean_wind = merge_df[self.wind_col].mean()
+        print(self.mean_wind)
+        self.wind_tensor = torch.from_numpy(merge_df[self.wind_col].values.astype(np.float32))
         
         self.sar_dir = sar_dir
         self.file_names = merge_df.file_name
+        
         if image_unit.lower() in ['lin', 'db']:
             self.image_unit = image_unit.lower()
         else:
@@ -92,7 +99,7 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, index):
         features = self.features_tensor[index]
-        labels = self.labels_tensor[index]
+        labels = self.wave_tensor[index], self.wind_tensor[index]
         
         file_name = self.file_names.iloc[index]
         image_path = os.path.join(self.sar_dir, file_name)
@@ -103,78 +110,103 @@ class CustomDataset(Dataset):
 
         return image, features, labels
 
-class FeatureRegressor(pl.LightningModule):
-    def __init__(self, feature_dim, fc_layers, learning_rate, optim_name='adam'):
-        super(FeatureRegressor, self).__init__()
+class CustomLoss(nn.Module):
+    def __init__(self, mean_wind, mean_wave):
+        super(CustomLoss, self).__init__()
+        self.mse = nn.MSELoss()
+        self.mean_wind = mean_wind
+        self.mean_wave = mean_wave
+
+    def forward(self, output_wind, output_wave, target_wind, target_wave):
+        mse_wind = self.mse(output_wind, target_wind)
+        mse_wave = self.mse(output_wave, target_wave)
+
+        # normalize the losses by dividing by the means
+        mse_wind_normalized = mse_wind / self.mean_wind
+        mse_wave_normalized = mse_wave / self.mean_wave
+
+        # equally weighted root mean square of the losses
+        loss = torch.sqrt((mse_wind_normalized + mse_wave_normalized) / 2)
+        return loss
+
+class ImageFeatureRegressor(pl.LightningModule):
+    def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave):
+        super(ImageFeatureRegressor, self).__init__()
+        self.save_hyperparameters()
         self.learning_rate = learning_rate
-        self.optim_name = optim_name
+        self.loss_fn = CustomLoss(mean_wave=mean_wave, mean_wind=mean_wind)
         
-        self.image_cnn = resnet18(pretrained=False)
+        self.image_cnn = resnet18()  # Default to no pre-training
         self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.image_cnn.fc = nn.Identity()
 
-        # Define the fully connected layers
-        fc_layers = [512 + feature_dim] + fc_layers + [1]
-        self.fc_layers = nn.ModuleList()
-        for i in range(len(fc_layers) - 1):
-            self.fc_layers.append(nn.Linear(fc_layers[i], fc_layers[i + 1]))
+        self.fc1 = nn.Linear(512 + feature_dim, 1024)
+        self.fc2 = nn.Linear(1024, 1024)
+        self.fc3 = nn.Linear(1024, 1024)
 
+        self.fc4_wave = nn.Linear(1024, 256)
+        self.fc5_wave = nn.Linear(256, 128)
+        self.fc6_wave = nn.Linear(128, 1)
+
+        self.fc4_wind = nn.Linear(1024, 256)
+        self.fc5_wind = nn.Linear(256, 128)
+        self.fc6_wind = nn.Linear(128, 1)
+        
     def forward(self, image, features):
         image_output = self.image_cnn(image)
         image_output = image_output.view(image_output.size(0), -1)
         
         combined = torch.cat((image_output, features), dim=1)
         
-        # Pass the input through each fully connected layer
-        x = combined
-        for i, fc_layer in enumerate(self.fc_layers):
-            x = F.relu(fc_layer(x)) if i < len(self.fc_layers) - 1 else fc_layer(x)
+        x = torch.relu(self.fc1(combined))
+        x = torch.relu(self.fc2(x))
+        x = torch.relu(self.fc3(x))
         
-        return x
+        # branch wave
+        x_wave = torch.relu(self.fc4_wave(x))
+        x_wave = torch.relu(self.fc5_wave(x_wave))
+        x_wave = self.fc6_wave(x_wave)
+        
+        # branch wind
+        x_wind = torch.relu(self.fc4_wind(x))
+        x_wind = torch.relu(self.fc5_wind(x_wind))
+        x_wind = self.fc6_wind(x_wind)
+        
+        return x_wave, x_wind
 
     def training_step(self, batch, batch_idx):
-        image_batch, feature_batch, target_batch = batch
-        predictions = self(image_batch, feature_batch)
+        image_batch, feature_batch, (target_wind, target_wave) = batch
+        output_wind, output_wave = self(image_batch, feature_batch)
 
-        loss = nn.MSELoss()
-        mse_loss = loss(predictions, target_batch)
-
-        rmse = torch.sqrt(mse_loss)
-        mae = torch.mean(torch.abs(predictions - target_batch))
-
-        log_dict = {"train_mse":mse_loss, "train_rmse":rmse, "train_mae":mae}
+        loss = self.loss_fn(
+            output_wind=output_wind, 
+            output_wave=output_wave, 
+            target_wind=target_wind, 
+            target_wave=target_wave
+        )
+        
+        log_dict = {"train_loss":loss}
         self.log_dict(log_dict, prog_bar=True, sync_dist=True)
-
-        return mse_loss
+        return loss
 
     def configure_optimizers(self):
-        if self.optim_name == 'adam':
-            optimizer = optim.Adam(self.parameters(), lr=self.learning_rate)
-        elif self.optim_name == 'sgd':
-            optimizer = optim.SGD(self.parameters(), lr=self.learning_rate)
-        elif self.optim_name == 'rmsprop':
-            optimizer = optim.RMSprop(self.parameters(), lr=self.learning_rate)
-        else:
-            raise ValueError(f"Unsupported optimizer: {self.optim_name}")
-
-        return optimizer
+        return optim.Adam(self.parameters(), lr=self.learning_rate)
     
     def validation_step(self, batch, batch_idx):
-        image_batch, feature_batch, target_batch = batch
-        predictions = self(image_batch, feature_batch)
+        image_batch, feature_batch, (target_wind, target_wave) = batch
+        predictions_wave, predictions_wind = self(image_batch, feature_batch)
 
-        # Compute your evaluation metric(s)
-        loss = nn.MSELoss()
-        val_mse_loss = loss(predictions, target_batch)
+        val_loss = self.loss_fn(
+            output_wave=predictions_wave, 
+            output_wind=predictions_wind, 
+            target_wind=target_wind, 
+            target_wave=target_wave
+        )
 
-        val_rmse = torch.sqrt(val_mse_loss)
-        val_mae = torch.mean(torch.abs(predictions - target_batch))
-
-        log_dict = {"val_mse_loss":val_mse_loss, "val_rmse":val_rmse, "val_mae":val_mae}
+        log_dict = {"val_loss":val_loss}
 
         self.log_dict(log_dict, prog_bar=True)
 
-        # Return the metric(s) as a dictionary
         return log_dict
 
 
@@ -191,7 +223,7 @@ if __name__ == '__main__':
     sar_dir = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset'
     fl_df_path = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_27_april/sar_dataset_split.pickle'
 
-    n_files = 100_000
+    n_files = 10_000
     file_filter = lambda fn: fn.is_file() and fn.name.endswith('.nc') and 'IW' in fn.name
     sar_dataset_files = list(islice((fn.name for fn in os.scandir(sar_dir) if file_filter(fn)), n_files))
     #sar_dataset_files = [f for f in os.listdir(sar_dir) if f.endswith('.nc') and 'IW' in f]
@@ -202,16 +234,9 @@ if __name__ == '__main__':
     fl_df = fl_df[fl_df.file_name.isin(sar_dataset_files)]
 
     def objective(trial: optuna.trial.Trial) -> float:
-        # Suggest the number of layers and the size of each layer
-        n_layers = trial.suggest_int('n_layers', 5, 10)
-        fc_layers = [trial.suggest_int(f'n_units_l{i}', 4, 1024) for i in range(n_layers)]
         
         # Suggest a learning rate
         learning_rate = learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-2, log=True)
-        
-        # Suggest an optimizer name
-        tune_optim = False 
-        optim_name = 'adam' if not tune_optim else trial.suggest_categorical('optim_name', ['adam', 'sgd', 'rmsprop'])
         
         image_unit = trial.suggest_categorical('image_unit', ['lin', 'db'])
         
@@ -221,28 +246,28 @@ if __name__ == '__main__':
         val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16)
         
         feature_dim = train_dataset.feature_dim
-        model = FeatureRegressor(feature_dim, fc_layers, learning_rate, optim_name)
+        model = ImageFeatureRegressor(feature_dim=feature_dim, learning_rate=learning_rate, mean_wind=train_dataset.mean_wind, mean_wave=train_dataset.mean_wave)
         
-        logger = pl.loggers.TensorBoardLogger("db_lin_sigma", name=f"learning_rate={learning_rate}, n_layers={n_layers}, fc_layers={fc_layers}, image_unit={image_unit}")
+        logger = pl.loggers.TensorBoardLogger("custom_loss", name=f"learning_rate={learning_rate}, image_unit={image_unit}")
         
         trainer = pl.Trainer(
             logger=logger,
             enable_checkpointing=True,
             max_epochs=50,
             accelerator="gpu",
-            devices=2,
-            callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_mse_loss")],
+            devices=1,
+            callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_loss")],
             deterministic=True,
         )
 
-        hyperparameters = dict(learning_rate=learning_rate, n_layers=n_layers, fc_layers=fc_layers, image_unit=image_unit)
+        hyperparameters = dict(learning_rate=learning_rate, image_unit=image_unit)
         trainer.logger.log_hyperparams(hyperparameters)
         trainer.fit(model, train_loader, val_loader)
-        return trainer.callback_metrics["val_mse_loss"].item()
+        return trainer.callback_metrics["val_loss"].item()
     
     # Create the Optuna study and optimize the objective function
     study = optuna.create_study(direction="minimize", pruner=optuna.pruners.MedianPruner())
-    study.optimize(objective, n_trials=100, timeout=3600)
+    study.optimize(objective, n_trials=10, timeout=3600)
 
     print("Number of finished trials: {}".format(len(study.trials)))
 
