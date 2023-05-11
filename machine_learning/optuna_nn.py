@@ -5,6 +5,7 @@ import shutil
 from itertools import islice
 from packaging import version
 import sys
+from functools import lru_cache
 
 import numpy as np
 import pandas as pd
@@ -15,13 +16,14 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 import torch.nn.functional as F
+from torchvision.models import resnet18
 import pytorch_lightning as pl
 import optuna
 from optuna.integration import PyTorchLightningPruningCallback
 
 
 class CustomDataset(Dataset):
-    def __init__(self, dataset_df, split='train', base_features=None, scale_features=True, mean=None, std=None):
+    def __init__(self, dataset_df, sar_dir, split='train', base_features=None, scale_features=True, mean=None, std=None):
         # preprocess with hom test, feature extract and everything
         #filter homogenious images with IW mode and no na
         split_df = dataset_df[dataset_df.split == split]
@@ -48,8 +50,9 @@ class CustomDataset(Dataset):
             #]
             
             base_features = [
-                'contrast', 'dissimilarity', 'homogeneity', 
-                'energy', 'correlation', 'ASM', 'sigma_mean',
+                #'contrast', 'dissimilarity', 'homogeneity', 
+                #'energy', 'correlation', 'ASM', 
+                'sigma_mean',
                 'sigma_var', 'sigma_mean_over_var', 'sigma_min', 
                 'sigma_max', 'sigma_range'
             ] + [feat + '_dB' for feat in db_feats]
@@ -76,6 +79,9 @@ class CustomDataset(Dataset):
         self.labels_cols = ['SWH_value_VV'] # TODO add back wspd
         labels_array = merge_df[self.labels_cols].values.astype(np.float32)
         self.labels_tensor = torch.from_numpy(labels_array)
+        
+        self.sar_dir = sar_dir
+        self.file_names = merge_df.file_name
 
     def __len__(self):
         return len(self.features_tensor)
@@ -83,27 +89,45 @@ class CustomDataset(Dataset):
     def __getitem__(self, index):
         features = self.features_tensor[index]
         labels = self.labels_tensor[index]
+        
+        file_name = self.file_names.iloc[index]
+        image_path = os.path.join(self.sar_dir, file_name)
+        image = torch.tensor(xr.open_dataset(image_path).sigma0.values.astype(np.float32))
 
-        return features, labels
+        return image, features, labels
 
 class FeatureRegressor(pl.LightningModule):
-    def __init__(self, feature_dim, layer1_size, layer2_size, learning_rate):
+    def __init__(self, feature_dim, fc_layers, learning_rate, optim_name='adam'):
         super(FeatureRegressor, self).__init__()
         self.learning_rate = learning_rate
-        self.fc1 = nn.Linear(feature_dim, layer1_size)
-        self.fc2 = nn.Linear(layer1_size, layer2_size)
-        self.fc3 = nn.Linear(layer2_size, 1) # TODO add back wspd
-     
-    def forward(self, features):
-        x = F.relu(self.fc1(features))
-        x = F.relu(self.fc2(x))
-        x = self.fc3(x)
+        self.optim_name = optim_name
+        
+        self.image_cnn = resnet18(pretrained=False)
+        self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.image_cnn.fc = nn.Identity()
+
+        # Define the fully connected layers
+        fc_layers = [512 + feature_dim] + fc_layers + [1]
+        self.fc_layers = nn.ModuleList()
+        for i in range(len(fc_layers) - 1):
+            self.fc_layers.append(nn.Linear(fc_layers[i], fc_layers[i + 1]))
+
+    def forward(self, image, features):
+        image_output = self.image_cnn(image)
+        image_output = image_output.view(image_output.size(0), -1)
+        
+        combined = torch.cat((image_output, features), dim=1)
+        
+        # Pass the input through each fully connected layer
+        x = combined
+        for i, fc_layer in enumerate(self.fc_layers):
+            x = F.relu(fc_layer(x)) if i < len(self.fc_layers) - 1 else fc_layer(x)
         
         return x
 
     def training_step(self, batch, batch_idx):
-        feature_batch, target_batch = batch
-        predictions = self(feature_batch)
+        image_batch, feature_batch, target_batch = batch
+        predictions = self(image_batch, feature_batch)
 
         loss = nn.MSELoss()
         mse_loss = loss(predictions, target_batch)
@@ -111,18 +135,26 @@ class FeatureRegressor(pl.LightningModule):
         rmse = torch.sqrt(mse_loss)
         mae = torch.mean(torch.abs(predictions - target_batch))
 
-        self.log("train_mse", mse_loss, prog_bar=True)
-        self.log("train_rmse", rmse, prog_bar=True)
-        self.log("train_mae", mae, prog_bar=True)
+        log_dict = {"train_mse":mse_loss, "train_rmse":rmse, "train_mae":mae}
+        self.log_dict(log_dict, prog_bar=True, sync_dist=True)
 
         return mse_loss
 
     def configure_optimizers(self):
-        return optim.Adam(self.parameters(), lr=self.learning_rate)
+        if self.optim_name == 'adam':
+            optimizer = optim.Adam(self.parameters(), lr=self.learning_rate)
+        elif self.optim_name == 'sgd':
+            optimizer = optim.SGD(self.parameters(), lr=self.learning_rate)
+        elif self.optim_name == 'rmsprop':
+            optimizer = optim.RMSprop(self.parameters(), lr=self.learning_rate)
+        else:
+            raise ValueError(f"Unsupported optimizer: {self.optim_name}")
+
+        return optimizer
     
     def validation_step(self, batch, batch_idx):
-        feature_batch, target_batch = batch
-        predictions = self(feature_batch)
+        image_batch, feature_batch, target_batch = batch
+        predictions = self(image_batch, feature_batch)
 
         # Compute your evaluation metric(s)
         loss = nn.MSELoss()
@@ -131,12 +163,13 @@ class FeatureRegressor(pl.LightningModule):
         val_rmse = torch.sqrt(val_mse_loss)
         val_mae = torch.mean(torch.abs(predictions - target_batch))
 
-        self.log("val_mse_loss", val_mse_loss, prog_bar=True)
-        self.log("val_rmse", val_rmse, prog_bar=True)
-        self.log("val_mae", val_mae, prog_bar=True)
+        log_dict = {"val_mse_loss":val_mse_loss, "val_rmse":val_rmse, "val_mae":val_mae}
+
+        self.log_dict(log_dict, prog_bar=True)
 
         # Return the metric(s) as a dictionary
-        return {'val_mse': val_mse_loss, 'val_rmse': val_rmse, 'val_mae': val_mae}
+        return log_dict
+
 
 if __name__ == '__main__':
     print('python version: ', sys.version)
@@ -160,19 +193,25 @@ if __name__ == '__main__':
     fl_df = fl_df[fl_df.file_name.isin(sar_dataset_files)]
 
     def objective(trial: optuna.trial.Trial) -> float:
-        train_dataset = CustomDataset(fl_df, split='train', scale_features=True)
-        val_dataset = CustomDataset(fl_df, split='val', scale_features=True, mean=train_dataset.mean, std=train_dataset.std)
+        # Suggest the number of layers and the size of each layer
+        n_layers = trial.suggest_int('n_layers', 1, 15)
+        fc_layers = [trial.suggest_int(f'n_units_l{i}', 4, 1024) for i in range(n_layers)]
+        
+        # Suggest a learning rate
+        learning_rate = learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-1, log=True)
+        
+        # Suggest an optimizer name
+        optim_name = trial.suggest_categorical('optim_name', ['adam', 'sgd', 'rmsprop'])
+        
+        train_dataset = CustomDataset(fl_df, sar_dir, split='train', scale_features=True)
+        val_dataset = CustomDataset(fl_df, sar_dir, split='val', scale_features=True, mean=train_dataset.mean, std=train_dataset.std)
         train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16)
         val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16)
         
         feature_dim = train_dataset.feature_dim
-        learning_rate = trial.suggest_float("learning_rate", 1e-5, 1e-1, log=True)
-        layer1_size = trial.suggest_int("layer1_size", 16, 512)
-        layer2_size = trial.suggest_int("layer2_size", 16, 512)
-
-        model = FeatureRegressor(feature_dim, layer1_size, layer2_size, learning_rate)
+        model = FeatureRegressor(feature_dim, fc_layers, learning_rate, optim_name)
         
-        logger = pl.loggers.TensorBoardLogger("optuna_features_only", name=f"learning_rate={learning_rate}, layer1_size={layer1_size}, layer2_size={layer2_size}")
+        logger = pl.loggers.TensorBoardLogger("var_n_layers", name=f"learning_rate={learning_rate}, n_layers={n_layers}, fc_layers={fc_layers}, optim_name={optim_name}")
         
         trainer = pl.Trainer(
             logger=logger,
@@ -183,14 +222,14 @@ if __name__ == '__main__':
             callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_mse_loss")],
         )
 
-        hyperparameters = dict(learning_rate=learning_rate, layer1_size=layer1_size, layer2_size=layer2_size)
+        hyperparameters = dict(learning_rate=learning_rate, n_layers=n_layers, fc_layers=fc_layers, optim_name=optim_name)
         trainer.logger.log_hyperparams(hyperparameters)
         trainer.fit(model, train_loader, val_loader)
         return trainer.callback_metrics["val_mse_loss"].item()
     
     # Create the Optuna study and optimize the objective function
-    study = optuna.create_study(direction="minimize", pruner=optuna.pruners.MedianPruner())
-    study.optimize(objective, n_trials=10, timeout=3600)
+    study = optuna.create_study(direction="minimize", pruner=optuna.pruners.SuccessiveHalvingPruner())
+    study.optimize(objective, n_trials=100, timeout=3600)
 
     print("Number of finished trials: {}".format(len(study.trials)))
 

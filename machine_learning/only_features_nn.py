@@ -86,7 +86,7 @@ class CustomDataset(Dataset):
 
         self.features_tensor = features_tensor      
         
-        self.labels_cols = ['SWH_value_VV', 'WSPD_value_VV']
+        self.labels_cols = ['SWH_value_VV'] # TODO add back wind speed, removed for testing
         labels_array = merge_df[self.labels_cols].values.astype(np.float32)
         self.labels_tensor = torch.from_numpy(labels_array)
 
@@ -105,11 +105,7 @@ class FeatureRegressor(pl.LightningModule):
         self.learning_rate = learning_rate
         self.fc1 = nn.Linear(feature_dim, 256)
         self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 2)
-        
-        self.final_val_mse = None
-        self.final_val_rmse = None
-        self.final_val_mae = None
+        self.fc3 = nn.Linear(128, 1) # TODO, add back wind speed, removed for testing
      
     def forward(self, features):
         x = F.relu(self.fc1(features))
