@@ -55,7 +55,7 @@ class CustomDataset(Dataset):
                 'sigma_mean',
                 'sigma_var', 'sigma_mean_over_var', 'sigma_min', 
                 'sigma_max', 'sigma_range'
-            ] + [feat + '_dB' for feat in db_feats]
+            ] #+ [feat + '_dB' for feat in db_feats]
         
         self.features = [f + p for f in base_features for p in ['_VV', '_VH']]
         self.feature_dim = len(self.features) 
@@ -78,15 +78,16 @@ class CustomDataset(Dataset):
         
         self.wave_col = 'SWH_value_VV'
         self.mean_wave = merge_df[self.wave_col].mean()
-        print(self.mean_wave)
         self.wave_tensor = torch.from_numpy(merge_df[self.wave_col].values.astype(np.float32))
+        self.wave_source = merge_df['SWH_source_VV']
         
         self.wind_col = 'WSPD_value_VV'
         self.mean_wind = merge_df[self.wind_col].mean()
-        print(self.mean_wind)
         self.wind_tensor = torch.from_numpy(merge_df[self.wind_col].values.astype(np.float32))
+        self.wind_source = merge_df['WSPD_source_VV']
         
         self.sar_dir = sar_dir
+        self.split = split
         self.file_names = merge_df.file_name
         
         if image_unit.lower() in ['lin', 'db']:
@@ -99,7 +100,7 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, index):
         features = self.features_tensor[index]
-        labels = self.wave_tensor[index], self.wind_tensor[index]
+        wave_label, wind_label = self.wave_tensor[index], self.wind_tensor[index]
         
         file_name = self.file_names.iloc[index]
         image_path = os.path.join(self.sar_dir, file_name)
@@ -108,7 +109,14 @@ class CustomDataset(Dataset):
             sigma0 = np.log10(np.where(sigma0 > 0.0, sigma0, 1e-10))
         image = torch.tensor(sigma0)
 
-        return image, features, labels
+        if self.split != 'train':
+            # If not training set return -1 for labels that are from model
+            if self.wave_source[index] != 'bouy':
+                wave_label = torch.tensor(-1.0)
+            if self.wind_source[index] != 'bouy':
+                wind_label = torch.tensor(-1.0)
+                
+        return image, features, (wave_label, wind_label)      
 
 class CustomLoss(nn.Module):
     def __init__(self, mean_wind, mean_wave):
@@ -185,29 +193,96 @@ class ImageFeatureRegressor(pl.LightningModule):
             target_wave=target_wave
         )
         
-        log_dict = {"train_loss":loss}
-        self.log_dict(log_dict, prog_bar=True, sync_dist=True)
-        return loss
+        # Ignore everything within this context in the back prop
+        with torch.no_grad():
+            mse_loss = nn.MSELoss()
+            wind_mse = mse_loss(output_wind, target_wind)
+            wind_rmse = torch.sqrt(wind_mse)
+            wind_mae = torch.mean(torch.abs(output_wind - target_wind))
+
+            wave_mse = mse_loss(output_wave, target_wave)
+            wave_rmse = torch.sqrt(wave_mse)
+            wave_mae = torch.mean(torch.abs(output_wave - target_wave))
+        
+        log_dict = {
+            "train_loss": loss, 
+            "train_wind_mse": wind_mse, 
+            "train_wind_rmse": wind_rmse, 
+            "train_wind_mae": wind_mae, 
+            "train_wave_mse": wave_mse, 
+            "train_wave_rmse": wave_rmse, 
+            "train_wave_mae": wave_mae
+        }
+
+        
+        # Log all metrics for TensorBoard
+        self.log_dict(log_dict)
+
+        # Log only selected metrics for the progress bar
+        self.log_dict({
+            "train_loss": loss,
+            "train_wave_mae": wave_mae,
+            "train_wind_mae": wind_mae,
+        }, prog_bar=True)
+
+        return log_dict
+
 
     def configure_optimizers(self):
         return optim.Adam(self.parameters(), lr=self.learning_rate)
     
     def validation_step(self, batch, batch_idx):
         image_batch, feature_batch, (target_wind, target_wave) = batch
-        predictions_wave, predictions_wind = self(image_batch, feature_batch)
+        predictions_wind, predictions_wave = self(image_batch, feature_batch)
+        predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
+        predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
 
+        # calculate loss
         val_loss = self.loss_fn(
-            output_wave=predictions_wave, 
             output_wind=predictions_wind, 
+            output_wave=predictions_wave, 
             target_wind=target_wind, 
             target_wave=target_wave
         )
 
-        log_dict = {"val_loss":val_loss}
+        with torch.no_grad():
+            # create masks where target values are not -1
+            mask_wind = target_wind != -1
+            mask_wave = target_wave != -1
 
-        self.log_dict(log_dict, prog_bar=True)
+            mse_loss = nn.MSELoss(reduction='sum')  # use sum to ignore the masked entries
+
+            # calculate metrics only for valid entries
+            wind_mse = mse_loss(predictions_wind[mask_wind], target_wind[mask_wind]) / mask_wind.sum()
+            wind_rmse = torch.sqrt(wind_mse)
+            wind_mae = torch.mean(torch.abs(predictions_wind[mask_wind] - target_wind[mask_wind]))
+
+            wave_mse = mse_loss(predictions_wave[mask_wave], target_wave[mask_wave]) / mask_wave.sum()
+            wave_rmse = torch.sqrt(wave_mse)
+            wave_mae = torch.mean(torch.abs(predictions_wave[mask_wave] - target_wave[mask_wave]))
+
+        log_dict = {
+            "val_loss": val_loss, 
+            "val_wind_mse": wind_mse, 
+            "val_wind_rmse": wind_rmse, 
+            "val_wind_mae": wind_mae, 
+            "val_wave_mse": wave_mse, 
+            "val_wave_rmse": wave_rmse, 
+            "val_wave_mae": wave_mae
+        }
+
+        # Log all metrics for TensorBoard
+        self.log_dict(log_dict)
+
+        # Log only selected metrics for the progress bar
+        self.log_dict({
+            "val_loss": val_loss,
+            "val_wave_mae": wave_mae,
+            "val_wind_mae": wind_mae,
+        }, prog_bar=True)
 
         return log_dict
+
 
 
 if __name__ == '__main__':
@@ -248,7 +323,7 @@ if __name__ == '__main__':
         feature_dim = train_dataset.feature_dim
         model = ImageFeatureRegressor(feature_dim=feature_dim, learning_rate=learning_rate, mean_wind=train_dataset.mean_wind, mean_wave=train_dataset.mean_wave)
         
-        logger = pl.loggers.TensorBoardLogger("custom_loss", name=f"learning_rate={learning_rate}, image_unit={image_unit}")
+        logger = pl.loggers.TensorBoardLogger("custom_loss_sep_metric", name=f"learning_rate={learning_rate}, image_unit={image_unit}")
         
         trainer = pl.Trainer(
             logger=logger,
