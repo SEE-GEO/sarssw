@@ -32,6 +32,7 @@ if __name__ == "__main__":
     parser.add_argument('--swaths', help="Enables filtering to only include the specified swaths, seperate the swatchs with comma. i.e 'IW,EW' to include both IW and EW")
     parser.add_argument('--polarisations', help="Enables filtering to only include images with the specified polarisations, seperate the polarisations with comma. i.e 'VV VH,HH HV' would include files with both VV VH and HH HV polarisations")
     parser.add_argument('--debug', action='store_true', help='Used for debugging. Print the number of files that would be copied if this flag was not present')
+    parser.add_argument('--file_name_filter', help="Regex filter to be used when filtering the file names. i.e 'BO|IR' would only include files with BO or IR in the file name")
 
     args = parser.parse_args()
     datasets = [(args.train, 'train', args.train_limit), (args.test, 'test', args.test_limit), (args.val, 'val', args.val_limit)] 
@@ -67,6 +68,11 @@ if __name__ == "__main__":
         pol_filter = [p.strip() for p in args.polarisations.split(',')]
         print(f"pol_filter: {pol_filter}")
         fl_df = fl_df[fl_df['polarisations'].isin(pol_filter)]
+
+    #filter based on file name
+    if args.file_name_filter is not None:
+        print(f"file_name_filter: {args.file_name_filter}")
+        fl_df = fl_df[fl_df['file_name'].str.contains(args.file_name_filter)]
 
     dataset_filter = [(name, limit) for (flag, name, limit) in datasets if flag]
 
