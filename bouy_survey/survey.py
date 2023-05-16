@@ -303,12 +303,16 @@ def search_file(file, data_dir, start_date, end_date, variables_dephs, max_time_
     return result_df
 
 if __name__ == "__main__":
+    #Change these variabes to adjust the search
     data_dir = '/data/exjobb/sarssw/bouy/INSITU_GLO_PHYBGCWAV_DISCRETE_MYNRT_013_030/MO'
     start_date = '2021-01-01'
     end_date = '2021-12-31'
     max_time_diff_s = 60*60
-    write_folder = './1h_survey_2021'
     variables = ['VHM0', 'VAVH', 'WSPD']
+    variables_deph = {'VHM0':0, 'VAVH':0, 'WSPD':(-30,0)}
+    write_folder = './1h_survey_2021'
+    result_df_fn = 'result_df'
+    kml_pinmap_fn = 'kml_pinmap'
     
     #Remember to also configure the asf search option in search_file.
     
@@ -317,11 +321,6 @@ if __name__ == "__main__":
     ]
     
     files = set(os.listdir(data_dir)).difference(file_filter)
-
-    variables_deph = {'VHM0':0, 'VAVH':0, 'WSPD':(-30,0)}#['VHM0', 'VAVH', 'WSPD']
-
-    result_df_fn = 'result_df'
-    kml_pinmap_fn = 'kml_pinmap'
 
     #Dataframe where the results is saved, automatically created in search_file
     result_df = None
