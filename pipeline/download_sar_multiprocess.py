@@ -191,6 +191,9 @@ def create_subimages(sar_name, bouy, bouy_df, sar_ds, dist):
 
         #Drop landmask & time data variables
         subimage = subimage.drop_vars(['land_mask', 'time'])
+        
+        #Convert to 32 bit data
+        subimage = subimage.astype(np.float32)
 
         out_path = os.path.join(out_dir, f'{sar_name}-{bouy_name}-{subimage_index}.nc')
 
