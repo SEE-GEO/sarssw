@@ -7,6 +7,7 @@ This module is used to extract the complete dataset with features and labels fro
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import scipy
 import pickle
 import os
 import math
@@ -60,22 +61,71 @@ def wspd_power_law(wspd, depth):
         return wspd_power_law(wspd, -10)
     
     return wspd * (10/(-1*depth))**0.11
-        
+  
+def get_all_acw(sigma0):
+    """
+    Calculate four different forms of the azimuth cutoff wavelength (ACW) from a given SAR image.
+    The ACW is approximated by calculating the autocorrelation function with Wiener Khinchin
+    theorem and then finding the parameters when fitting a gaussian to the resutls. From
+    experience np.std() was more reliable than actually fitting a gaussian with curve obtimization.
+
+    Parameters:
+    sigma0 (numpy.array): The input SAR image.
+
+    Returns:
+    acw (float): The standard deviation of the normalized Azimuth Autocorrelation Function (AACF).
+    acw_med (float): The standard deviation of the normalized AACF after applying a median filter.
+    acw_db (float): The standard deviation of the normalized AACF in dB scale.
+    acw_med_db (float): The standard deviation of the normalized AACF in dB scale after applying a median filter.
+    """
+
+    # Compute the 2-D power spectral density (PSD) from the SAR image
+    psd = np.abs(np.fft.fft2(sigma0)) ** 2
+
+    # Calculate the 1-D azimuth PSD by averaging the 2-D PSD along the range direction
+    psdx = psd.mean(axis=1)
+
+    # Obtain the azimuth autocorrelation function (AACF) using the inverse Fourier transform
+    acf = np.fft.ifft(psdx)
+    acf = np.fft.fftshift(acf)
+    acf = np.abs(acf)
+
+    # Normalize the AACF
+    acf = (acf - acf.min()) / (acf.max() - acf.min())
+
+    # Calculate the standard deviation of the normalized AACF
+    # More relaiable to do std than to fit gaussian
+    # especially since scale doesn't matter for NN
+    acw = acf.std()
+
+    # Apply a median filter to the normalized AACF and calculate its standard deviation
+    acw_med = scipy.signal.medfilt(acf, kernel_size=7).std()
+
+    # Convert the SAR image to dB scale
+    sigma0_db = 10 * np.log10(np.where(sigma0>0.0, sigma0, 1e-30))
+
+    # Repeat the above steps for the dB-scaled SAR image
+    psd = np.abs(np.fft.fft2(sigma0_db)) ** 2
+    psdx = psd.mean(axis=1)
+    acf = np.fft.ifft(psdx)
+    acf = np.fft.fftshift(acf)
+    acf = np.abs(acf)
+    acf = (acf - acf.min()) / (acf.max() - acf.min())
+    acw_db = acf.std()
+    acw_med_db = scipy.signal.medfilt(acf, kernel_size=7).std()
+
+    return acw, acw_med, acw_db, acw_med_db
+      
 def load_features_df(sar_paths, svc_file):
     "Extracts the features in a dictionar"
     with open(svc_file, 'rb') as f: svc = pickle.load(f)
     feature_dict = defaultdict(list)
-    #metadata_dict = defaultdict(list)
     
     print('Calculating features')
     for file_path in tqdm(sar_paths):
         if not file_path.endswith('.nc'): continue
         
-        xds =  xr.open_dataset(file_path)
-        #metadata_dict['file_name'].append(file_name)
-        #for metadata_key, metadata_value in tif_img.shaped_metadata[0].items():
-        #    metadata_dict[metadata_key].append(metadata_value)
-        
+        xds =  xr.open_dataset(file_path)      
         for pol, v in zip(xds.sigma0.coords['pol'].values, xds.sigma0.values):
             if np.isnan(v).any(): continue
 
@@ -92,6 +142,9 @@ def load_features_df(sar_paths, svc_file):
             #filename and polarization for given image
             feature_dict['file_name'].append(file_path.split('/')[-1])
             feature_dict['pol'].append(pol)
+            
+            l, s = xds.incidence.shape 
+            feature_dict['incidence'].append(xds.incidence[l // 2, s // 2].item())
             
             #metadata from image
             for metadata_key, metadata_value in xds.attrs.items():
@@ -113,6 +166,15 @@ def load_features_df(sar_paths, svc_file):
             feature_dict['sigma_max'].append(v.max())
             feature_dict['sigma_range'].append(v.max() - v.min())
 
+            # azimuth cutoff wavelength
+            acw, acw_med, acw_db, acw_med_db = get_all_acw(v)
+                
+            feature_dict['acw'].append(acw)
+            feature_dict['acw_db'].append(acw_db)
+            feature_dict['acw_median'].append(acw_med)
+            feature_dict['acw_median_db'].append(acw_med_db)         
+            
+            
     return pd.DataFrame(feature_dict)
 
 def load_labels_df(bouy_survey_path, swh_model_path, wspd_model_path, sar_bouy_df):
