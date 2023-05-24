@@ -212,7 +212,7 @@ def search_file(file, data_dir, start_date, end_date, variables_dephs, max_time_
 
             #Filter data of df to only include data that does not lie close to shore
             #allow a small distance since points on the edge doeas not overlap according to shapely.overlaps 
-            df_shore_filter =  df.apply(lambda row: Point([row['LONG'], row['LAT']]).distance(off_shore), axis=1) <= 0.00001
+            df_shore_filter =  df.apply(lambda row: Point([row['LONG'], row['LAT']]).distance(off_shore), axis=1) <= 0.0001
             df = df[df_shore_filter]
 
             geo_limit = ','.join([str(long) + ' ' + str(lat) for long,lat in coord_points])
@@ -310,9 +310,10 @@ if __name__ == "__main__":
     max_time_diff_s = 60*60
     variables = ['VHM0', 'VAVH', 'WSPD']
     variables_deph = {'VHM0':0, 'VAVH':0, 'WSPD':(-30,0)}
-    write_folder = './1h_survey_2021'
+    write_folder = './1h_survey'
     result_df_fn = 'result_df'
     kml_pinmap_fn = 'kml_pinmap'
+    min_land_dist = 0.01 #degrees
     
     #Remember to also configure the asf search option in search_file.
     
@@ -333,7 +334,7 @@ if __name__ == "__main__":
             polygon_list.extend(p.geoms)
         else:
             polygon_list.append(p)
-    land_multipolygon = MultiPolygon([p.buffer(0.01) for p in polygon_list])
+    land_multipolygon = MultiPolygon([p.buffer(min_land_dist) for p in polygon_list])
 
     # Create search_file function with only necessary parameters for the file loop below
     def search_file_fixed_params(file, result_df):
