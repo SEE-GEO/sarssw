@@ -6,21 +6,63 @@ from itertools import islice
 from packaging import version
 import sys
 from functools import lru_cache
+import argparse
+import random
 
 import numpy as np
 import pandas as pd
 import xarray as xr
+from tqdm import tqdm
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-import torch.nn.functional as F
 from torchvision.models import resnet18
+from torchvision.transforms import Compose, Normalize, RandomHorizontalFlip, RandomVerticalFlip, ToTensor
+import torchvision.transforms.functional as TF
+
 import pytorch_lightning as pl
+from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.callbacks.early_stopping import EarlyStopping
+
 import optuna
 from optuna.integration import PyTorchLightningPruningCallback
+# In large parts taken from https://kozodoi.me/blog/20210308/compute-image-stats
+def dataset_mean_std(dataset):
+    "Returns the pixel mean and standared deviation of a dataset"
+    dataset_loader = DataLoader(dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
+    
+    n_channels, x_pixels, y_pixels = dataset[0][0].shape
+    pixel_value_sum = torch.tensor([0.0]*n_channels)
+    pixel_value_squared_sum = torch.tensor([0.0]*n_channels)
 
+    # loop through images
+    print("Computing mean and std")
+    for images, features, labels in tqdm(dataset_loader):
+        pixel_value_sum += images.sum(axis = [0, 2, 3])
+        pixel_value_squared_sum += (images ** 2).sum(axis = [0, 2, 3])
+
+    # pixel count
+    pixel_count = len(dataset) * x_pixels * y_pixels
+
+    # mean and std
+    pixel_mean = pixel_value_sum / pixel_count
+    pixel_var  = (pixel_value_squared_sum / pixel_count) - (pixel_mean ** 2)
+    pixel_std  = torch.sqrt(pixel_var)
+
+    return pixel_mean, pixel_std
+
+class RandomRotationTransform:
+    """Rotate by one of the given angles."""
+
+    def __init__(self, angles):
+        self.angles = angles
+
+    def __call__(self, img):
+        angle = random.choice(self.angles)
+        return TF.rotate(img, angle)
 
 class CustomDataset(Dataset):
     def __init__(self, dataset_df, sar_dir, split='train', base_features=None, scale_features=True, image_unit='lin', mean=None, std=None):
@@ -129,15 +171,15 @@ class CustomLoss(nn.Module):
         self.mean_wave = mean_wave
 
     def forward(self, output_wind, output_wave, target_wind, target_wave):
-        mse_wind = self.mse(output_wind, target_wind)
-        mse_wave = self.mse(output_wave, target_wave)
+        rmse_wind = torch.sqrt(self.mse(output_wind, target_wind))
+        rmse_wave = torch.sqrt(self.mse(output_wave, target_wave))
 
         # normalize the losses by dividing by the means
-        mse_wind_normalized = mse_wind / self.mean_wind
-        mse_wave_normalized = mse_wave / self.mean_wave
+        rmse_wind_normalized = rmse_wind / self.mean_wind
+        rmse_wave_normalized = rmse_wave / self.mean_wave
 
         # equally weighted root mean square of the losses
-        loss = torch.sqrt((mse_wind_normalized + mse_wave_normalized) / 2)
+        loss = torch.sqrt((rmse_wind_normalized + rmse_wave_normalized) / 2)
         return loss
 
 class ImageFeatureRegressor(pl.LightningModule):
@@ -224,8 +266,8 @@ class ImageFeatureRegressor(pl.LightningModule):
         # Log only selected metrics for the progress bar
         self.log_dict({
             "train_loss": loss,
-            "train_wave_mae": wave_mae,
-            "train_wind_mae": wind_mae,
+            "train_wave_rmse": wave_rmse, 
+            "train_wind_rmse": wind_rmse, 
         }, prog_bar=True)
 
         return log_dict
@@ -270,12 +312,12 @@ class ImageFeatureRegressor(pl.LightningModule):
 
         log_dict = {
             "val_loss": val_loss, 
-            "val_wind_mse": wind_mse, 
-            "val_wind_rmse": wind_rmse, 
-            "val_wind_mae": wind_mae, 
             "val_wave_mse": wave_mse, 
             "val_wave_rmse": wave_rmse, 
             "val_wave_mae": wave_mae,
+            "val_wind_mse": wind_mse, 
+            "val_wind_rmse": wind_rmse, 
+            "val_wind_mae": wind_mae, 
         }
 
         # Log all metrics for TensorBoard
@@ -284,8 +326,8 @@ class ImageFeatureRegressor(pl.LightningModule):
         # Log only selected metrics for the progress bar
         self.log_dict({
             "val_loss": val_loss,
-            "val_wave_mae": wave_mae,
-            "val_wind_mae": wind_mae,
+            "val_wind_rmse": wind_rmse, 
+            "val_wave_rmse": wave_rmse, 
         }, prog_bar=True)
 
         return log_dict
@@ -293,6 +335,13 @@ class ImageFeatureRegressor(pl.LightningModule):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--data_dir', required=True, help='The path to the data on alvis, most likely something similar to $TMPDIR/data in the slurm script')
+    parser.add_argument('--dataframe_path', required=True, help='The path to the dataframe containing the metadata, features and labels for the data.')
+    parser.add_argument('--gpus', type=int, required=True, help='Specify the number of GPUs to use for training. They should be requested in the slurm scrips')
+    parser.add_argument('--checkpoint', help='Optional. The path to a checkpoint to restart from.')
+    args = parser.parse_args()
+
     print('python version: ', sys.version)
     print('optuna version: ', optuna.__version__)
     print('pytorch lightning version: ', pl.__version__)
@@ -324,8 +373,8 @@ if __name__ == '__main__':
         
         train_dataset = CustomDataset(fl_df, sar_dir, split='train', scale_features=True, image_unit=image_unit)
         val_dataset = CustomDataset(fl_df, sar_dir, split='val', scale_features=True, image_unit=image_unit, mean=train_dataset.mean, std=train_dataset.std)
-        train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16)
-        val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16)
+        train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
+        val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
         
         feature_dim = train_dataset.feature_dim
         model = ImageFeatureRegressor(feature_dim=feature_dim, learning_rate=learning_rate, mean_wind=train_dataset.mean_wind, mean_wave=train_dataset.mean_wave)
@@ -337,7 +386,7 @@ if __name__ == '__main__':
             enable_checkpointing=True,
             max_epochs=50,
             accelerator="gpu",
-            devices=1,
+            devices=2,
             callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_loss")],
             deterministic=True,
         )
