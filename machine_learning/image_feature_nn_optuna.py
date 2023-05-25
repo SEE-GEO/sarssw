@@ -65,7 +65,7 @@ class RandomRotationTransform:
         return TF.rotate(img, angle)
 
 class CustomDataset(Dataset):
-    def __init__(self, dataset_df, sar_dir, split='train', base_features=None, scale_features=True, image_unit='lin', mean=None, std=None):
+    def __init__(self, dataset_df, sar_dir, split='train', base_features=None, scale_features=True, image_unit='lin', mean=None, std=None, transform=None):
         # preprocess with hom test, feature extract and everything
         #filter homogenious images with IW mode and no na
         split_df = dataset_df[dataset_df.split == split]
@@ -139,6 +139,7 @@ class CustomDataset(Dataset):
         
         self.n_wave_bouy = (self.wave_source == 'bouy').sum()            
         self.n_wind_bouy = (self.wind_source == 'bouy').sum()
+        self.transform = transform
 
     def __len__(self):
         return len(self.features_tensor)
@@ -150,8 +151,14 @@ class CustomDataset(Dataset):
         file_name = self.file_names.iloc[index]
         image_path = os.path.join(self.sar_dir, file_name)
         sigma0 = xr.open_dataset(image_path).sigma0.values.astype(np.float32)
-        if self.image_unit == 'db':
-            sigma0 = np.log10(np.where(sigma0 > 0.0, sigma0, 1e-10))
+        
+        #if self.image_unit == 'db':
+        #    sigma0 = np.log10(np.where(sigma0 > 0.0, sigma0, 1e-10))
+        
+        # Apply transform if it exists
+        if self.transform is not None:
+            image = self.transform(image)
+            
         image = torch.tensor(sigma0)
 
         if self.split != 'train':
@@ -310,7 +317,7 @@ class ImageFeatureRegressor(pl.LightningModule):
             
             
 
-        log_dict = {
+        '''log_dict = {
             "val_loss": val_loss, 
             "val_wave_mse": wave_mse, 
             "val_wave_rmse": wave_rmse, 
@@ -321,8 +328,14 @@ class ImageFeatureRegressor(pl.LightningModule):
         }
 
         # Log all metrics for TensorBoard
-        self.log_dict(log_dict)
+        self.log_dict(log_dict)'''
 
+        log_dict = {
+            "val_loss": val_loss,
+            "val_wind_rmse": wind_rmse, 
+            "val_wave_rmse": wave_rmse, 
+        }
+        
         # Log only selected metrics for the progress bar
         self.log_dict({
             "val_loss": val_loss,
@@ -350,6 +363,28 @@ if __name__ == '__main__':
         raise RuntimeError("PyTorch Lightning>=1.6.0 is required for this example.")
 
     pl.seed_everything(0, workers=True)
+    
+    # Calculate mean and standard deviation of the training set
+    train_dataset_norm = CustomDataset(
+        os.path.join(args.data_dir, 'train'),
+        args.dataframe_path
+        )
+
+    pixel_mean, pixel_std = dataset_mean_std(train_dataset_norm)
+    
+    # output
+    print('pixel mean: '  + str(pixel_mean))
+    print('pixel std:  '  + str(pixel_std))
+    
+    train_transform = Compose([
+                Normalize(mean=pixel_mean, std=pixel_std),
+                RandomRotationTransform(angles=[0, 90, 180, 270]),
+                RandomHorizontalFlip(0.5),
+                RandomVerticalFlip(0.5),
+                ])
+
+    val_transform = Normalize(mean=pixel_mean, std=pixel_std)
+
     
     sar_dir = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset'
     fl_df_path = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_27_april/sar_dataset_split.pickle'
