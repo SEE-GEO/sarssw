@@ -19,7 +19,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-from torchvision.models import resnet18
+from torchvision.models import resnet18, resnet34, resnet50, vgg16, vgg19, resnet, vgg
 from torchvision.transforms import Compose, Normalize, RandomHorizontalFlip, RandomVerticalFlip, ToTensor
 import torchvision.transforms.functional as TF
 
@@ -187,18 +187,31 @@ class CustomLoss(nn.Module):
         return loss
 
 class ImageFeatureRegressor(pl.LightningModule):
-    def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5):
+    def __init__(self, cnn_model, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5):
         super(ImageFeatureRegressor, self).__init__()
-        self.save_hyperparameters()
+        self.save_hyperparameters(ignore=['cnn_model'])
         self.learning_rate = learning_rate
         self.loss_fn = CustomLoss(mean_wave=mean_wave, mean_wind=mean_wind)
         self.dropout_p = dropout_p
         
-        self.image_cnn = resnet18()  # Default to no pre-training
-        self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
-        self.image_cnn.fc = nn.Identity()
+        #self.image_cnn = resnet18()  # Default to no pre-training
+        #self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        #self.image_cnn.fc = nn.Identity()
+        
+        # Use the given CNN model
+        self.image_cnn = cnn_model
+        
+        num_cnn_out_features = 0
+        if isinstance(self.image_cnn, resnet.ResNet):
+            self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
+            num_cnn_out_features = self.image_cnn.fc.in_features  # Get the number of output features before setting fc to Identity
+            self.image_cnn.fc = nn.Identity()  # Ensure the model does not include the final fully connected layer
+        elif isinstance(self.image_cnn, vgg.VGG):
+            self.image_cnn.features[0] = nn.Conv2d(2, 64, kernel_size=3, padding=1)
+            num_cnn_out_features = self.image_cnn.classifier[0].in_features  # VGG's fully connected layer is in the classifier attribute
+            self.image_cnn.classifier = nn.Identity()
 
-        self.fc1 = nn.Linear(512 + feature_dim, 1024)
+        self.fc1 = nn.Linear(num_cnn_out_features + feature_dim, 1024)
         self.bn1 = nn.BatchNorm1d(1024)
         self.fc2 = nn.Linear(1024, 1024)
         self.bn2 = nn.BatchNorm1d(1024)
@@ -220,8 +233,15 @@ class ImageFeatureRegressor(pl.LightningModule):
         self.fc6_wind = nn.Linear(64, 1)
         
     def forward(self, image, features):
+        #image_output = self.image_cnn(image)
+        #image_output = image_output.view(image_output.size(0), -1)
+        
         image_output = self.image_cnn(image)
-        image_output = image_output.view(image_output.size(0), -1)
+
+        if isinstance(self.image_cnn, resnet.ResNet):
+            # If the CNN model is a ResNet, flatten the output tensor
+            image_output = image_output.view(image_output.size(0), -1)
+        # else: If the CNN model is a VGG, the output tensor is already flattened
         
         combined = torch.cat((image_output, features), dim=1)
         
@@ -381,6 +401,27 @@ if __name__ == '__main__':
         # Suggest a learning rate
         learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-2, log=True)
         
+        # Suggest a dropout rate
+        dropout_p = trial.suggest_float("dropout_p", 0, 1)
+        
+         # Suggest if pretrained or not
+        pretrained = trial.suggest_categorical('pretrained', [True, False])
+        
+         # Suggest a pretrained model name
+        model_name = trial.suggest_categorical('model_name', ['resnet18', 'resnet34', 'resnet50', 'vgg16', 'vgg19'])
+        
+        # Load the suggested pretrained model
+        if model_name == 'resnet18':
+            cnn_model = resnet18(pretrained=pretrained)
+        elif model_name == 'resnet34':
+            cnn_model = resnet34(pretrained=pretrained)
+        elif model_name == 'resnet50':
+            cnn_model = resnet50(pretrained=pretrained)
+        elif model_name == 'vgg16':
+            cnn_model = vgg16(pretrained=pretrained)
+        elif model_name == 'vgg19':
+            cnn_model = vgg19(pretrained=pretrained)
+        
         train_dataset = CustomDataset(
             args.data_dir, 
             args.dataframe_path, 
@@ -389,14 +430,30 @@ if __name__ == '__main__':
             transform=train_transform
         )
         
-        val_dataset = CustomDataset(args.data_dir, args.dataframe_path, split='val', scale_features=True, mean=train_dataset.mean, std=train_dataset.std, transform=val_transform)
+        val_dataset = CustomDataset(
+            args.data_dir, 
+            args.dataframe_path, 
+            split='val', 
+            scale_features=True, 
+            mean=train_dataset.mean, 
+            std=train_dataset.std, 
+            transform=val_transform
+        )
+        
         train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
         val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
         
         feature_dim = train_dataset.feature_dim
-        model = ImageFeatureRegressor(feature_dim=feature_dim, learning_rate=learning_rate, mean_wave=train_dataset.mean_wave, mean_wind=train_dataset.mean_wind)
+        model = ImageFeatureRegressor(
+            cnn_model=cnn_model,
+            feature_dim=feature_dim, 
+            learning_rate=learning_rate, 
+            mean_wave=train_dataset.mean_wave, 
+            mean_wind=train_dataset.mean_wind,
+            dropout_p=dropout_p,
+        )
         
-        logger = pl.loggers.TensorBoardLogger("custom_loss_sep_metric", name=f"learning_rate={learning_rate}, n_wave_wind_bouy={(val_dataset.n_wave_bouy, val_dataset.n_wind_bouy)}")
+        logger = pl.loggers.TensorBoardLogger("img_feat_lrdrmodl", name=f"lr={learning_rate}, dr={dropout_p}, model={model_name}, pre={pretrained}")
         
         trainer = pl.Trainer(
             logger=logger,
@@ -405,7 +462,7 @@ if __name__ == '__main__':
             accelerator="gpu",
             devices=args.gpus,
             callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_loss")],
-            deterministic=True,
+            #deterministic=True,
         )
 
         hyperparameters = dict(learning_rate=learning_rate)
