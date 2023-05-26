@@ -187,7 +187,7 @@ class CustomLoss(nn.Module):
         return loss
 
 class ImageFeatureRegressor(pl.LightningModule):
-    def __init__(self, feature_dim, learning_rate, mean_wave, mean_wind, dropout_p=0.5):
+    def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5):
         super(ImageFeatureRegressor, self).__init__()
         self.save_hyperparameters()
         self.learning_rate = learning_rate
@@ -209,13 +209,15 @@ class ImageFeatureRegressor(pl.LightningModule):
         self.fc5 = nn.Linear(1024, 1024)
         self.bn5 = nn.BatchNorm1d(1024)
 
-        self.fc_wave = nn.ModuleList([nn.Linear(1024, 1024) for _ in range(5)])
-        self.bn_wave = nn.ModuleList([nn.BatchNorm1d(1024) for _ in range(5)])
-        self.fc6_wave = nn.Linear(1024, 1)
+        fc_sizes_wave = [1024, 512, 256, 128, 64]
+        self.fc_wave = nn.ModuleList([nn.Linear(in_f, out_f) for in_f, out_f in zip(fc_sizes_wave[:-1], fc_sizes_wave[1:])])
+        self.bn_wave = nn.ModuleList([nn.BatchNorm1d(size) for size in fc_sizes_wave[1:]])
+        self.fc6_wave = nn.Linear(64, 1)
 
-        self.fc_wind = nn.ModuleList([nn.Linear(1024, 1024) for _ in range(5)])
-        self.bn_wind = nn.ModuleList([nn.BatchNorm1d(1024) for _ in range(5)])
-        self.fc6_wind = nn.Linear(1024, 1)
+        fc_sizes_wind = [1024, 512, 256, 128, 64]
+        self.fc_wind = nn.ModuleList([nn.Linear(in_f, out_f) for in_f, out_f in zip(fc_sizes_wind[:-1], fc_sizes_wind[1:])])
+        self.bn_wind = nn.ModuleList([nn.BatchNorm1d(size) for size in fc_sizes_wind[1:]])
+        self.fc6_wind = nn.Linear(64, 1)
         
     def forward(self, image, features):
         image_output = self.image_cnn(image)
@@ -377,7 +379,7 @@ if __name__ == '__main__':
     def objective(trial: optuna.trial.Trial) -> float:
         
         # Suggest a learning rate
-        learning_rate = learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-2, log=True)
+        learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-2, log=True)
         
         train_dataset = CustomDataset(
             args.data_dir, 
