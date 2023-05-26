@@ -65,41 +65,38 @@ class RandomRotationTransform:
         return TF.rotate(img, angle)
 
 class CustomDataset(Dataset):
-    def __init__(self, dataset_df, sar_dir, split='train', base_features=None, scale_features=True, image_unit='lin', mean=None, std=None, transform=None):
+    def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, mean=None, std=None, transform=None):
+        self.split_dir = os.path.join(data_dir, split)
+        
+        if not os.path.isdir(self.split_dir):
+            raise ValueError(f"The data directory {self.split_dir} not found")
+
+        with open(dataframe_path, 'rb') as f:
+            fl_df = pickle.load(f)
+
+        #Filter for only images in the data_dir
+        dataset_df = fl_df[fl_df.file_name.isin(os.listdir(self.split_dir))]
+        
         # preprocess with hom test, feature extract and everything
         #filter homogenious images with IW mode and no na
         split_df = dataset_df[dataset_df.split == split]
         hom_df = split_df[split_df.hom_test].copy()
         
-        db_feats = [
-            'sigma_mean','sigma_var', 'sigma_mean_over_var', 
-        ]
-
-        for feat in db_feats:
-            aa = hom_df[feat]
-            hom_df.loc[:, feat + '_dB'] = np.log10(np.where(aa>0.0, aa, 1e-300))
-        
         hom_df = hom_df.dropna()
-
         #merge the vv and vh polarization
         VV_df, VH_df = hom_df[hom_df.pol == 'VV'], hom_df[hom_df.pol == 'VH']
         merge_df = VV_df.merge(VH_df, on='file_name', suffixes=('_VV', '_VH'))
 
         if base_features is None:
-            # base_features = [
-            #     'sigma_mean', 'sigma_var', 'sigma_mean_over_var', 
-            #     'sigma_min', 'sigma_max', 'sigma_range'
-            #]
-            
             base_features = [
                 'contrast', 'dissimilarity', 'homogeneity', 
                 'energy', 'correlation', 'ASM', 
-                'sigma_mean',
-                'sigma_var', 'sigma_mean_over_var', 'sigma_min', 
-                'sigma_max', 'sigma_range'
-            ] + [feat + '_dB' for feat in db_feats]
+                'sigma_mean', 'sigma_var', 'sigma_mean_over_var', 
+                'sigma_min', 'sigma_max', 'sigma_range',
+                'acw', 'acw_median', 'acw_db', 'acw_median_db'
+            ]
         
-        self.features = [f + p for f in base_features for p in ['_VV', '_VH']]
+        self.features = [f + p for f in base_features for p in ['_VV', '_VH']] + ['incidence_VV']
         self.feature_dim = len(self.features) 
         features_array = merge_df[self.features].values.astype(np.float32)
         features_tensor = torch.from_numpy(features_array)
@@ -127,15 +124,9 @@ class CustomDataset(Dataset):
         self.mean_wind = merge_df[self.wind_col].mean()
         self.wind_tensor = torch.from_numpy(merge_df[self.wind_col].values.astype(np.float32))
         self.wind_source = merge_df['WSPD_source_VV']
-        
-        self.sar_dir = sar_dir
+
         self.split = split
         self.file_names = merge_df.file_name
-        
-        if image_unit.lower() in ['lin', 'db']:
-            self.image_unit = image_unit.lower()
-        else:
-            raise ValueError(f"Unknown unit {image_unit}")
         
         self.n_wave_bouy = (self.wave_source == 'bouy').sum()            
         self.n_wind_bouy = (self.wind_source == 'bouy').sum()
@@ -149,17 +140,13 @@ class CustomDataset(Dataset):
         wave_label, wind_label = self.wave_tensor[index], self.wind_tensor[index]
         
         file_name = self.file_names.iloc[index]
-        image_path = os.path.join(self.sar_dir, file_name)
-        sigma0 = xr.open_dataset(image_path).sigma0.values.astype(np.float32)
-        
-        #if self.image_unit == 'db':
-        #    sigma0 = np.log10(np.where(sigma0 > 0.0, sigma0, 1e-10))
+        image_path = os.path.join(self.split_dir, file_name)
+        sigma0 = xr.open_dataset(image_path).sigma0.values
+        image = torch.tensor(sigma0)
         
         # Apply transform if it exists
         if self.transform is not None:
-            image = self.transform(image)
-            
-        image = torch.tensor(sigma0)
+            image = self.transform(image)  
 
         if self.split != 'train':
             # If not training set return -1 for labels that are from model
@@ -168,49 +155,67 @@ class CustomDataset(Dataset):
             if self.wind_source[index] != 'bouy':
                 wind_label = torch.tensor(-1.0)
                 
-        return image, features, (wave_label, wind_label)      
+        return image, features, (wave_label, wind_label)
 
 class CustomLoss(nn.Module):
-    def __init__(self, mean_wind, mean_wave):
+    def __init__(self, mean_wave, mean_wind):
         super(CustomLoss, self).__init__()
         self.mse = nn.MSELoss()
-        self.mean_wind = mean_wind
         self.mean_wave = mean_wave
+        self.mean_wind = mean_wind
 
-    def forward(self, output_wind, output_wave, target_wind, target_wave):
-        rmse_wind = torch.sqrt(self.mse(output_wind, target_wind))
+    def forward(self, output_wave, output_wind, target_wave, target_wind):
+        if (output_wave != output_wave).any():
+            print('Nan value in output_wave')
+        if (output_wind != output_wind).any():
+            print('Nan value in output_wind')
+            
+        if (target_wave != target_wave).any():
+            print('Nan value in target_wave')
+        if (target_wind != target_wind).any():
+            print('Nan value in target_wind')
+        
         rmse_wave = torch.sqrt(self.mse(output_wave, target_wave))
+        rmse_wind = torch.sqrt(self.mse(output_wind, target_wind))
 
         # normalize the losses by dividing by the means
-        rmse_wind_normalized = rmse_wind / self.mean_wind
         rmse_wave_normalized = rmse_wave / self.mean_wave
+        rmse_wind_normalized = rmse_wind / self.mean_wind
 
         # equally weighted root mean square of the losses
-        loss = torch.sqrt((rmse_wind_normalized + rmse_wave_normalized) / 2)
+        loss = torch.sqrt((torch.square(rmse_wave_normalized) + torch.square(rmse_wind_normalized)) / 2)
         return loss
 
 class ImageFeatureRegressor(pl.LightningModule):
-    def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave):
+    def __init__(self, feature_dim, learning_rate, mean_wave, mean_wind, dropout_p=0.5):
         super(ImageFeatureRegressor, self).__init__()
         self.save_hyperparameters()
         self.learning_rate = learning_rate
         self.loss_fn = CustomLoss(mean_wave=mean_wave, mean_wind=mean_wind)
+        self.dropout_p = dropout_p
         
         self.image_cnn = resnet18()  # Default to no pre-training
         self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.image_cnn.fc = nn.Identity()
 
         self.fc1 = nn.Linear(512 + feature_dim, 1024)
+        self.bn1 = nn.BatchNorm1d(1024)
         self.fc2 = nn.Linear(1024, 1024)
+        self.bn2 = nn.BatchNorm1d(1024)
         self.fc3 = nn.Linear(1024, 1024)
+        self.bn3 = nn.BatchNorm1d(1024)
+        self.fc4 = nn.Linear(1024, 1024)
+        self.bn4 = nn.BatchNorm1d(1024)
+        self.fc5 = nn.Linear(1024, 1024)
+        self.bn5 = nn.BatchNorm1d(1024)
 
-        self.fc4_wave = nn.Linear(1024, 256)
-        self.fc5_wave = nn.Linear(256, 128)
-        self.fc6_wave = nn.Linear(128, 1)
+        self.fc_wave = nn.ModuleList([nn.Linear(1024, 1024) for _ in range(5)])
+        self.bn_wave = nn.ModuleList([nn.BatchNorm1d(1024) for _ in range(5)])
+        self.fc6_wave = nn.Linear(1024, 1)
 
-        self.fc4_wind = nn.Linear(1024, 256)
-        self.fc5_wind = nn.Linear(256, 128)
-        self.fc6_wind = nn.Linear(128, 1)
+        self.fc_wind = nn.ModuleList([nn.Linear(1024, 1024) for _ in range(5)])
+        self.bn_wind = nn.ModuleList([nn.BatchNorm1d(1024) for _ in range(5)])
+        self.fc6_wind = nn.Linear(1024, 1)
         
     def forward(self, image, features):
         image_output = self.image_cnn(image)
@@ -218,134 +223,118 @@ class ImageFeatureRegressor(pl.LightningModule):
         
         combined = torch.cat((image_output, features), dim=1)
         
-        x = torch.relu(self.fc1(combined))
-        x = torch.relu(self.fc2(x))
-        x = torch.relu(self.fc3(x))
+        x = F.relu(self.bn1(self.fc1(combined)))
+        x = F.dropout(x, p=self.dropout_p, training=self.training)
+        x = F.relu(self.bn2(self.fc2(x)))
+        x = F.dropout(x, p=self.dropout_p, training=self.training)
+        x = F.relu(self.bn3(self.fc3(x)))
+        x = F.dropout(x, p=self.dropout_p, training=self.training)
+        x = F.relu(self.bn4(self.fc4(x)))
+        x = F.dropout(x, p=self.dropout_p, training=self.training)
+        x = F.relu(self.bn5(self.fc5(x)))
+        x = F.dropout(x, p=self.dropout_p, training=self.training)
         
         # branch wave
-        x_wave = torch.relu(self.fc4_wave(x))
-        x_wave = torch.relu(self.fc5_wave(x_wave))
+        x_wave = x
+        for fc, bn in zip(self.fc_wave, self.bn_wave):
+            x_wave = F.relu(bn(fc(x_wave)))
+            x_wave = F.dropout(x_wave, p=self.dropout_p, training=self.training)
         x_wave = self.fc6_wave(x_wave)
         
         # branch wind
-        x_wind = torch.relu(self.fc4_wind(x))
-        x_wind = torch.relu(self.fc5_wind(x_wind))
+        x_wind = x
+        for fc, bn in zip(self.fc_wind, self.bn_wind):
+            x_wind = F.relu(bn(fc(x_wind)))
+            x_wind = F.dropout(x_wind, p=self.dropout_p, training=self.training)
         x_wind = self.fc6_wind(x_wind)
         
         return x_wave, x_wind
 
+    def configure_optimizers(self):
+        return optim.Adam(self.parameters(), lr=self.learning_rate)
+            
     def training_step(self, batch, batch_idx):
-        image_batch, feature_batch, (target_wind, target_wave) = batch
-        output_wind, output_wave = self(image_batch, feature_batch)
-
+        image_batch, feature_batch, (target_wave, target_wind) = batch
+        output_wave, output_wind = self(image_batch, feature_batch)
+        
+        output_wave = output_wave.squeeze(-1)  # remove the extra dimension
+        output_wind = output_wind.squeeze(-1)  # remove the extra dimension
+        
         loss = self.loss_fn(
-            output_wind=output_wind, 
             output_wave=output_wave, 
+            output_wind=output_wind, 
+            target_wave=target_wave,
             target_wind=target_wind, 
-            target_wave=target_wave
         )
         
         # Ignore everything within this context in the back prop
         with torch.no_grad():
             mse_loss = nn.MSELoss()
+            wave_mse = mse_loss(output_wave, target_wave)
+            wave_rmse = torch.sqrt(wave_mse)
+            wave_mae = torch.mean(torch.abs(output_wave - target_wave))
+
             wind_mse = mse_loss(output_wind, target_wind)
             wind_rmse = torch.sqrt(wind_mse)
             wind_mae = torch.mean(torch.abs(output_wind - target_wind))
 
-            wave_mse = mse_loss(output_wave, target_wave)
-            wave_rmse = torch.sqrt(wave_mse)
-            wave_mae = torch.mean(torch.abs(output_wave - target_wave))
-        
         log_dict = {
-            "train_loss": loss, 
-            "train_wind_mse": wind_mse, 
-            "train_wind_rmse": wind_rmse, 
-            "train_wind_mae": wind_mae, 
-            "train_wave_mse": wave_mse, 
+            "loss": loss,
             "train_wave_rmse": wave_rmse, 
-            "train_wave_mae": wave_mae
+            "train_wind_rmse": wind_rmse, 
+            "train_wave_mae": wave_mae,
+            "train_wind_mae": wind_mae,
         }
-
         
-        # Log all metrics for TensorBoard
-        self.log_dict(log_dict)
-
         # Log only selected metrics for the progress bar
-        self.log_dict({
-            "train_loss": loss,
-            "train_wave_rmse": wave_rmse, 
-            "train_wind_rmse": wind_rmse, 
-        }, prog_bar=True)
+        self.log_dict(log_dict, prog_bar=True)
 
         return log_dict
-
-
-    def configure_optimizers(self):
-        return optim.Adam(self.parameters(), lr=self.learning_rate)
     
     def validation_step(self, batch, batch_idx):
-        image_batch, feature_batch, (target_wind, target_wave) = batch
-        predictions_wind, predictions_wave = self(image_batch, feature_batch)
-        predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
+        image_batch, feature_batch, (target_wave, target_wind) = batch
+        predictions_wave, predictions_wind = self(image_batch, feature_batch)
         predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
+        predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
 
         # calculate loss
         val_loss = self.loss_fn(
-            output_wind=predictions_wind, 
             output_wave=predictions_wave, 
+            output_wind=predictions_wind, 
+            target_wave=target_wave,
             target_wind=target_wind, 
-            target_wave=target_wave
         )
 
         with torch.no_grad():
             # create masks where target values are not -1
-            mask_wind = target_wind != -1
             mask_wave = target_wave != -1
+            mask_wind = target_wind != -1
 
             mse_loss = nn.MSELoss(reduction='sum')  # use sum to ignore the masked entries
 
             # calculate metrics only for valid entries
+            n_wave_bouy = mask_wave.sum()
+            wave_mse = mse_loss(predictions_wave[mask_wave], target_wave[mask_wave]) / n_wave_bouy
+            wave_rmse = torch.sqrt(wave_mse)
+            wave_mae = torch.mean(torch.abs(predictions_wave[mask_wave] - target_wave[mask_wave]))
+
             n_wind_bouy = mask_wind.sum()
             wind_mse = mse_loss(predictions_wind[mask_wind], target_wind[mask_wind]) / n_wind_bouy
             wind_rmse = torch.sqrt(wind_mse)
             wind_mae = torch.mean(torch.abs(predictions_wind[mask_wind] - target_wind[mask_wind]))
 
-            n_wave_bouy = mask_wave.sum()
-            wave_mse = mse_loss(predictions_wave[mask_wave], target_wave[mask_wave]) / n_wave_bouy
-            wave_rmse = torch.sqrt(wave_mse)
-            wave_mae = torch.mean(torch.abs(predictions_wave[mask_wave] - target_wave[mask_wave]))
-            
-            
-
-        '''log_dict = {
-            "val_loss": val_loss, 
-            "val_wave_mse": wave_mse, 
-            "val_wave_rmse": wave_rmse, 
-            "val_wave_mae": wave_mae,
-            "val_wind_mse": wind_mse, 
-            "val_wind_rmse": wind_rmse, 
-            "val_wind_mae": wind_mae, 
-        }
-
-        # Log all metrics for TensorBoard
-        self.log_dict(log_dict)'''
-
         log_dict = {
             "val_loss": val_loss,
-            "val_wind_rmse": wind_rmse, 
             "val_wave_rmse": wave_rmse, 
+            "val_wind_rmse": wind_rmse, 
+            "val_wave_mae": wave_mae,
+            "val_wind_mae": wind_mae,
         }
         
         # Log only selected metrics for the progress bar
-        self.log_dict({
-            "val_loss": val_loss,
-            "val_wind_rmse": wind_rmse, 
-            "val_wave_rmse": wave_rmse, 
-        }, prog_bar=True)
+        self.log_dict(log_dict, prog_bar=True)
 
         return log_dict
-
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
@@ -366,7 +355,7 @@ if __name__ == '__main__':
     
     # Calculate mean and standard deviation of the training set
     train_dataset_norm = CustomDataset(
-        os.path.join(args.data_dir, 'train'),
+        args.data_dir,
         args.dataframe_path
         )
 
@@ -381,59 +370,50 @@ if __name__ == '__main__':
                 RandomRotationTransform(angles=[0, 90, 180, 270]),
                 RandomHorizontalFlip(0.5),
                 RandomVerticalFlip(0.5),
-                ])
+            ])
 
     val_transform = Normalize(mean=pixel_mean, std=pixel_std)
-
     
-    sar_dir = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset'
-    fl_df_path = '/mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_27_april/sar_dataset_split.pickle'
-
-    n_files = 10_000
-    file_filter = lambda fn: fn.is_file() and fn.name.endswith('.nc') and 'IW' in fn.name
-    sar_dataset_files = list(islice((fn.name for fn in os.scandir(sar_dir) if file_filter(fn)), n_files))
-    #sar_dataset_files = [f for f in os.listdir(sar_dir) if f.endswith('.nc') and 'IW' in f]
-
-    with open(fl_df_path, 'rb') as f:
-        fl_df = pickle.load(f)
-
-    fl_df = fl_df[fl_df.file_name.isin(sar_dataset_files)]
-
     def objective(trial: optuna.trial.Trial) -> float:
         
         # Suggest a learning rate
         learning_rate = learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-2, log=True)
         
-        image_unit = trial.suggest_categorical('image_unit', ['lin', 'db'])
+        train_dataset = CustomDataset(
+            args.data_dir, 
+            args.dataframe_path, 
+            split='train', 
+            scale_features=True, 
+            transform=train_transform
+        )
         
-        train_dataset = CustomDataset(fl_df, sar_dir, split='train', scale_features=True, image_unit=image_unit)
-        val_dataset = CustomDataset(fl_df, sar_dir, split='val', scale_features=True, image_unit=image_unit, mean=train_dataset.mean, std=train_dataset.std)
+        val_dataset = CustomDataset(args.data_dir, args.dataframe_path, split='val', scale_features=True, mean=train_dataset.mean, std=train_dataset.std, transform=val_transform)
         train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
         val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
         
         feature_dim = train_dataset.feature_dim
-        model = ImageFeatureRegressor(feature_dim=feature_dim, learning_rate=learning_rate, mean_wind=train_dataset.mean_wind, mean_wave=train_dataset.mean_wave)
+        model = ImageFeatureRegressor(feature_dim=feature_dim, learning_rate=learning_rate, mean_wave=train_dataset.mean_wave, mean_wind=train_dataset.mean_wind)
         
-        logger = pl.loggers.TensorBoardLogger("custom_loss_sep_metric", name=f"learning_rate={learning_rate}, image_unit={image_unit}, n_wind_wave_bouy={(val_dataset.n_wind_bouy, val_dataset.n_wave_bouy)}")
+        logger = pl.loggers.TensorBoardLogger("custom_loss_sep_metric", name=f"learning_rate={learning_rate}, n_wave_wind_bouy={(val_dataset.n_wave_bouy, val_dataset.n_wind_bouy)}")
         
         trainer = pl.Trainer(
             logger=logger,
             enable_checkpointing=True,
-            max_epochs=50,
+            max_epochs=100,
             accelerator="gpu",
-            devices=2,
+            devices=args.gpus,
             callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_loss")],
             deterministic=True,
         )
 
-        hyperparameters = dict(learning_rate=learning_rate, image_unit=image_unit)
+        hyperparameters = dict(learning_rate=learning_rate)
         trainer.logger.log_hyperparams(hyperparameters)
         trainer.fit(model, train_loader, val_loader)
         return trainer.callback_metrics["val_loss"].item()
     
     # Create the Optuna study and optimize the objective function
     study = optuna.create_study(direction="minimize", pruner=optuna.pruners.MedianPruner())
-    study.optimize(objective, n_trials=10, timeout=3600)
+    study.optimize(objective, n_trials=100, timeout=3600)
 
     print("Number of finished trials: {}".format(len(study.trials)))
 
