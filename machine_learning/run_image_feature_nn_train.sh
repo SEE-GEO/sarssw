@@ -3,7 +3,7 @@
 #SBATCH -p chair
 #SBATCH -A C3SE512-22-1
 #SBATCH --gpus-per-node=A100:4
-cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/image_feature_nn.py ${TMPDIR}/script.py
+cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/image_feature_nn_train.py ${TMPDIR}/script.py
 cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/sarssw_ml_lib.py ${TMPDIR}/sarssw_ml_lib.py
 cp /mimer/NOBACKUP/priv/chair/sarssw/apptainer_sarssw.sif ${TMPDIR}/apptainer.sif
 echo "Copying data"
