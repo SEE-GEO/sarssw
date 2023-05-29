@@ -29,40 +29,6 @@ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 
 import optuna
 from optuna.integration import PyTorchLightningPruningCallback
-# In large parts taken from https://kozodoi.me/blog/20210308/compute-image-stats
-def dataset_mean_std(dataset):
-    "Returns the pixel mean and standared deviation of a dataset"
-    dataset_loader = DataLoader(dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
-    
-    n_channels, x_pixels, y_pixels = dataset[0][0].shape
-    pixel_value_sum = torch.tensor([0.0]*n_channels)
-    pixel_value_squared_sum = torch.tensor([0.0]*n_channels)
-
-    # loop through images
-    print("Computing mean and std")
-    for images, features, labels in tqdm(dataset_loader):
-        pixel_value_sum += images.sum(axis = [0, 2, 3])
-        pixel_value_squared_sum += (images ** 2).sum(axis = [0, 2, 3])
-
-    # pixel count
-    pixel_count = len(dataset) * x_pixels * y_pixels
-
-    # mean and std
-    pixel_mean = pixel_value_sum / pixel_count
-    pixel_var  = (pixel_value_squared_sum / pixel_count) - (pixel_mean ** 2)
-    pixel_std  = torch.sqrt(pixel_var)
-
-    return pixel_mean, pixel_std
-
-class RandomRotationTransform:
-    """Rotate by one of the given angles."""
-
-    def __init__(self, angles):
-        self.angles = angles
-
-    def __call__(self, img):
-        angle = random.choice(self.angles)
-        return TF.rotate(img, angle)
 
 class CustomDataset(Dataset):
     def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, mean=None, std=None, transform=None):
@@ -130,7 +96,6 @@ class CustomDataset(Dataset):
         
         self.n_wave_bouy = (self.wave_source == 'bouy').sum()            
         self.n_wind_bouy = (self.wind_source == 'bouy').sum()
-        self.transform = transform
 
     def __len__(self):
         return len(self.features_tensor)
@@ -138,15 +103,6 @@ class CustomDataset(Dataset):
     def __getitem__(self, index):
         features = self.features_tensor[index]
         wave_label, wind_label = self.wave_tensor[index], self.wind_tensor[index]
-        
-        file_name = self.file_names.iloc[index]
-        image_path = os.path.join(self.split_dir, file_name)
-        sigma0 = xr.open_dataset(image_path).sigma0.values
-        image = torch.tensor(sigma0)
-        
-        # Apply transform if it exists
-        if self.transform is not None:
-            image = self.transform(image)  
 
         if self.split != 'train':
             # If not training set return -1 for labels that are from model
@@ -155,7 +111,7 @@ class CustomDataset(Dataset):
             if self.wind_source[index] != 'bouy':
                 wind_label = torch.tensor(-1.0)
                 
-        return image, features, (wave_label, wind_label)
+        return features, (wave_label, wind_label)
 
 class CustomLoss(nn.Module):
     def __init__(self, mean_wave, mean_wind):
@@ -186,32 +142,14 @@ class CustomLoss(nn.Module):
         loss = torch.sqrt((torch.square(rmse_wave_normalized) + torch.square(rmse_wind_normalized)) / 2)
         return loss
 
-class ImageFeatureRegressor(pl.LightningModule):
-    def __init__(self, cnn_model, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5):
-        super(ImageFeatureRegressor, self).__init__()
-        self.save_hyperparameters(ignore=['cnn_model'])
+class FeatureRegressor(pl.LightningModule):
+    def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5):
+        super(FeatureRegressor, self).__init__()
         self.learning_rate = learning_rate
         self.loss_fn = CustomLoss(mean_wave=mean_wave, mean_wind=mean_wind)
         self.dropout_p = dropout_p
-        
-        #self.image_cnn = resnet18()  # Default to no pre-training
-        #self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
-        #self.image_cnn.fc = nn.Identity()
-        
-        # Use the given CNN model
-        self.image_cnn = cnn_model
-        
-        num_cnn_out_features = 0
-        if isinstance(self.image_cnn, resnet.ResNet):
-            self.image_cnn.conv1 = nn.Conv2d(2, 64, kernel_size=7, stride=2, padding=3, bias=False)
-            num_cnn_out_features = self.image_cnn.fc.in_features  # Get the number of output features before setting fc to Identity
-            self.image_cnn.fc = nn.Identity()  # Ensure the model does not include the final fully connected layer
-        elif isinstance(self.image_cnn, vgg.VGG):
-            self.image_cnn.features[0] = nn.Conv2d(2, 64, kernel_size=3, padding=1)
-            num_cnn_out_features = self.image_cnn.classifier[0].in_features  # VGG's fully connected layer is in the classifier attribute
-            self.image_cnn.classifier = nn.Identity()
 
-        self.fc1 = nn.Linear(num_cnn_out_features + feature_dim, 1024)
+        self.fc1 = nn.Linear(feature_dim, 1024)
         self.bn1 = nn.BatchNorm1d(1024)
         self.fc2 = nn.Linear(1024, 1024)
         self.bn2 = nn.BatchNorm1d(1024)
@@ -232,20 +170,8 @@ class ImageFeatureRegressor(pl.LightningModule):
         self.bn_wind = nn.ModuleList([nn.BatchNorm1d(size) for size in fc_sizes_wind[1:]])
         self.fc6_wind = nn.Linear(64, 1)
         
-    def forward(self, image, features):
-        #image_output = self.image_cnn(image)
-        #image_output = image_output.view(image_output.size(0), -1)
-        
-        image_output = self.image_cnn(image)
-
-        if isinstance(self.image_cnn, resnet.ResNet):
-            # If the CNN model is a ResNet, flatten the output tensor
-            image_output = image_output.view(image_output.size(0), -1)
-        # else: If the CNN model is a VGG, the output tensor is already flattened
-        
-        combined = torch.cat((image_output, features), dim=1)
-        
-        x = F.relu(self.bn1(self.fc1(combined)))
+    def forward(self, features):
+        x = F.relu(self.bn1(self.fc1(features)))
         x = F.dropout(x, p=self.dropout_p, training=self.training)
         x = F.relu(self.bn2(self.fc2(x)))
         x = F.dropout(x, p=self.dropout_p, training=self.training)
@@ -276,8 +202,8 @@ class ImageFeatureRegressor(pl.LightningModule):
         return optim.Adam(self.parameters(), lr=self.learning_rate)
             
     def training_step(self, batch, batch_idx):
-        image_batch, feature_batch, (target_wave, target_wind) = batch
-        output_wave, output_wind = self(image_batch, feature_batch)
+        feature_batch, (target_wave, target_wind) = batch
+        output_wave, output_wind = self(feature_batch)
         
         output_wave = output_wave.squeeze(-1)  # remove the extra dimension
         output_wind = output_wind.squeeze(-1)  # remove the extra dimension
@@ -314,8 +240,8 @@ class ImageFeatureRegressor(pl.LightningModule):
         return log_dict
     
     def validation_step(self, batch, batch_idx):
-        image_batch, feature_batch, (target_wave, target_wind) = batch
-        predictions_wave, predictions_wind = self(image_batch, feature_batch)
+        feature_batch, (target_wave, target_wind) = batch
+        predictions_wave, predictions_wind = self(feature_batch)
         predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
         predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
 
@@ -375,62 +301,19 @@ if __name__ == '__main__':
 
     pl.seed_everything(0, workers=True)
     
-    # Calculate mean and standard deviation of the training set
-    train_dataset_norm = CustomDataset(
-        args.data_dir,
-        args.dataframe_path
-        )
-
-    pixel_mean, pixel_std = dataset_mean_std(train_dataset_norm)
-    
-    # output
-    print('pixel mean: '  + str(pixel_mean))
-    print('pixel std:  '  + str(pixel_std))
-    
-    train_transform = Compose([
-                Normalize(mean=pixel_mean, std=pixel_std),
-                RandomRotationTransform(angles=[0, 90, 180, 270]),
-                RandomHorizontalFlip(0.5),
-                RandomVerticalFlip(0.5),
-            ])
-
-    val_transform = Normalize(mean=pixel_mean, std=pixel_std)
-    
     def objective(trial: optuna.trial.Trial) -> float:
         
-        # Suggest a learning rate 
-        #learning_rate = 0.0005
-        learning_rate = trial.suggest_float("learning_rate", 1e-5, 1e-3, log=True)
+        # Suggest a learning rate
+        learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-2, log=True)
         
         # Suggest a dropout rate
-        dropout_p = trial.suggest_float("dropout_p", 0, 0.5)
-        
-         # Suggest if pretrained or not
-        pretrained = True
-        #pretrained = trial.suggest_categorical('pretrained', [True, False])
-        
-         # Suggest a pretrained model name
-        model_name = trial.suggest_categorical('model_name', ['resnet18', 'resnet34', 'resnet50', 'vgg16', 'vgg19'])
-
-        
-        # Load the suggested pretrained model
-        if model_name == 'resnet18':
-            cnn_model = resnet18(pretrained=pretrained)
-        elif model_name == 'resnet34':
-            cnn_model = resnet34(pretrained=pretrained)
-        elif model_name == 'resnet50':
-            cnn_model = resnet50(pretrained=pretrained)
-        elif model_name == 'vgg16':
-            cnn_model = vgg16(pretrained=pretrained)
-        elif model_name == 'vgg19':
-            cnn_model = vgg19(pretrained=pretrained)
+        dropout_p = trial.suggest_float("dropout_p", 0, 1)
         
         train_dataset = CustomDataset(
             args.data_dir, 
             args.dataframe_path, 
             split='train', 
             scale_features=True, 
-            transform=train_transform
         )
         
         val_dataset = CustomDataset(
@@ -440,15 +323,13 @@ if __name__ == '__main__':
             scale_features=True, 
             mean=train_dataset.mean, 
             std=train_dataset.std, 
-            transform=val_transform
         )
         
         train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
         val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
         
         feature_dim = train_dataset.feature_dim
-        model = ImageFeatureRegressor(
-            cnn_model=cnn_model,
+        model = FeatureRegressor(
             feature_dim=feature_dim, 
             learning_rate=learning_rate, 
             mean_wave=train_dataset.mean_wave, 
@@ -456,7 +337,7 @@ if __name__ == '__main__':
             dropout_p=dropout_p,
         )
         
-        logger = pl.loggers.TensorBoardLogger("if_50k", name=f"lr={learning_rate}, dr={dropout_p}, model={model_name}")
+        logger = pl.loggers.TensorBoardLogger("feat_final", name=f"lr={learning_rate}, dr={dropout_p}")
         
         trainer = pl.Trainer(
             logger=logger,
@@ -465,7 +346,7 @@ if __name__ == '__main__':
             accelerator="gpu",
             devices=args.gpus,
             callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_loss")],
-            #deterministic=True,
+            deterministic=True,
         )
 
         hyperparameters = dict(learning_rate=learning_rate)
@@ -475,7 +356,7 @@ if __name__ == '__main__':
     
     # Create the Optuna study and optimize the objective function
     study = optuna.create_study(direction="minimize", pruner=optuna.pruners.MedianPruner())
-    study.optimize(objective, n_trials=100, timeout=4 * 3600)
+    study.optimize(objective, n_trials=100, timeout=2 * 3600)
 
     print("Number of finished trials: {}".format(len(study.trials)))
 

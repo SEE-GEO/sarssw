@@ -3,7 +3,7 @@
 #SBATCH -p chair
 #SBATCH -A C3SE512-22-1
 #SBATCH --gpus-per-node=A100:4
-script_file="image_feature_nn_optuna.py"
+script_file="feature_nn_optuna.py"
 echo "Starting run of ${script_file}"
 
 cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/${script_file} ${TMPDIR}/script.py
