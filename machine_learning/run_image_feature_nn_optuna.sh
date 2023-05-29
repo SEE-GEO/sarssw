@@ -11,8 +11,8 @@ cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/sarssw_ml_lib.py ${TMPDIR
 cp /mimer/NOBACKUP/priv/chair/sarssw/apptainer_sarssw.sif ${TMPDIR}/apptainer.sif
 echo "Copying data"
 mkdir -p ${TMPDIR}/data
-time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_small/train ${TMPDIR}/data/train
-time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_small/val ${TMPDIR}/data/val
+time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_50k/train ${TMPDIR}/data/train
+time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_50k/val ${TMPDIR}/data/val
 
 module purge
 apptainer exec --nv ${TMPDIR}/apptainer.sif \
