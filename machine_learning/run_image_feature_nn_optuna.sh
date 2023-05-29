@@ -7,11 +7,12 @@ script_file="image_feature_nn_optuna.py"
 echo "Starting run of ${script_file}"
 
 cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/${script_file} ${TMPDIR}/script.py
+cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/sarssw_ml_lib.py ${TMPDIR}/sarssw_ml_lib.py
 cp /mimer/NOBACKUP/priv/chair/sarssw/apptainer_sarssw.sif ${TMPDIR}/apptainer.sif
 echo "Copying data"
 mkdir -p ${TMPDIR}/data
-time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_50k/train ${TMPDIR}/data/train
-time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_50k/val ${TMPDIR}/data/val
+time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_small/train ${TMPDIR}/data/train
+time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_small/val ${TMPDIR}/data/val
 
 module purge
 apptainer exec --nv ${TMPDIR}/apptainer.sif \
