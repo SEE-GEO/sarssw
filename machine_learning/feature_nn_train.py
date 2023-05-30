@@ -1,0 +1,122 @@
+import pickle
+import zipfile
+import os
+import shutil
+from itertools import islice
+from packaging import version
+import sys
+from functools import lru_cache
+import argparse
+import random
+
+import numpy as np
+import pandas as pd
+import xarray as xr
+from tqdm import tqdm
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+from torch.utils.data import Dataset, DataLoader
+from torchvision.models import resnet18, resnet34, resnet50, vgg16, vgg19, resnet, vgg
+from torchvision.transforms import Compose, Normalize, RandomHorizontalFlip, RandomVerticalFlip, ToTensor
+import torchvision.transforms.functional as TF
+
+import pytorch_lightning as pl
+from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.callbacks.early_stopping import EarlyStopping
+
+import sarssw_ml_lib as sml
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--data_dir', required=True, help='The path to the data on alvis, most likely something similar to $TMPDIR/data in the slurm script')
+    parser.add_argument('--dataframe_path', required=True, help='The path to the dataframe containing the metadata, features and labels for the data.')
+    parser.add_argument('--gpus', type=int, required=True, help='Specify the number of GPUs to use for training. They should be requested in the slurm scrips')
+    parser.add_argument('--checkpoint', help='Optional. The path to a checkpoint to restart from.')
+    args = parser.parse_args()
+
+    print('python version: ', sys.version)
+    print('pytorch lightning version: ', pl.__version__)
+
+    if version.parse(pl.__version__) < version.parse("1.6.0"):
+        raise RuntimeError("PyTorch Lightning>=1.6.0 is required for this example.")
+
+    pl.seed_everything(0, workers=True)
+    
+        # Suggest a learning rate
+    learning_rate = 0.0087
+    
+    # Suggest a dropout rate
+    dropout_p = 0.42
+    
+    train_dataset = sml.CustomDatasetFeatures(
+        args.data_dir, 
+        args.dataframe_path, 
+        split='train', 
+        scale_features=True, 
+    )
+    
+    val_dataset = sml.CustomDatasetFeatures(
+        args.data_dir, 
+        args.dataframe_path, 
+        split='val', 
+        scale_features=True, 
+        mean=train_dataset.mean, 
+        std=train_dataset.std, 
+    )
+    
+    train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
+    val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
+    
+    feature_dim = train_dataset.feature_dim
+    model = sml.FeatureRegressor(
+        feature_dim=feature_dim, 
+        learning_rate=learning_rate, 
+        mean_wave=train_dataset.mean_wave, 
+        mean_wind=train_dataset.mean_wind,
+        dropout_p=dropout_p,
+    )
+
+    logger = pl.loggers.TensorBoardLogger("final_training_logger_only_feat", name=f"lr={learning_rate}, dr={dropout_p}")
+
+    # Program callbacks
+    # saves top-2 checkpoints based on "val_loss" metric
+    checkpoint_callback_best = ModelCheckpoint(
+        save_top_k=2,
+        monitor="val_loss",
+        mode="min",
+        save_on_train_epoch_end=True,
+        filename="best_val_loss-{epoch:02d}-{val_loss:.2f}",
+    )
+
+    # saves last-2 checkpoints based on epoch
+    checkpoint_callback_latest = ModelCheckpoint(
+        save_top_k=2,
+        monitor="epoch",
+        mode="max",
+        save_on_train_epoch_end=True,
+        filename="latest-epoch-{epoch:02d}",
+    )
+
+    early_stop_callback = EarlyStopping(
+       monitor="val_loss",
+       min_delta=0.00,
+       patience=5,
+       verbose=False,
+       mode="min"
+    )
+
+    trainer = pl.Trainer(
+        logger=logger,
+        enable_checkpointing=True,
+        max_epochs=100,
+        accelerator="gpu",
+        devices=args.gpus,
+        callbacks=[checkpoint_callback_best, checkpoint_callback_latest],
+    )
+
+    hyperparameters = dict(learning_rate=learning_rate, dropout_p=dropout_p)
+    trainer.logger.log_hyperparams(hyperparameters)
+    trainer.fit(model, train_loader, val_loader)
