@@ -74,10 +74,10 @@ if __name__ == '__main__':
         
         # Suggest a learning rate 
         #learning_rate = 0.0005
-        learning_rate = trial.suggest_float("learning_rate", 1e-5, 1e-3, log=True)
+        learning_rate = trial.suggest_float("learning_rate", 1e-6, 1e-2, log=True)
         
         # Suggest a dropout rate
-        dropout_p = trial.suggest_float("dropout_p", 0, 0.5)
+        dropout_p = trial.suggest_float("dropout_p", 0, 1)
         
          # Suggest if pretrained or not
         pretrained = True

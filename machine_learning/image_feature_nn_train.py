@@ -70,16 +70,16 @@ if __name__ == '__main__':
     val_transform = Normalize(mean=pixel_mean, std=pixel_std)
     
     # Suggest a learning rate
-    learning_rate = 0.0005#TODO
+    learning_rate = 0.0005
     
     # Suggest a dropout rate
-    dropout_p = 0.2#TODO
+    dropout_p = 0.2
     
     # Suggest if pretrained or not
-    pretrained = True #TODO
+    pretrained = True
     
     # Suggest a pretrained model name
-    model_name = 'resnet18' #TODO
+    model_name = 'resnet50'
 
     train_dataset = sml.CustomDataset(
         args.data_dir, 
@@ -117,7 +117,7 @@ if __name__ == '__main__':
         pixel_std=pixel_std,
     )
     
-    logger = pl.loggers.TensorBoardLogger("final_training_logger", name=f"lr={learning_rate}, dr={dropout_p}, model={model_name}, pre={pretrained}")
+    logger = pl.loggers.TensorBoardLogger("final_training_logger_new_loss", name=f"lr={learning_rate}, dr={dropout_p}, model={model_name}, pre={pretrained}")
     
     # Program callbacks
     # saves top-2 checkpoints based on "val_loss" metric
