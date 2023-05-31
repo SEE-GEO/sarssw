@@ -53,7 +53,10 @@ class RandomRotationTransform:
         return TF.rotate(img, angle)
 
 class CustomDataset(Dataset):
-    def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, feature_mean=None, feature_std=None, transform=None):
+    def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, feature_mean=None, feature_std=None, transform=None, get_names=False):
+        # Save option to return file names in __getitem__
+        self.get_names = get_names
+
         self.split_dir = os.path.join(data_dir, split)
         
         if not os.path.isdir(self.split_dir):
@@ -142,9 +145,12 @@ class CustomDataset(Dataset):
                 wave_label = torch.tensor(-1.0)
             if self.wind_source[index] != 'bouy':
                 wind_label = torch.tensor(-1.0)
-        if self.split != 'test':        
-            return image, features, (wave_label, wind_label)
-        return image, features, (wave_label, wind_label), file_name
+        
+        # Return the file name if needed
+        if self.get_names:      
+            return image, features, (wave_label, wind_label), file_name
+        
+        return image, features, (wave_label, wind_label)
     
 class CustomDatasetFeatures(Dataset):
     def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, mean=None, std=None, transform=None):
@@ -444,7 +450,7 @@ class ImageFeatureRegressor(pl.LightningModule):
         return log_dict
     
     def test_step(self, batch, batch_idx):        
-        image_batch, feature_batch, (target_wave, target_wind), _ = batch
+        image_batch, feature_batch, (target_wave, target_wind) = batch
         predictions_wave, predictions_wind = self(image_batch, feature_batch)
         predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
         predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
