@@ -52,8 +52,8 @@ def objective(trial: optuna.trial.Trial) -> float:
         args.dataframe_path, 
         split='val', 
         scale_features=True, 
-        mean=train_dataset.mean, 
-        std=train_dataset.std, 
+        feature_mean=train_dataset.feature_mean, 
+        feature_std=train_dataset.feature_std, 
     )
     
     train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
@@ -66,6 +66,8 @@ def objective(trial: optuna.trial.Trial) -> float:
         mean_wave=train_dataset.mean_wave, 
         mean_wind=train_dataset.mean_wind,
         dropout_p=dropout_p,
+        feature_mean=train_dataset.feature_mean, 
+        feature_std=train_dataset.feature_std,
     )
     
     logger = pl.loggers.TensorBoardLogger("feat_final", name=f"lr={learning_rate}, dr={dropout_p}")

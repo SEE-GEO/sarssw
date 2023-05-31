@@ -8,15 +8,11 @@ echo "Starting run of ${script_file}"
 
 cp /cephyr/users/${USER}/Alvis/sarssw/machine_learning/${script_file} ${TMPDIR}/script.py
 cp /mimer/NOBACKUP/priv/chair/sarssw/apptainer_sarssw.sif ${TMPDIR}/apptainer.sif
-echo "Copying data"
-mkdir -p ${TMPDIR}/data
-time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_50k/train ${TMPDIR}/data/train
-time cp -r /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_50k/val ${TMPDIR}/data/val
 
 module purge
 apptainer exec --nv ${TMPDIR}/apptainer.sif \
     python ${TMPDIR}/script.py \
-    --data_dir ${TMPDIR}/data \
+    --data_dir /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH_50k \
     --dataframe_path /mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_22_may/sar_dataset.pickle \
     --gpus 4
 echo 'sbatch job done'

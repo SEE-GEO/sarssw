@@ -147,7 +147,7 @@ class CustomDataset(Dataset):
         return image, features, (wave_label, wind_label), file_name
     
 class CustomDatasetFeatures(Dataset):
-    def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, mean=None, std=None, transform=None):
+    def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, feature_mean=None, feature_std=None, transform=None):
         self.split_dir = os.path.join(data_dir, split)
         
         if not os.path.isdir(self.split_dir):
@@ -186,14 +186,14 @@ class CustomDatasetFeatures(Dataset):
         if scale_features:
             # If the dataset is the training set, fit and transform the features
             if split == 'train':
-                self.mean = features_tensor.mean(dim=0)
-                self.std = features_tensor.std(dim=0)
-                features_tensor = (features_tensor - self.mean) / self.std
+                self.feature_mean = features_tensor.mean(dim=0)
+                self.feature_std = features_tensor.std(dim=0)
+                features_tensor = (features_tensor - self.feature_mean) / self.feature_std
             # If the dataset is the validation or test set, transform the features using the mean and std computed on the training set
-            elif mean is not None and std is not None:
-                self.mean = mean
-                self.std = std
-                features_tensor = (features_tensor - self.mean) / self.std
+            elif feature_mean is not None and feature_std is not None:
+                self.feature_mean = feature_mean
+                self.feature_std = feature_std
+                features_tensor = (features_tensor - self.feature_mean) / self.feature_std
 
         self.features_tensor = features_tensor      
         
@@ -501,12 +501,16 @@ class ImageFeatureRegressor(pl.LightningModule):
     
     
 class FeatureRegressor(pl.LightningModule):
-    def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5):
+    def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5, feature_mean=None, feature_std=None):
         super(FeatureRegressor, self).__init__()
+        self.save_hyperparameters()
         self.learning_rate = learning_rate
         self.loss_fn = CustomLoss(mean_wave=mean_wave, mean_wind=mean_wind)
         self.dropout_p = dropout_p
-
+        
+        self.feature_mean = feature_mean      
+        self.feature_std = feature_std 
+        
         self.fc1 = nn.Linear(feature_dim, 1024)
         self.bn1 = nn.BatchNorm1d(1024)
         self.fc2 = nn.Linear(1024, 1024)

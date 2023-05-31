@@ -63,8 +63,8 @@ if __name__ == '__main__':
         args.dataframe_path, 
         split='val', 
         scale_features=True, 
-        mean=train_dataset.mean, 
-        std=train_dataset.std, 
+        feature_mean=train_dataset.feature_mean, 
+        feature_std=train_dataset.feature_std, 
     )
     
     train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True, num_workers=16, pin_memory=True, persistent_workers=True)
@@ -77,6 +77,8 @@ if __name__ == '__main__':
         mean_wave=train_dataset.mean_wave, 
         mean_wind=train_dataset.mean_wind,
         dropout_p=dropout_p,
+        feature_mean=train_dataset.feature_mean, 
+        feature_std=train_dataset.feature_std,
     )
 
     logger = pl.loggers.TensorBoardLogger("final_training_logger_only_feat", name=f"lr={learning_rate}, dr={dropout_p}")
