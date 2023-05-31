@@ -440,6 +440,50 @@ class ImageFeatureRegressor(pl.LightningModule):
 
         return log_dict
     
+    def test_step(self, batch, batch_idx):        
+        image_batch, feature_batch, (target_wave, target_wind) = batch
+        predictions_wave, predictions_wind = self(image_batch, feature_batch)
+        predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
+        predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
+        
+        with torch.no_grad():
+            # calculate loss
+            val_loss = self.loss_fn(
+                output_wave=predictions_wave, 
+                output_wind=predictions_wind, 
+                target_wave=target_wave,
+                target_wind=target_wind, 
+            )
+            
+            # create masks where target values are not -1
+            mask_wave = target_wave != -1
+            mask_wind = target_wind != -1
+
+            mse_loss = nn.MSELoss(reduction='sum')  # use sum to ignore the masked entries
+
+            # calculate metrics only for valid entries
+            n_wave_bouy = mask_wave.sum()
+            wave_mse = mse_loss(predictions_wave[mask_wave], target_wave[mask_wave]) / n_wave_bouy
+            wave_rmse = torch.sqrt(wave_mse)
+            wave_mae = torch.mean(torch.abs(predictions_wave[mask_wave] - target_wave[mask_wave]))
+
+            n_wind_bouy = mask_wind.sum()
+            wind_mse = mse_loss(predictions_wind[mask_wind], target_wind[mask_wind]) / n_wind_bouy
+            wind_rmse = torch.sqrt(wind_mse)
+            wind_mae = torch.mean(torch.abs(predictions_wind[mask_wind] - target_wind[mask_wind]))
+
+        log_dict = {
+            "test_loss": val_loss,
+            "test_wave_rmse": wave_rmse, 
+            "test_wind_rmse": wind_rmse, 
+            "test_wave_mae": wave_mae,
+            "test_wind_mae": wind_mae,
+        }
+        
+        self.log_dict(log_dict, prog_bar=True)
+
+        return log_dict
+    
     
 class FeatureRegressor(pl.LightningModule):
     def __init__(self, feature_dim, learning_rate, mean_wind, mean_wave, dropout_p=0.5):
@@ -579,6 +623,50 @@ class FeatureRegressor(pl.LightningModule):
         }
         
         # Log only selected metrics for the progress bar
+        self.log_dict(log_dict, prog_bar=True)
+
+        return log_dict
+    
+    def test_step(self, batch, batch_idx):        
+        image_batch, feature_batch, (target_wave, target_wind) = batch
+        predictions_wave, predictions_wind = self(image_batch, feature_batch)
+        predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
+        predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
+        
+        with torch.no_grad():
+            # calculate loss
+            val_loss = self.loss_fn(
+                output_wave=predictions_wave, 
+                output_wind=predictions_wind, 
+                target_wave=target_wave,
+                target_wind=target_wind, 
+            )
+            
+            # create masks where target values are not -1
+            mask_wave = target_wave != -1
+            mask_wind = target_wind != -1
+
+            mse_loss = nn.MSELoss(reduction='sum')  # use sum to ignore the masked entries
+
+            # calculate metrics only for valid entries
+            n_wave_bouy = mask_wave.sum()
+            wave_mse = mse_loss(predictions_wave[mask_wave], target_wave[mask_wave]) / n_wave_bouy
+            wave_rmse = torch.sqrt(wave_mse)
+            wave_mae = torch.mean(torch.abs(predictions_wave[mask_wave] - target_wave[mask_wave]))
+
+            n_wind_bouy = mask_wind.sum()
+            wind_mse = mse_loss(predictions_wind[mask_wind], target_wind[mask_wind]) / n_wind_bouy
+            wind_rmse = torch.sqrt(wind_mse)
+            wind_mae = torch.mean(torch.abs(predictions_wind[mask_wind] - target_wind[mask_wind]))
+
+        log_dict = {
+            "test_loss": val_loss,
+            "test_wave_rmse": wave_rmse, 
+            "test_wind_rmse": wind_rmse, 
+            "test_wave_mae": wave_mae,
+            "test_wind_mae": wind_mae,
+        }
+        
         self.log_dict(log_dict, prog_bar=True)
 
         return log_dict

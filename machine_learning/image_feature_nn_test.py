@@ -36,18 +36,18 @@ if __name__ == '__main__':
 
     normalize_transform = Normalize(mean=model.pixel_mean, std=model.pixel_std)
     
-    val_dataset = sml.CustomDataset(
+    test_dataset = sml.CustomDataset(
         args.data_dir, 
         args.dataframe_path, 
-        split='val', 
+        split='test',
         scale_features=True, 
         feature_mean=model.feature_mean, 
         feature_std=model.feature_std, 
         transform=normalize_transform
     )
-    
-    val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
+
+    test_loader = DataLoader(test_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
     
     trainer = pl.Trainer()
-    print(trainer.validate(model, dataloaders=val_loader))
+    print(trainer.test(model, test_dataloaders=test_loader))
   
