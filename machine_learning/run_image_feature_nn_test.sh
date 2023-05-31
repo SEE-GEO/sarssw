@@ -11,6 +11,7 @@ apptainer exec --nv /mimer/NOBACKUP/priv/chair/sarssw/apptainer_sarssw.sif  \
     python ${TMPDIR}/script.py \
     --data_dir /mimer/NOBACKUP/priv/chair/sarssw/IW_VV_VH \
     --dataframe_path /mimer/NOBACKUP/priv/chair/sarssw/sar_dataset_features_labels_22_may/sar_dataset.pickle \
-    --checkpoint "/cephyr/users/brobeck/Alvis/sarssw/final_training_logger_new_loss/lr=0.0005, dr=0.2, model=resnet50, pre=True/version_0/checkpoints/best_val_loss-epoch=15-val_loss=0.28.ckpt" \
+    --checkpoint "/mimer/NOBACKUP/priv/chair/sarssw/final_img_feat/version_0/checkpoints/best_val_loss-epoch=41-val_loss=0.28.ckpt" \
     --gpus 1
+
 echo 'sbatch job done'
