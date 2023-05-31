@@ -142,8 +142,9 @@ class CustomDataset(Dataset):
                 wave_label = torch.tensor(-1.0)
             if self.wind_source[index] != 'bouy':
                 wind_label = torch.tensor(-1.0)
-                
-        return image, features, (wave_label, wind_label)
+        if self.split != 'test':        
+            return image, features, (wave_label, wind_label)
+        return image, features, (wave_label, wind_label), file_name
     
 class CustomDatasetFeatures(Dataset):
     def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, mean=None, std=None, transform=None):
@@ -226,7 +227,9 @@ class CustomDatasetFeatures(Dataset):
             if self.wind_source[index] != 'bouy':
                 wind_label = torch.tensor(-1.0)
                 
-        return features, (wave_label, wind_label)
+        if self.split != 'test':        
+            return features, (wave_label, wind_label)
+        return features, (wave_label, wind_label), self.file_names.iloc[index]
 
 class CustomLoss(nn.Module):
     def __init__(self, mean_wave, mean_wind):
@@ -441,7 +444,7 @@ class ImageFeatureRegressor(pl.LightningModule):
         return log_dict
     
     def test_step(self, batch, batch_idx):        
-        image_batch, feature_batch, (target_wave, target_wind) = batch
+        image_batch, feature_batch, (target_wave, target_wind), _ = batch
         predictions_wave, predictions_wind = self(image_batch, feature_batch)
         predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
         predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
@@ -483,6 +486,18 @@ class ImageFeatureRegressor(pl.LightningModule):
         self.log_dict(log_dict, prog_bar=True)
 
         return log_dict
+    
+    def predict_step(self, batch, batch_idx, dataloader_idx=None):
+        image_batch, feature_batch, (target_wave, target_wind), file_names = batch
+        predictions_wave, predictions_wind = self(image_batch, feature_batch)
+        predictions_wave = predictions_wave.squeeze(-1)
+        predictions_wind = predictions_wind.squeeze(-1)
+
+        return {"file_name": file_names,
+                "target_wave": target_wave,
+                "target_wind": target_wind,
+                "prediction_wave": predictions_wave,
+                "prediction_wind": predictions_wind}
     
     
 class FeatureRegressor(pl.LightningModule):
@@ -628,7 +643,7 @@ class FeatureRegressor(pl.LightningModule):
         return log_dict
     
     def test_step(self, batch, batch_idx):        
-        image_batch, feature_batch, (target_wave, target_wind) = batch
+        image_batch, feature_batch, (target_wave, target_wind), _ = batch
         predictions_wave, predictions_wind = self(image_batch, feature_batch)
         predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
         predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
@@ -670,3 +685,16 @@ class FeatureRegressor(pl.LightningModule):
         self.log_dict(log_dict, prog_bar=True)
 
         return log_dict
+    
+    def predict_step(self, batch, batch_idx, dataloader_idx=None):
+        feature_batch, (target_wave, target_wind), file_names = batch
+        predictions_wave, predictions_wind = self(feature_batch)
+        predictions_wave = predictions_wave.squeeze(-1)
+        predictions_wind = predictions_wind.squeeze(-1)
+
+        return {"file_name": file_names,
+                "target_wave": target_wave,
+                "target_wind": target_wind,
+                "prediction_wave": predictions_wave,
+                "prediction_wind": predictions_wind}
+    

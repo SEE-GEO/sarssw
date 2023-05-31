@@ -1,14 +1,12 @@
-from packaging import version
-import sys
 import argparse
 import pandas as pd
 import pickle
+from tqdm import tqdm
 
 import torch
 from torch.utils.data import DataLoader
 from torchvision.transforms import Normalize
 import pytorch_lightning as pl
-import optuna
 
 import sarssw_ml_lib as sml
 
@@ -20,14 +18,7 @@ if __name__ == '__main__':
     parser.add_argument('--checkpoint', required=True, help='Optional. The path to a checkpoint to restart from.')
     args = parser.parse_args()
 
-    print('python version: ', sys.version)
-    print('optuna version: ', optuna.__version__)
-    print('pytorch lightning version: ', pl.__version__)
-
-    if version.parse(pl.__version__) < version.parse("1.6.0"):
-        raise RuntimeError("PyTorch Lightning>=1.6.0 is required for this example.")
-
-    pl.seed_everything(0, workers=True)
+    #pl.seed_everything(0, workers=True)
 
     #Load saved model from checkpoint
     model = sml.ImageFeatureRegressor.load_from_checkpoint(args.checkpoint)
@@ -35,17 +26,13 @@ if __name__ == '__main__':
     # disable randomness, dropout, etc...
     model.eval()
 
-    normalize_transform = Normalize(mean=model.pixel_mean, std=model.pixel_std)
-    
-    val_dataset = sml.CustomDataset(
-        args.data_dir, 
-        args.dataframe_path, 
-        split='val',
-        scale_features=True, 
-        feature_mean=model.feature_mean, 
-        feature_std=model.feature_std, 
-        transform=normalize_transform
+    trainer = pl.Trainer(
+        max_epochs=1,
+        accelerator="gpu",
+        devices=args.gpus,
     )
+    
+    normalize_transform = Normalize(mean=model.pixel_mean, std=model.pixel_std)
 
     test_dataset = sml.CustomDataset(
         args.data_dir, 
@@ -58,34 +45,24 @@ if __name__ == '__main__':
     )
 
     test_loader = DataLoader(test_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
-    val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False, num_workers=16, pin_memory=True, persistent_workers=True)
-    
-    trainer = pl.Trainer(
-        accelerator="gpu",
-        devices=1,
-    )
 
-    test_result = trainer.test(model, test_dataloaders=test_loader)
-    print(test_result)
+    test_result = trainer.test(model, dataloaders=test_loader)
 
-    val_result = trainer.validate(model, dataloaders=val_loader)
-    print(val_result)
+    outputs = trainer.predict(model, dataloaders=test_loader)
 
-    test_result_df_columns = ['target_wave', 'target_wind', 'predictions_wave', 'predictions_wind']
-    test_result_df = pd.DataFrame({c: pd.Series(dtype=float) for c in test_result_df_columns})
+    file_names = [item for sublist in outputs for item in sublist['file_name']]
+    target_wave = torch.cat([x['target_wave'] for x in outputs]).detach().cpu().numpy()
+    target_wind = torch.cat([x['target_wind'] for x in outputs]).detach().cpu().numpy()
+    prediction_wave = torch.cat([x['prediction_wave'] for x in outputs]).detach().cpu().numpy()
+    prediction_wind = torch.cat([x['prediction_wind'] for x in outputs]).detach().cpu().numpy()
 
+    data_dict = {
+        "file_name": file_names,
+        "target_wave": target_wave,
+        "target_wind": target_wind,
+        "prediction_wave": prediction_wave,
+        "prediction_wind": prediction_wind
+    }
 
-    for batch in val_loader:
-        image_batch, feature_batch, (target_wave, target_wind) = batch
-        predictions_wave, predictions_wind = model(image_batch, feature_batch)
-        predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
-        predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
-
-        stacked_tensor = pd.DataFrame(torch.stack([t.detach() for t in [target_wave, target_wind, predictions_wave, predictions_wind]], dim=1), columns=test_result_df_columns)
-
-        test_result_df = pd.concat([test_result_df, stacked_tensor], ignore_index=True)
-    
-    print(test_result_df)
-    print(test_result_df.shape)
-    #with open('/mimer/NOBACKUP/priv/chair/sarssw/pickle_df/test_result_df.pickle', 'wb') as f:
-    #    pickle.dump(test_result_df, f)
+    df_test = pd.DataFrame(data_dict)
+    df_test.to_csv("/cephyr/users/brobeck/Alvis/sarssw/sandbox/test_results.csv")
