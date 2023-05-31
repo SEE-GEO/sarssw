@@ -153,7 +153,8 @@ class CustomDataset(Dataset):
         return image, features, (wave_label, wind_label)
     
 class CustomDatasetFeatures(Dataset):
-    def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, feature_mean=None, feature_std=None, transform=None):
+    def __init__(self, data_dir, dataframe_path, split='train', base_features=None, scale_features=True, feature_mean=None, feature_std=None, transform=None, get_names=False):
+        self.get_names = get_names
         self.split_dir = os.path.join(data_dir, split)
         
         if not os.path.isdir(self.split_dir):
@@ -233,9 +234,9 @@ class CustomDatasetFeatures(Dataset):
             if self.wind_source[index] != 'bouy':
                 wind_label = torch.tensor(-1.0)
                 
-        if self.split != 'test':        
-            return features, (wave_label, wind_label)
-        return features, (wave_label, wind_label), self.file_names.iloc[index]
+        if self.get_names:        
+            return features, (wave_label, wind_label), self.file_names.iloc[index]
+        return features, (wave_label, wind_label)
 
 class CustomLoss(nn.Module):
     def __init__(self, mean_wave, mean_wind):
@@ -653,8 +654,8 @@ class FeatureRegressor(pl.LightningModule):
         return log_dict
     
     def test_step(self, batch, batch_idx):        
-        image_batch, feature_batch, (target_wave, target_wind), _ = batch
-        predictions_wave, predictions_wind = self(image_batch, feature_batch)
+        feature_batch, (target_wave, target_wind) = batch
+        predictions_wave, predictions_wind = self(feature_batch)
         predictions_wave = predictions_wave.squeeze(-1)  # remove the extra dimension
         predictions_wind = predictions_wind.squeeze(-1)  # remove the extra dimension
         
