@@ -19,8 +19,8 @@ Plot a heatmap of the data
 
 best_line Specifies if the best fitted line should be plotted or not
 """
-def heatmap(df, name_text, unit, target_column, prediction_column, cmap='viridis', best_line=False):
-    fig, ax = plt.subplots(1, 1, figsize=(16, 10))
+def heatmap(df, name_text, title, unit, target_column, prediction_column, cmap='viridis', best_line=False, target_label_override=None, prediction_label_override=None):
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
     max_value = max(df[target_column].max(), df[prediction_column].max())
 
     my_cmap = mpl.cm.get_cmap(cmap)
@@ -31,9 +31,17 @@ def heatmap(df, name_text, unit, target_column, prediction_column, cmap='viridis
         slope, intersection = np.polyfit(df[target_column], df[prediction_column], deg=1)
         ax.plot([0, max_value], [intersection, intersection+max_value*slope], color='red', label=f'Best fitted line y={round(slope,2)}x {sign(intersection)} {round(abs(intersection),2)}')
     
-    ax.set_title('Heatmap of ' + name_text + ', log scaled colormap')
-    ax.set_xlabel(f"Target {name_text} [{unit}]")
-    ax.set_ylabel(f"Predicted {name_text} [{unit}]")
+    ax.set_title('Heatmap of ' + title)
+    if target_label_override is not None:
+        ax.set_xlabel(target_label_override)
+    else:  
+        ax.set_xlabel(f"Target {name_text} [{unit}]")
+        
+    if prediction_label_override is not None:
+        ax.set_ylabel(prediction_label_override)
+    else:
+        ax.set_ylabel(f"Predicted {name_text} [{unit}]")
+        
     fig.colorbar(h2d_img, ax=ax, label='Count colormap')
     ax.set_facecolor(my_cmap(0))
     ax.legend()
@@ -42,6 +50,20 @@ def heatmap(df, name_text, unit, target_column, prediction_column, cmap='viridis
     plt.close()
     return fig
 
+    """
+    Plot a histogram of the data
+    """
+def my_histogram(data, title, xlabel, ylabel="Count", bins=100):  
+    fig, ax = plt.subplots(1, 1, figsize=(10, 6))
+    ax.hist(data, bins=bins)
+    ax.set_title(title)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.legend()
+
+    plt.close()
+    return fig
+    
 """
 Calculate the RMSE of the data
 """
