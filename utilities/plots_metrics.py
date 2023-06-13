@@ -14,22 +14,27 @@ def sign(num):
         return '-'
     return '+'
 
-"""
-Plot a heatmap of the data
+def heatmap(df, name_text, title, unit, target_column, prediction_column, best_line=False, target_label_override=None, prediction_label_override=None):
+    """
+    Plot a heatmap of the data
 
-best_line Specifies if the best fitted line should be plotted or not
-"""
-def heatmap(df, name_text, title, unit, target_column, prediction_column, cmap='viridis', best_line=False, target_label_override=None, prediction_label_override=None):
+    best_line Specifies if the best fitted line should be plotted or not
+    """
+    colors = {
+        "cmap": "cividis",         # Heatmap color scheme
+        "identity_line": "white", # Identity line color
+        "best_fit_line": "red",   # Best fit line color
+    }
+    
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
     max_value = max(df[target_column].max(), df[prediction_column].max())
 
-    my_cmap = mpl.cm.get_cmap(cmap)
-    (h2d_h, h2d_xedg, h2d_yedg, h2d_img) = ax.hist2d(df[target_column], df[prediction_column], bins=100, norm=mpl.colors.LogNorm(clip=True), cmap=my_cmap)
-    ax.plot([0, 1], [0, 1], color='black', transform=ax.transAxes, label='Identity line x=y') #Plot identity line
+    (h2d_h, h2d_xedg, h2d_yedg, h2d_img) = ax.hist2d(df[target_column], df[prediction_column], bins=100, norm=mpl.colors.LogNorm(clip=True), cmap=colors["cmap"])
+    ax.plot([0, 1], [0, 1], color=colors["identity_line"], transform=ax.transAxes, label='Identity line x=y') #Plot identity line
     
     if best_line:
         slope, intersection = np.polyfit(df[target_column], df[prediction_column], deg=1)
-        ax.plot([0, max_value], [intersection, intersection+max_value*slope], color='red', label=f'Best fitted line y={round(slope,2)}x {sign(intersection)} {round(abs(intersection),2)}')
+        ax.plot([0, max_value], [intersection, intersection+max_value*slope], color=colors["best_fit_line"], label=f'Best fitted line y={round(slope,2)}x {sign(intersection)} {round(abs(intersection),2)}')
     
     ax.set_title('Heatmap of ' + title)
     if target_label_override is not None:
@@ -43,17 +48,17 @@ def heatmap(df, name_text, title, unit, target_column, prediction_column, cmap='
         ax.set_ylabel(f"Predicted {name_text} [{unit}]")
         
     fig.colorbar(h2d_img, ax=ax, label='Count colormap')
-    ax.set_facecolor(my_cmap(0))
+    ax.set_facecolor(plt.get_cmap(colors["cmap"])(0))
     ax.legend()
     ax.set(xlim=(0, max_value), ylim=(0, max_value))
 
     plt.close()
     return fig
 
+def my_histogram(data, title, xlabel, ylabel="Count", bins=100):  
     """
     Plot a histogram of the data
     """
-def my_histogram(data, title, xlabel, ylabel="Count", bins=100):  
     fig, ax = plt.subplots(1, 1, figsize=(10, 6))
     ax.hist(data, bins=bins)
     ax.set_title(title)
@@ -64,31 +69,31 @@ def my_histogram(data, title, xlabel, ylabel="Count", bins=100):
     plt.close()
     return fig
     
-"""
-Calculate the RMSE of the data
-"""
 def rmse(df, target_column, prediction_column):
+    """
+    Calculate the RMSE of the data
+    """
     rmse = sk_metrics.mean_squared_error(df[target_column], df[prediction_column], squared=False)
     return rmse
 
-"""
-Calculate the bias of the data
-"""
 def bias(df, target_column, prediction_column):
+    """
+    Calculate the bias of the data
+    """
     bias = np.mean(df[prediction_column] - df[target_column])
     return bias
 
-"""
-Calculate the slope of the data
-"""
 def slope(df, target_column, prediction_column):
+    """
+    Calculate the slope of the data
+    """
     slope = np.polyfit(df[target_column], df[prediction_column], deg=1)[0]
     return slope
     
-"""
-Calculate all of the metrics of the data and return as a dictionary
-"""
 def metrics(df, target_column, prediction_column):
+    """
+    Calculate all of the metrics of the data and return as a dictionary
+    """
     rmse_metric = rmse(df, target_column, prediction_column)
     bias_metric = bias(df, target_column, prediction_column)
     slope_metric = slope(df, target_column, prediction_column)
