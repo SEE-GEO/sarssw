@@ -6,7 +6,7 @@ Accurate predictions of wave and wind parameters over oceans are crucial for var
 
 ## Getting Started
 
-To utilize this project, the user needs to supply the following data:
+To utilize this project, the user needs to have access to the following data:
 - **Buoy Data**: Downloaded for the year 2021 from [DOI 10.48670/moi-00036](https://doi.org/10.48670/moi-00036)
 - **Model Data**:
   - Significant Wave Height: [DOI 10.24381/cds.adbb2d47](https://doi.org/10.24381/cds.adbb2d47)
