@@ -33,7 +33,7 @@ The repository holds multiple files dedicated to analysis, plotting, experimenta
 
 - `analyze_hom_filter_dataset.ipynb`
   - **Description**: Demonstrates the creation and functionality of the homogeneity filter. Allows users to utilize the existing filter or supply their own.
-  - **Key Input**: Dataset of homogenous and non homogenous images.
+  - **Key Input**: Dataset of homogenous and non-homogenous images.
   - **Key Output**: Support Vector Classifier (SVC) that differentiates the classes.
   
 - `sar_dataset_loader.py`
@@ -71,8 +71,6 @@ The scripting files are organized using a naming convention which describes thei
 #### This repository
 In this repository, the following files are of special interest for running the project. A pickle file of the data frame after the collocation in `bouy_survey/survey.py` can be found in `bouy_survey/1h_survey/result_df`. A precomputed SVC homogeneity filter can be found in `sar_survey/out/homogenity_svc.pkl`
 
-#### Quartz server
-For those with access to the quartz server for this project, the dataset of sub-images from `pipeline/download_sar_multiprocess.py` can be found in `/data/exjobb/sarssw/sar_dataset`. The most recent dataset of features and lables can be found in `/data/exjobb/sarssw/sar_dataset_features_lables_22_may/sar_dataset.pickle`. The predictions of the final models can be found in  `/data/exjobb/sarssw/result_predictions` and `result_predictions_only_features`. 
+#### Quartz server `/data/exjobb/sarssw/`
+For those with access to the quartz server for this project, the dataset of sub-images from `pipeline/download_sar_multiprocess.py` can be found in `sar_dataset/`. A dataset of non-homogenous sub-images can be found in `wind_farm/`, which together with the other sub-images can be used to train a new homogeneity filter. The most recent dataset of features and lables can be found in `sar_dataset_features_lables_22_may/sar_dataset.pickle`. The predictions of the final models can be found in `result_predictions/` and `result_predictions_only_features/`. Finally, the checkpoints of the final models can be found in `final_img_feat/version_0/` and `final_only_feat/version_1/`.
 
-#### Mimer server
-For those with access to the mimer server for this project, the sub-image dataset, the features and lables dataset and the final predictions can be found with the same names in `/mimer/NOBACKUP/priv/chair/sarssw/`. In this directory, a few datasets extracted using `pipeline/data_copy.py` according to different specifications can be found. Most noteably, `IW_VV_VH` is the full dataset according to the limitations of this project, but other versions can easily be recomputed with `pipeline/data_copy.py`. Finally, the checkpoints of the final models can be found in `final_img_feat/version_0/checkpoints/` and `final_only_feat/version_1/checkpoints/`
