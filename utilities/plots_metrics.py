@@ -6,6 +6,7 @@ This library includes functions for plotting and calculating metrics to standari
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import matplotlib as mpl
 import sklearn.metrics as sk_metrics
 
@@ -14,7 +15,7 @@ def sign(num):
         return '-'
     return '+'
 
-def heatmap(df, name_text, title, unit, target_column, prediction_column, best_line=False, target_label_override=None, prediction_label_override=None):
+def heatmap(df, name_text, title, unit, target_column, prediction_column, best_line=False, target_label_override=None, prediction_label_override=None, save_as=None):
     """
     Plot a heatmap of the data
 
@@ -49,10 +50,19 @@ def heatmap(df, name_text, title, unit, target_column, prediction_column, best_l
         
     fig.colorbar(h2d_img, ax=ax, label='Count colormap')
     ax.set_facecolor(plt.get_cmap(colors["cmap"])(0))
-    ax.legend()
-    ax.set(xlim=(0, max_value), ylim=(0, max_value))
+    
+    metrics_dict = metrics(df, target_column, prediction_column, include_data_points=False)
+    metric_string = [n+": "+str(round(v,3)) for n,v in metrics_dict.items()]
+    metric_string = '\n'.join(metric_string)
+    handles, labels = ax.get_legend_handles_labels()
+    handles.append(mpatches.Patch(color='none', label=metric_string))
+    ax.legend(handles=handles)
 
+    ax.set(xlim=(0, max_value), ylim=(0, max_value))
     plt.close()
+    
+    if save_as is not None:
+        fig.savefig(save_as, dpi=300, bbox_inches='tight')
     return fig
 
 def my_histogram(data, title, xlabel, ylabel="Count", bins=100):  
@@ -89,13 +99,24 @@ def slope(df, target_column, prediction_column):
     """
     slope = np.polyfit(df[target_column], df[prediction_column], deg=1)[0]
     return slope
-    
-def metrics(df, target_column, prediction_column):
+
+def correlation(df, target_column, prediction_column):
+    """
+    Calculate the correlation of the data
+    """
+    correlation = np.corrcoef(df[target_column], df[prediction_column])[0][1]
+    return correlation
+
+def metrics(df, target_column, prediction_column, include_data_points=True):
     """
     Calculate all of the metrics of the data and return as a dictionary
     """
     rmse_metric = rmse(df, target_column, prediction_column)
     bias_metric = bias(df, target_column, prediction_column)
     slope_metric = slope(df, target_column, prediction_column)
+    correlation_metric = correlation(df, target_column, prediction_column)
     data_points = df.shape[0]
-    return {'rmse':rmse_metric, 'bias':bias_metric, 'slope':slope_metric, 'data_points':data_points}
+    if include_data_points:
+        return {'RMSE':rmse_metric, 'Bias':bias_metric, 'Slope':slope_metric, 'Correlation':correlation_metric, 'Data points':data_points}
+
+    return {'RMSE':rmse_metric, 'Bias':bias_metric, 'Slope':slope_metric, 'Correlation':correlation_metric}
